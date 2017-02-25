@@ -1,0 +1,1 @@
+var DenonMCX8000() = {}
