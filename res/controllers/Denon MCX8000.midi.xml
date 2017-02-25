@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <MixxxControllerPreset mixxxVersion="" schemaVersion="1">
-    <info/>
+    <info>
+    </info>
     <controller id="DENON">
         <scriptfiles/>
         <controls>
             <control>
                 <group>[Channel3]</group>
                 <key>hotcue_6_activate</key>
-                <description>MIDI Learned from 12 messages.</description>
                 <status>0x96</status>
                 <midino>0x19</midino>
                 <options>
@@ -17,7 +17,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>hotcue_6_activate</key>
-                <description>MIDI Learned from 28 messages.</description>
                 <status>0x97</status>
                 <midino>0x19</midino>
                 <options>
@@ -27,7 +26,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>sync_enabled</key>
-                <description>MIDI Learned from 10 messages.</description>
                 <status>0x90</status>
                 <midino>0x02</midino>
                 <options>
@@ -37,7 +35,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>sync_enabled</key>
-                <description>MIDI Learned from 12 messages.</description>
                 <status>0x91</status>
                 <midino>0x02</midino>
                 <options>
@@ -47,7 +44,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>sync_enabled</key>
-                <description>MIDI Learned from 14 messages.</description>
                 <status>0x92</status>
                 <midino>0x02</midino>
                 <options>
@@ -57,7 +53,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>LoadSelectedTrack</key>
-                <description>MIDI Learned from 2 messages.</description>
                 <status>0x9F</status>
                 <midino>0x04</midino>
                 <options>
@@ -67,7 +62,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>sync_enabled</key>
-                <description>MIDI Learned from 16 messages.</description>
                 <status>0x93</status>
                 <midino>0x02</midino>
                 <options>
@@ -77,7 +71,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>hotcue_5_activate</key>
-                <description>MIDI Learned from 10 messages.</description>
                 <status>0x94</status>
                 <midino>0x18</midino>
                 <options>
@@ -87,7 +80,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>hotcue_5_activate</key>
-                <description>MIDI Learned from 26 messages.</description>
                 <status>0x95</status>
                 <midino>0x18</midino>
                 <options>
@@ -97,7 +89,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>hotcue_5_activate</key>
-                <description>MIDI Learned from 10 messages.</description>
                 <status>0x96</status>
                 <midino>0x18</midino>
                 <options>
@@ -107,7 +98,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>hotcue_5_activate</key>
-                <description>MIDI Learned from 26 messages.</description>
                 <status>0x97</status>
                 <midino>0x18</midino>
                 <options>
@@ -117,7 +107,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>cue_default</key>
-                <description>MIDI Learned from 14 messages.</description>
                 <status>0x90</status>
                 <midino>0x01</midino>
                 <options>
@@ -127,7 +116,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>volume</key>
-                <description>MIDI Learned from 579 messages.</description>
                 <status>0xB0</status>
                 <midino>0x1C</midino>
                 <options>
@@ -137,7 +125,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>cue_default</key>
-                <description>MIDI Learned from 16 messages.</description>
                 <status>0x91</status>
                 <midino>0x01</midino>
                 <options>
@@ -147,7 +134,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>volume</key>
-                <description>MIDI Learned from 320 messages.</description>
                 <status>0xB1</status>
                 <midino>0x1C</midino>
                 <options>
@@ -157,7 +143,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>hotcue_4_activate</key>
-                <description>MIDI Learned from 8 messages.</description>
                 <status>0x94</status>
                 <midino>0x17</midino>
                 <options>
@@ -167,7 +152,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>volume</key>
-                <description>MIDI Learned from 376 messages.</description>
                 <status>0xB2</status>
                 <midino>0x1C</midino>
                 <options>
@@ -177,7 +161,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>LoadSelectedTrack</key>
-                <description>MIDI Learned from 8 messages.</description>
                 <status>0x9F</status>
                 <midino>0x03</midino>
                 <options>
@@ -187,7 +170,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>hotcue_4_activate</key>
-                <description>MIDI Learned from 24 messages.</description>
                 <status>0x95</status>
                 <midino>0x17</midino>
                 <options>
@@ -197,7 +179,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>volume</key>
-                <description>MIDI Learned from 980 messages.</description>
                 <status>0xB3</status>
                 <midino>0x1C</midino>
                 <options>
@@ -207,7 +188,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>hotcue_4_activate</key>
-                <description>MIDI Learned from 8 messages.</description>
                 <status>0x96</status>
                 <midino>0x17</midino>
                 <options>
@@ -217,7 +197,6 @@
             <control>
                 <group>[Master]</group>
                 <key>crossfader</key>
-                <description>MIDI Learned from 202 messages.</description>
                 <status>0xBF</status>
                 <midino>0x08</midino>
                 <options>
@@ -227,7 +206,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>hotcue_4_activate</key>
-                <description>MIDI Learned from 24 messages.</description>
                 <status>0x97</status>
                 <midino>0x17</midino>
                 <options>
@@ -237,7 +215,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>play</key>
-                <description>MIDI Learned from 2 messages.</description>
                 <status>0x90</status>
                 <midino>0x00</midino>
                 <options>
@@ -247,7 +224,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>play</key>
-                <description>MIDI Learned from 4 messages.</description>
                 <status>0x91</status>
                 <midino>0x00</midino>
                 <options>
@@ -257,7 +233,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>LoadSelectedTrack</key>
-                <description>MIDI Learned from 6 messages.</description>
                 <status>0x9F</status>
                 <midino>0x02</midino>
                 <options>
@@ -267,7 +242,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>hotcue_3_activate</key>
-                <description>MIDI Learned from 6 messages.</description>
                 <status>0x94</status>
                 <midino>0x16</midino>
                 <options>
@@ -277,7 +251,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>hotcue_3_activate</key>
-                <description>MIDI Learned from 22 messages.</description>
                 <status>0x95</status>
                 <midino>0x16</midino>
                 <options>
@@ -287,7 +260,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>hotcue_3_activate</key>
-                <description>MIDI Learned from 6 messages.</description>
                 <status>0x96</status>
                 <midino>0x16</midino>
                 <options>
@@ -297,7 +269,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>hotcue_3_activate</key>
-                <description>MIDI Learned from 22 messages.</description>
                 <status>0x97</status>
                 <midino>0x16</midino>
                 <options>
@@ -307,7 +278,6 @@
             <control>
                 <group>[QuickEffectRack1_[Channel1]]</group>
                 <key>super1</key>
-                <description>MIDI Learned from 2376 messages.</description>
                 <status>0xB0</status>
                 <midino>0x1A</midino>
                 <options>
@@ -317,7 +287,6 @@
             <control>
                 <group>[QuickEffectRack1_[Channel2]]</group>
                 <key>super1</key>
-                <description>MIDI Learned from 4176 messages.</description>
                 <status>0xB1</status>
                 <midino>0x1A</midino>
                 <options>
@@ -327,7 +296,6 @@
             <control>
                 <group>[QuickEffectRack1_[Channel3]]</group>
                 <key>super1</key>
-                <description>MIDI Learned from 3496 messages.</description>
                 <status>0xB2</status>
                 <midino>0x1A</midino>
                 <options>
@@ -337,7 +305,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 4 messages.</description>
                 <status>0x94</status>
                 <midino>0x15</midino>
                 <options>
@@ -347,7 +314,6 @@
             <control>
                 <group>[QuickEffectRack1_[Channel4]]</group>
                 <key>super1</key>
-                <description>MIDI Learned from 3100 messages.</description>
                 <status>0xB3</status>
                 <midino>0x1A</midino>
                 <options>
@@ -357,7 +323,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 20 messages.</description>
                 <status>0x95</status>
                 <midino>0x15</midino>
                 <options>
@@ -367,7 +332,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 4 messages.</description>
                 <status>0x96</status>
                 <midino>0x15</midino>
                 <options>
@@ -377,7 +341,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 20 messages.</description>
                 <status>0x97</status>
                 <midino>0x15</midino>
                 <options>
@@ -387,7 +350,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel1]_Effect1]</group>
                 <key>parameter1</key>
-                <description>MIDI Learned from 2280 messages.</description>
                 <status>0xB0</status>
                 <midino>0x19</midino>
                 <options>
@@ -397,7 +359,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel2]_Effect1]</group>
                 <key>parameter1</key>
-                <description>MIDI Learned from 2124 messages.</description>
                 <status>0xB1</status>
                 <midino>0x19</midino>
                 <options>
@@ -407,7 +368,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel3]_Effect1]</group>
                 <key>parameter1</key>
-                <description>MIDI Learned from 2268 messages.</description>
                 <status>0xB2</status>
                 <midino>0x19</midino>
                 <options>
@@ -417,7 +377,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>hotcue_1_activate</key>
-                <description>MIDI Learned from 2 messages.</description>
                 <status>0x94</status>
                 <midino>0x14</midino>
                 <options>
@@ -427,7 +386,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel4]_Effect1]</group>
                 <key>parameter1</key>
-                <description>MIDI Learned from 3402 messages.</description>
                 <status>0xB3</status>
                 <midino>0x19</midino>
                 <options>
@@ -437,7 +395,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>hotcue_1_activate</key>
-                <description>MIDI Learned from 18 messages.</description>
                 <status>0x95</status>
                 <midino>0x14</midino>
                 <options>
@@ -447,7 +404,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>hotcue_1_activate</key>
-                <description>MIDI Learned from 2 messages.</description>
                 <status>0x96</status>
                 <midino>0x14</midino>
                 <options>
@@ -457,7 +413,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>hotcue_1_activate</key>
-                <description>MIDI Learned from 18 messages.</description>
                 <status>0x97</status>
                 <midino>0x14</midino>
                 <options>
@@ -467,7 +422,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel1]_Effect1]</group>
                 <key>parameter2</key>
-                <description>MIDI Learned from 2100 messages.</description>
                 <status>0xB0</status>
                 <midino>0x18</midino>
                 <options>
@@ -477,7 +431,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel2]_Effect1]</group>
                 <key>parameter2</key>
-                <description>MIDI Learned from 1836 messages.</description>
                 <status>0xB1</status>
                 <midino>0x18</midino>
                 <options>
@@ -487,7 +440,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel3]_Effect1]</group>
                 <key>parameter2</key>
-                <description>MIDI Learned from 1540 messages.</description>
                 <status>0xB2</status>
                 <midino>0x18</midino>
                 <options>
@@ -497,7 +449,6 @@
             <control>
                 <group>[Master]</group>
                 <key>gain</key>
-                <description>MIDI Learned from 202 messages.</description>
                 <status>0xBF</status>
                 <midino>0x1A</midino>
                 <options>
@@ -507,7 +458,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel4]_Effect1]</group>
                 <key>parameter2</key>
-                <description>MIDI Learned from 2080 messages.</description>
                 <status>0xB3</status>
                 <midino>0x18</midino>
                 <options>
@@ -517,7 +467,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel1]_Effect1]</group>
                 <key>parameter3</key>
-                <description>MIDI Learned from 1534 messages.</description>
                 <status>0xB0</status>
                 <midino>0x17</midino>
                 <options>
@@ -527,7 +476,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel2]_Effect1]</group>
                 <key>parameter3</key>
-                <description>MIDI Learned from 2912 messages.</description>
                 <status>0xB1</status>
                 <midino>0x17</midino>
                 <options>
@@ -537,7 +485,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel3]_Effect1]</group>
                 <key>parameter3</key>
-                <description>MIDI Learned from 740 messages.</description>
                 <status>0xB2</status>
                 <midino>0x17</midino>
                 <options>
@@ -547,7 +494,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel4]_Effect1]</group>
                 <key>parameter3</key>
-                <description>MIDI Learned from 2014 messages.</description>
                 <status>0xB3</status>
                 <midino>0x17</midino>
                 <options>
@@ -557,7 +503,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>pregain</key>
-                <description>MIDI Learned from 889 messages.</description>
                 <status>0xB0</status>
                 <midino>0x16</midino>
                 <options>
@@ -567,7 +512,6 @@
             <control>
                 <group>[Playlist]</group>
                 <key>SelectTrackKnob</key>
-                <description>MIDI Learned from 4 messages.</description>
                 <status>0xBF</status>
                 <midino>0x44</midino>
                 <options>
@@ -577,7 +521,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>pregain</key>
-                <description>MIDI Learned from 888 messages.</description>
                 <status>0xB1</status>
                 <midino>0x16</midino>
                 <options>
@@ -587,7 +530,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>pregain</key>
-                <description>MIDI Learned from 354 messages.</description>
                 <status>0xB2</status>
                 <midino>0x16</midino>
                 <options>
@@ -597,7 +539,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>pregain</key>
-                <description>MIDI Learned from 1188 messages.</description>
                 <status>0xB3</status>
                 <midino>0x16</midino>
                 <options>
@@ -607,7 +548,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>playposition</key>
-                <description>MIDI Learned from 230 messages.</description>
                 <status>0x90</status>
                 <midino>0x50</midino>
                 <options>
@@ -617,7 +557,6 @@
             <control>
                 <group>[Playlist]</group>
                 <key>SelectTrackKnob</key>
-                <description>MIDI Learned from 5 messages.</description>
                 <status>0xBF</status>
                 <midino>0x00</midino>
                 <options>
@@ -627,7 +566,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>keylock</key>
-                <description>MIDI Learned from 10 messages.</description>
                 <status>0x90</status>
                 <midino>0x0D</midino>
                 <options>
@@ -637,7 +575,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>keylock</key>
-                <description>MIDI Learned from 12 messages.</description>
                 <status>0x91</status>
                 <midino>0x0D</midino>
                 <options>
@@ -647,7 +584,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>keylock</key>
-                <description>MIDI Learned from 2 messages.</description>
                 <status>0x92</status>
                 <midino>0x0D</midino>
                 <options>
@@ -657,7 +593,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>keylock</key>
-                <description>MIDI Learned from 4 messages.</description>
                 <status>0x93</status>
                 <midino>0x0D</midino>
                 <options>
@@ -667,7 +602,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>vinylcontrol_enabled</key>
-                <description>MIDI Learned from 2 messages.</description>
                 <status>0x90</status>
                 <midino>0x07</midino>
                 <options>
@@ -677,7 +611,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>pfl</key>
-                <description>MIDI Learned from 54 messages.</description>
                 <status>0x90</status>
                 <midino>0x1B</midino>
                 <options>
@@ -687,7 +620,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>pfl</key>
-                <description>MIDI Learned from 112 messages.</description>
                 <status>0x91</status>
                 <midino>0x1B</midino>
                 <options>
@@ -697,7 +629,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>pfl</key>
-                <description>MIDI Learned from 52 messages.</description>
                 <status>0x92</status>
                 <midino>0x1B</midino>
                 <options>
@@ -707,7 +638,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>pfl</key>
-                <description>MIDI Learned from 2 messages.</description>
                 <status>0x93</status>
                 <midino>0x1B</midino>
                 <options>
@@ -717,7 +647,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>rate</key>
-                <description>MIDI Learned from 786 messages.</description>
                 <status>0xB0</status>
                 <midino>0x77</midino>
                 <options>
@@ -729,7 +658,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>hotcue_8_activate</key>
-                <description>MIDI Learned from 16 messages.</description>
                 <status>0x94</status>
                 <midino>0x1B</midino>
                 <options>
@@ -739,7 +667,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>rate</key>
-                <description>MIDI Learned from 1024 messages.</description>
                 <status>0xB1</status>
                 <midino>0x77</midino>
                 <options>
@@ -749,7 +676,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>hotcue_8_activate</key>
-                <description>MIDI Learned from 32 messages.</description>
                 <status>0x95</status>
                 <midino>0x1B</midino>
                 <options>
@@ -759,7 +685,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>rate</key>
-                <description>MIDI Learned from 2898 messages.</description>
                 <status>0xB2</status>
                 <midino>0x77</midino>
                 <options>
@@ -770,7 +695,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>hotcue_8_activate</key>
-                <description>MIDI Learned from 16 messages.</description>
                 <status>0x96</status>
                 <midino>0x1B</midino>
                 <options>
@@ -780,7 +704,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>rate</key>
-                <description>MIDI Learned from 6260 messages.</description>
                 <status>0xB3</status>
                 <midino>0x77</midino>
                 <options>
@@ -792,7 +715,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>hotcue_8_activate</key>
-                <description>MIDI Learned from 32 messages.</description>
                 <status>0x97</status>
                 <midino>0x1B</midino>
                 <options>
@@ -802,7 +724,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>rate</key>
-                <description>MIDI Learned from 786 messages.</description>
                 <status>0xB0</status>
                 <midino>0x09</midino>
                 <options>
@@ -814,7 +735,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>rate</key>
-                <description>MIDI Learned from 1024 messages.</description>
                 <status>0xB1</status>
                 <midino>0x09</midino>
                 <options>
@@ -824,7 +744,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>hotcue_7_activate</key>
-                <description>MIDI Learned from 14 messages.</description>
                 <status>0x94</status>
                 <midino>0x1A</midino>
                 <options>
@@ -834,7 +753,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>rate</key>
-                <description>MIDI Learned from 2898 messages.</description>
                 <status>0xB2</status>
                 <midino>0x09</midino>
                 <options>
@@ -845,7 +763,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>hotcue_7_activate</key>
-                <description>MIDI Learned from 30 messages.</description>
                 <status>0x95</status>
                 <midino>0x1A</midino>
                 <options>
@@ -855,7 +772,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>rate</key>
-                <description>MIDI Learned from 6260 messages.</description>
                 <status>0xB3</status>
                 <midino>0x09</midino>
                 <options>
@@ -867,7 +783,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>hotcue_7_activate</key>
-                <description>MIDI Learned from 14 messages.</description>
                 <status>0x96</status>
                 <midino>0x1A</midino>
                 <options>
@@ -877,7 +792,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>hotcue_7_activate</key>
-                <description>MIDI Learned from 30 messages.</description>
                 <status>0x97</status>
                 <midino>0x1A</midino>
                 <options>
@@ -887,7 +801,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>hotcue_6_activate</key>
-                <description>MIDI Learned from 12 messages.</description>
                 <status>0x94</status>
                 <midino>0x19</midino>
                 <options>
@@ -897,7 +810,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>LoadSelectedTrack</key>
-                <description>MIDI Learned from 4 messages.</description>
                 <status>0x9F</status>
                 <midino>0x05</midino>
                 <options>
@@ -907,7 +819,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>hotcue_6_activate</key>
-                <description>MIDI Learned from 28 messages.</description>
                 <status>0x95</status>
                 <midino>0x19</midino>
                 <options>
