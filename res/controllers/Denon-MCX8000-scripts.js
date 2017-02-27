@@ -129,50 +129,51 @@ DenonMCX8000.tempoSliderLSB = function(channel, control, value, status, group) {
 //                 PERFORMANCE PAD HANDLERS                  //
 ///////////////////////////////////////////////////////////////
 
-DenonMCX8000.padChannel = function(group) {
-    switch (group) {
-        case '[Channel1]':
-            return 4;
-        case '[Channel2]':
-            return 5;
-        case '[Channel3]':
-            return 6;
-        case '[Channel4]':
-            return 7;
-        default:
-            // Error
-            return false;
-    }
+DenonMCX8000.padChannel = {
+    '[Channel1]': 4,
+    '[Channel2]': 5,
+    '[Channel3]': 6,
+    '[Channel4]': 7,
 }
 
 DenonMCX8000.cuePad = function(channel, control, value, status, group) {
+    nop();
 }
 
 DenonMCX8000.cueLoopPad = function(channel, control, value, status, group) {
+    nop();
 }
 
 DenonMCX8000.shiftCuePad = function(channel, control, value, status, group) {
+    nop();
 }
 
 DenonMCX8000.rollPad = function(channel, control, value, status, group) {
+    nop();
 }
 
 DenonMCX8000.savedLoopPad = function(channel, control, value, status, group) {
+    nop();
 }
 
 DenonMCX8000.slicerPad = function(channel, control, value, status, group) {
+    nop();
 }
 
 DenonMCX8000.slicerLoopPad = function(channel, control, value, status, group) {
+    nop();
 }
 
 DenonMCX8000.samplerPad = function(channel, control, value, status, group) {
+    nop();
 }
 
 DenonMCX8000.velocitySamplerPad = function(channel, control, value, status, group) {
+    nop();
 }
 
 DenonMCX8000.shiftSamplerPad = function(channel, control, value, status, group) {
+    nop();
 }
 
 DenonMCX8000.deck1PadModeCue = function(channel, control, value, status, group) {
@@ -456,7 +457,7 @@ DenonMCX8000.deck4PadModeShiftSampler = function(channel, control, value, status
 }
 
 DenonMCX8000.setPadLEDsCue = function(group) {
-    var status = 0x90 + DenonMCX8000.padChannel(group);
+    var status = 0x90 + DenonMCX8000.padChannel[group];
     midi.sendShortMsg(status, 0x14, 0x21);
     midi.sendShortMsg(status, 0x15, 0x35);
     midi.sendShortMsg(status, 0x16, 0x39);
