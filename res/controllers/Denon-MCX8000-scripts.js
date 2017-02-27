@@ -46,7 +46,7 @@ var ControlSet = function(controller, side) {
     this.side = side;
     this.activeDeck = null;
     this.activateDeck = function(channel, control, value, status, group) {
-        if (this.activeDeck.id === channel) {
+        if (this.activeDeck && this.activeDeck.id === channel) {
             nop();
         } else if (channel === DECK1 && side === LEFT) {
             this.activeDeck = controller.decks[DECK1];
