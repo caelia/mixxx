@@ -117,7 +117,8 @@ DenonMCX8000.tempoSliderMSB = function(channel, control, value, status, group) {
 DenonMCX8000.tempoSliderLSB = function(channel, control, value, status, group) {
     var fullValue = (DenonMCX8000.highResMSB[group].tempoSlider << 7) + value;
     engine.setValue(
-        DenonMCX8000.deckSwitchTable[group],
+        // DenonMCX8000.deckSwitchTable[group],
+        group,
         'rate',
         ((0x4000 - fullValue) - 0x2000) / 0x2000
     );
