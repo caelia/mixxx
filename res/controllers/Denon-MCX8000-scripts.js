@@ -13,11 +13,17 @@
 /* Author: Caelia Chapin <crc@caelia.net>                             */
 ////////////////////////////////////////////////////////////////////////
 
+var nop = function(a, b, c, d, e) {};
+
 var DenonMCX8000 = {
     decks: [],
     leftDeck: null,
     rightDeck: null,
     scratchEnabled: false,
+};
+
+DenonMCX8000.fubar = function(a, b, c, d, e) {
+    print("FUBAR!");
 };
 
 const DECK1 = 0;
@@ -193,13 +199,20 @@ DenonMCX8000.padChannel = {
     '[Channel4]': 7,
 };
 
-var testPad = function() {
+var testPad = function(a, b, c, d, e) {
     print("PAD");
-}
+};
 
-var testShiftPad = function() {
+var testShiftPad = function(a, b, c, d, e) {
     print("SHIFT_PAD");
-}
+};
+
+DenonMCX8000.padMode = {
+    '[Channel1]': PM_CUE,
+    '[Channel2]': PM_CUE,
+    '[Channel3]': PM_CUE,
+    '[Channel4]': PM_CUE,
+};
 
 DenonMCX8000.perfPadFunc = {
     '[Channel1]': testPad,
@@ -217,11 +230,11 @@ DenonMCX8000.shiftPerfPadFunc = {
 
 DenonMCX8000.perfPad = function(channel, control, value, status, group) {
     DenonMCX8000.perfPadFunc[group](channel, control, value, status, group);
-}
+};
 
 DenonMCX8000.shiftPerfPad = function(channel, control, value, status, group) {
     DenonMCX8000.shiftPerfPadFunc[group](channel, control, value, status, group);
-}
+};
 
 DenonMCX8000.cuePad = function(channel, control, value, status, group) {
     nop();
@@ -263,285 +276,25 @@ DenonMCX8000.shiftSamplerPad = function(channel, control, value, status, group) 
     nop();
 };
 
-DenonMCX8000.deck1PadModeCue = function(channel, control, value, status, group) {
+DenonMCX8000.setPadMode = function(channel, control, value, status, group) {
+    if (value === 0x00) {
+        print("setPadMode");
+        /*
+        print("channel: " + channel);
+        print("control: " + control);
+        print("value: " + value);
+        print("status: " + status);
+        print("group: " + group);
+        */
+    }
+    /*
     DenonMCX8000.decks[DECK1].padMode = PM_CUE;
-    DenonMCX8000.perfPadFunc['[Channel1]'] = DenonMCX8000.cuePad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel1]'] = DenonMCX8000.cuePad;
-    DenonMCX8000.setPadLEDsCue(group);
+    DenonMCX8000.perfPadFunc[group] = padFunc;
+    DenonMCX8000.shiftPerfPadFunc[group] = shiftPadFunc;
+    ledFunc(group);
+    */
 };
 
-DenonMCX8000.deck1PadModeCueLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK1].padMode = PM_CUE_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel1]'] = DenonMCX8000.cueLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel1]'] = DenonMCX8000.cueLoopPad;
-    DenonMCX8000.setPadLEDsCue(group);
-};
-
-DenonMCX8000.deck1PadModeShiftCue = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK1].padMode = PM_SHIFT_CUE;
-    DenonMCX8000.perfPadFunc['[Channel1]'] = DenonMCX8000.shiftCuePad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel1]'] = DenonMCX8000.shiftCuePad;
-    DenonMCX8000.setPadLEDsCue(group);
-};
-
-DenonMCX8000.deck1PadModeRoll = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK1].padMode = PM_ROLL;
-    DenonMCX8000.perfPadFunc['[Channel1]'] = DenonMCX8000.rollPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel1]'] = DenonMCX8000.rollPad;
-    DenonMCX8000.setPadLEDsRoll(group);
-};
-
-DenonMCX8000.deck1PadModeSavedLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK1].padMode = PM_SAVED_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel1]'] = DenonMCX8000.savedLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel1]'] = DenonMCX8000.savedLoopPad;
-    DenonMCX8000.setPadLEDsRoll(group);
-};
-
-DenonMCX8000.deck1PadModeSlicer = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK1].padMode = PM_SLICER;
-    DenonMCX8000.perfPadFunc['[Channel1]'] = DenonMCX8000.slicerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel1]'] = DenonMCX8000.slicerPad;
-    DenonMCX8000.setPadLEDsSlicer(group);
-};
-
-DenonMCX8000.deck1PadModeSlicerLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK1].padMode = PM_SLICER_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel1]'] = DenonMCX8000.slicerLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel1]'] = DenonMCX8000.slicerLoopPad;
-    DenonMCX8000.setPadLEDsSlicer(group);
-};
-
-DenonMCX8000.deck1PadModeSampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK1].padMode = PM_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel1]'] = DenonMCX8000.samplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel1]'] = DenonMCX8000.samplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
-
-DenonMCX8000.deck1PadModeVelocitySampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK1].padMode = PM_VELOCITY_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel1]'] = DenonMCX8000.velocitySamplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel1]'] = DenonMCX8000.velocitySamplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
-
-DenonMCX8000.deck1PadModeShiftSampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK1].padMode = PM_SHIFT_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel1]'] = DenonMCX8000.shiftSamplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel1]'] = DenonMCX8000.shiftSamplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
-
-DenonMCX8000.deck2PadModeCue = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK2].padMode = PM_CUE;
-    DenonMCX8000.perfPadFunc['[Channel2]'] = DenonMCX8000.cuePad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel2]'] = DenonMCX8000.cuePad;
-    DenonMCX8000.setPadLEDsCue(group);
-};
-
-DenonMCX8000.deck2PadModeCueLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK2].padMode = PM_CUE_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel2]'] = DenonMCX8000.cueLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel2]'] = DenonMCX8000.cueLoopPad;
-    DenonMCX8000.setPadLEDsCue(group);
-};
-
-DenonMCX8000.deck2PadModeShiftCue = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK2].padMode = PM_SHIFT_CUE;
-    DenonMCX8000.perfPadFunc['[Channel2]'] = DenonMCX8000.shiftCuePad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel2]'] = DenonMCX8000.shiftCuePad;
-    DenonMCX8000.setPadLEDsCue(group);
-};
-
-DenonMCX8000.deck2PadModeRoll = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK2].padMode = PM_ROLL;
-    DenonMCX8000.perfPadFunc['[Channel2]'] = DenonMCX8000.rollPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel2]'] = DenonMCX8000.rollPad;
-    DenonMCX8000.setPadLEDsRoll(group);
-};
-
-DenonMCX8000.deck2PadModeSavedLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK2].padMode = PM_SAVED_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel2]'] = DenonMCX8000.savedLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel2]'] = DenonMCX8000.savedLoopPad;
-    DenonMCX8000.setPadLEDsRoll(group);
-};
-
-DenonMCX8000.deck2PadModeSlicer = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK2].padMode = PM_SLICER;
-    DenonMCX8000.perfPadFunc['[Channel2]'] = DenonMCX8000.slicerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel2]'] = DenonMCX8000.slicerPad;
-    DenonMCX8000.setPadLEDsSlicer(group);
-};
-
-DenonMCX8000.deck2PadModeSlicerLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK2].padMode = PM_SLICER_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel2]'] = DenonMCX8000.slicerLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel2]'] = DenonMCX8000.slicerLoopPad;
-    DenonMCX8000.setPadLEDsSlicer(group);
-};
-
-DenonMCX8000.deck2PadModeSampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK2].padMode = PM_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel2]'] = DenonMCX8000.samplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel2]'] = DenonMCX8000.samplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
-
-DenonMCX8000.deck2PadModeVelocitySampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK2].padMode = PM_VELOCITY_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel2]'] = DenonMCX8000.velocitySamplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel2]'] = DenonMCX8000.velocitySamplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
-
-DenonMCX8000.deck2PadModeShiftSampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK2].padMode = PM_SHIFT_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel2]'] = DenonMCX8000.shiftSamplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel2]'] = DenonMCX8000.shiftSamplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
-
-DenonMCX8000.deck3PadModeCue = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK3].padMode = PM_CUE;
-    DenonMCX8000.perfPadFunc['[Channel3]'] = DenonMCX8000.cuePad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel3]'] = DenonMCX8000.cuePad;
-    DenonMCX8000.setPadLEDsCue(group);
-};
-
-DenonMCX8000.deck3PadModeCueLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK3].padMode = PM_CUE_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel3]'] = DenonMCX8000.cueLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel3]'] = DenonMCX8000.cueLoopPad;
-    DenonMCX8000.setPadLEDsCue(group);
-};
-
-DenonMCX8000.deck3PadModeShiftCue = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK3].padMode = PM_SHIFT_CUE;
-    DenonMCX8000.perfPadFunc['[Channel3]'] = DenonMCX8000.shiftCuePad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel3]'] = DenonMCX8000.shiftCuePad;
-    DenonMCX8000.setPadLEDsCue(group);
-};
-
-DenonMCX8000.deck3PadModeRoll = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK3].padMode = PM_ROLL;
-    DenonMCX8000.perfPadFunc['[Channel3]'] = DenonMCX8000.rollPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel3]'] = DenonMCX8000.rollPad;
-    DenonMCX8000.setPadLEDsRoll(group);
-};
-
-DenonMCX8000.deck3PadModeSavedLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK3].padMode = PM_SAVED_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel3]'] = DenonMCX8000.savedLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel3]'] = DenonMCX8000.savedLoopPad;
-    DenonMCX8000.setPadLEDsRoll(group);
-};
-
-DenonMCX8000.deck3PadModeSlicer = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK3].padMode = PM_SLICER;
-    DenonMCX8000.perfPadFunc['[Channel3]'] = DenonMCX8000.slicerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel3]'] = DenonMCX8000.slicerPad;
-    DenonMCX8000.setPadLEDsSlicer(group);
-};
-
-DenonMCX8000.deck3PadModeSlicerLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK3].padMode = PM_SLICER_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel3]'] = DenonMCX8000.slicerLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel3]'] = DenonMCX8000.slicerLoopPad;
-    DenonMCX8000.setPadLEDsSlicer(group);
-};
-
-DenonMCX8000.deck3PadModeSampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK3].padMode = PM_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel3]'] = DenonMCX8000.samplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel3]'] = DenonMCX8000.samplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
-
-DenonMCX8000.deck3PadModeVelocitySampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK3].padMode = PM_VELOCITY_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel3]'] = DenonMCX8000.velocitySamplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel3]'] = DenonMCX8000.velocitySamplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
-
-DenonMCX8000.deck3PadModeShiftSampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK3].padMode = PM_SHIFT_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel3]'] = DenonMCX8000.shiftSamplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel3]'] = DenonMCX8000.shiftSamplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
-
-DenonMCX8000.deck4PadModeCue = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK4].padMode = PM_CUE;
-    DenonMCX8000.perfPadFunc['[Channel4]'] = DenonMCX8000.cuePad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel4]'] = DenonMCX8000.cuePad;
-    DenonMCX8000.setPadLEDsCue(group);
-};
-
-DenonMCX8000.deck4PadModeCueLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK4].padMode = PM_CUE_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel4]'] = DenonMCX8000.cueLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel4]'] = DenonMCX8000.cueLoopPad;
-    DenonMCX8000.setPadLEDsCue(group);
-};
-
-DenonMCX8000.deck4PadModeShiftCue = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK4].padMode = PM_SHIFT_CUE;
-    DenonMCX8000.perfPadFunc['[Channel4]'] = DenonMCX8000.shiftCuePad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel4]'] = DenonMCX8000.shiftCuePad;
-    DenonMCX8000.setPadLEDsCue(group);
-};
-
-DenonMCX8000.deck4PadModeRoll = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK4].padMode = PM_ROLL;
-    DenonMCX8000.perfPadFunc['[Channel4]'] = DenonMCX8000.rollPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel4]'] = DenonMCX8000.rollPad;
-    DenonMCX8000.setPadLEDsRoll(group);
-};
-
-DenonMCX8000.deck4PadModeSavedLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK4].padMode = PM_SAVED_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel4]'] = DenonMCX8000.savedLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel4]'] = DenonMCX8000.savedLoopPad;
-    DenonMCX8000.setPadLEDsRoll(group);
-};
-
-DenonMCX8000.deck4PadModeSlicer = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK4].padMode = PM_SLICER;
-    DenonMCX8000.perfPadFunc['[Channel4]'] = DenonMCX8000.slicerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel4]'] = DenonMCX8000.slicerPad;
-    DenonMCX8000.setPadLEDsSlicer(group);
-};
-
-DenonMCX8000.deck4PadModeSlicerLoop = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK4].padMode = PM_SLICER_LOOP;
-    DenonMCX8000.perfPadFunc['[Channel4]'] = DenonMCX8000.slicerLoopPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel4]'] = DenonMCX8000.slicerLoopPad;
-    DenonMCX8000.setPadLEDsSlicer(group);
-};
-
-DenonMCX8000.deck4PadModeSampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK4].padMode = PM_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel4]'] = DenonMCX8000.samplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel4]'] = DenonMCX8000.samplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
-
-DenonMCX8000.deck4PadModeVelocitySampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK4].padMode = PM_VELOCITY_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel4]'] = DenonMCX8000.velocitySamplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel4]'] = DenonMCX8000.velocitySamplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
-
-DenonMCX8000.deck4PadModeShiftSampler = function(channel, control, value, status, group) {
-    DenonMCX8000.decks[DECK4].padMode = PM_SHIFT_SAMPLER;
-    DenonMCX8000.perfPadFunc['[Channel4]'] = DenonMCX8000.shiftSamplerPad;
-    DenonMCX8000.shiftPerfPadFunc['[Channel4]'] = DenonMCX8000.shiftSamplerPad;
-    DenonMCX8000.setPadLEDsSampler(group);
-};
 
 DenonMCX8000.setPadLEDsCue = function(group) {
     var status = 0x90 + DenonMCX8000.padChannel[group];
