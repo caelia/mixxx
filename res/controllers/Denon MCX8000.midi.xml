@@ -794,7 +794,7 @@
         <group>[Channel1]</group>
         <midino>0x1C</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -803,7 +803,7 @@
         <group>[Channel2]</group>
         <midino>0x1C</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -812,7 +812,7 @@
         <group>[Channel3]</group>
         <midino>0x1C</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -821,7 +821,7 @@
         <group>[Channel4]</group>
         <midino>0x1C</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -866,7 +866,7 @@
         <group>[Channel1]</group>
         <midino>0x1D</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -875,7 +875,7 @@
         <group>[Channel2]</group>
         <midino>0x1D</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -884,7 +884,7 @@
         <group>[Channel3]</group>
         <midino>0x1D</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -893,7 +893,7 @@
         <group>[Channel4]</group>
         <midino>0x1D</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -902,7 +902,7 @@
         <group>[Channel1]</group>
         <midino>0x1E</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -911,7 +911,7 @@
         <group>[Channel2]</group>
         <midino>0x1E</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -920,7 +920,7 @@
         <group>[Channel3]</group>
         <midino>0x1E</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -929,7 +929,7 @@
         <group>[Channel4]</group>
         <midino>0x1E</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -947,7 +947,7 @@
         <group>[Channel1]</group>
         <midino>0x1F</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -956,7 +956,7 @@
         <group>[Channel2]</group>
         <midino>0x1F</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -965,7 +965,7 @@
         <group>[Channel3]</group>
         <midino>0x1F</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -974,7 +974,7 @@
         <group>[Channel4]</group>
         <midino>0x1F</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -983,7 +983,7 @@
         <group>[Channel1]</group>
         <midino>0x20</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -992,7 +992,7 @@
         <group>[Channel2]</group>
         <midino>0x20</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1001,7 +1001,7 @@
         <group>[Channel3]</group>
         <midino>0x20</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1010,7 +1010,7 @@
         <group>[Channel4]</group>
         <midino>0x20</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1019,7 +1019,7 @@
         <group>[Channel1]</group>
         <midino>0x21</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1028,7 +1028,7 @@
         <group>[Channel2]</group>
         <midino>0x21</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1037,7 +1037,7 @@
         <group>[Channel3]</group>
         <midino>0x21</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1046,7 +1046,7 @@
         <group>[Channel4]</group>
         <midino>0x21</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1055,7 +1055,7 @@
         <group>[Channel1]</group>
         <midino>0x22</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1064,7 +1064,7 @@
         <group>[Channel2]</group>
         <midino>0x22</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1073,7 +1073,7 @@
         <group>[Channel3]</group>
         <midino>0x22</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1082,7 +1082,7 @@
         <group>[Channel4]</group>
         <midino>0x22</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1091,7 +1091,7 @@
         <group>[Channel1]</group>
         <midino>0x23</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1100,7 +1100,7 @@
         <group>[Channel2]</group>
         <midino>0x23</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1109,7 +1109,7 @@
         <group>[Channel3]</group>
         <midino>0x23</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1118,7 +1118,7 @@
         <group>[Channel4]</group>
         <midino>0x23</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.perfPadShift</key>
+        <key>DenonMCX8000.fubar</key>
         <options>
           <script-binding/>
         </options>
@@ -1192,7 +1192,7 @@
         <group>[Channel1]</group>
         <midino>0x00</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.deck1PadModeCue</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1201,7 +1201,7 @@
         <group>[Channel1]</group>
         <midino>0x03</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.deck1PadModeCueLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1210,7 +1210,7 @@
         <group>[Channel1]</group>
         <midino>0x02</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.deck1PadModeShiftCue</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1219,7 +1219,7 @@
         <group>[Channel1]</group>
         <midino>0x07</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.deck1PadModeRoll</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1228,7 +1228,7 @@
         <group>[Channel1]</group>
         <midino>0x0D</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.deck1PadModeSavedLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1237,7 +1237,7 @@
         <group>[Channel1]</group>
         <midino>0x09</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.deck1PadModeSlicer</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1246,7 +1246,7 @@
         <group>[Channel1]</group>
         <midino>0x0A</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.deck1PadModeSlicerLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1255,7 +1255,7 @@
         <group>[Channel1]</group>
         <midino>0x0B</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.deck1PadModeSampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1264,7 +1264,7 @@
         <group>[Channel1]</group>
         <midino>0x0C</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.deck1PadModeVelocitySampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1273,7 +1273,7 @@
         <group>[Channel1]</group>
         <midino>0x0F</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.deck1PadModeShiftSampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1282,7 +1282,7 @@
         <group>[Channel2]</group>
         <midino>0x00</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.deck2PadModeCue</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1291,7 +1291,7 @@
         <group>[Channel2]</group>
         <midino>0x03</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.deck2PadModeCueLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1300,7 +1300,7 @@
         <group>[Channel2]</group>
         <midino>0x02</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.deck2PadModeShiftCue</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1309,7 +1309,7 @@
         <group>[Channel2]</group>
         <midino>0x07</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.deck2PadModeRoll</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1318,7 +1318,7 @@
         <group>[Channel2]</group>
         <midino>0x0D</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.deck2PadModeSavedLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1327,7 +1327,7 @@
         <group>[Channel2]</group>
         <midino>0x09</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.deck2PadModeSlicer</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1336,7 +1336,7 @@
         <group>[Channel2]</group>
         <midino>0x0A</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.deck2PadModeSlicerLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1345,7 +1345,7 @@
         <group>[Channel2]</group>
         <midino>0x0B</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.deck2PadModeSampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1354,7 +1354,7 @@
         <group>[Channel2]</group>
         <midino>0x0C</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.deck2PadModeVelocitySampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1363,7 +1363,7 @@
         <group>[Channel2]</group>
         <midino>0x0F</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.deck2PadModeShiftSampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1372,7 +1372,7 @@
         <group>[Channel3]</group>
         <midino>0x00</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.deck3PadModeCue</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1381,7 +1381,7 @@
         <group>[Channel3]</group>
         <midino>0x03</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.deck3PadModeCueLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1390,7 +1390,7 @@
         <group>[Channel3]</group>
         <midino>0x02</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.deck3PadModeShiftCue</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1399,7 +1399,7 @@
         <group>[Channel3]</group>
         <midino>0x07</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.deck3PadModeRoll</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1408,7 +1408,7 @@
         <group>[Channel3]</group>
         <midino>0x0D</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.deck3PadModeSavedLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1417,7 +1417,7 @@
         <group>[Channel3]</group>
         <midino>0x09</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.deck3PadModeSlicer</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1426,7 +1426,7 @@
         <group>[Channel3]</group>
         <midino>0x0A</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.deck3PadModeSlicerLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1435,7 +1435,7 @@
         <group>[Channel3]</group>
         <midino>0x0B</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.deck3PadModeSampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1444,7 +1444,7 @@
         <group>[Channel3]</group>
         <midino>0x0C</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.deck3PadModeVelocitySampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1453,7 +1453,7 @@
         <group>[Channel3]</group>
         <midino>0x0F</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.deck3PadModeShiftSampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1462,7 +1462,7 @@
         <group>[Channel4]</group>
         <midino>0x00</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.deck4PadModeCue</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1471,7 +1471,7 @@
         <group>[Channel4]</group>
         <midino>0x03</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.deck4PadModeCueLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1480,7 +1480,7 @@
         <group>[Channel4]</group>
         <midino>0x02</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.deck4PadModeShiftCue</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1489,7 +1489,7 @@
         <group>[Channel4]</group>
         <midino>0x07</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.deck4PadModeRoll</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1498,7 +1498,7 @@
         <group>[Channel4]</group>
         <midino>0x0D</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.deck4PadModeSavedLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1507,7 +1507,7 @@
         <group>[Channel4]</group>
         <midino>0x09</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.deck4PadModeSlicer</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1516,7 +1516,7 @@
         <group>[Channel4]</group>
         <midino>0x0A</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.deck4PadModeSlicerLoop</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1525,7 +1525,7 @@
         <group>[Channel4]</group>
         <midino>0x0B</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.deck4PadModeSampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1534,7 +1534,7 @@
         <group>[Channel4]</group>
         <midino>0x0C</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.deck4PadModeVelocitySampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
@@ -1543,7 +1543,7 @@
         <group>[Channel4]</group>
         <midino>0x0F</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.deck4PadModeShiftSampler</key>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
         </options>
