@@ -160,6 +160,79 @@
           <normal/>
         </options>
       </control>
+      <!-- Jog wheel things -->
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x06</midino>
+        <status>0x90</status>
+        <key>DenonMCX8000.jogTouch</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x06</midino>
+        <status>0x91</status>
+        <key>DenonMCX8000.jogTouch</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x06</midino>
+        <status>0x92</status>
+        <key>DenonMCX8000.jogTouch</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x06</midino>
+        <status>0x93</status>
+        <key>DenonMCX8000.jogTouch</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x06</midino>
+        <status>0xB0</status>
+        <key>DenonMCX8000.jogTick</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x06</midino>
+        <status>0xB1</status>
+        <key>DenonMCX8000.jogTick</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x06</midino>
+        <status>0xB2</status>
+        <key>DenonMCX8000.jogTick</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x06</midino>
+        <status>0xB3</status>
+        <key>DenonMCX8000.jogTick</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
       <control><!-- 0x07 -->
         <group>[Channel1]</group>
         <midino>0x07</midino>
@@ -392,6 +465,7 @@
         <key>pregain</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x16 -->
@@ -401,6 +475,7 @@
         <key>pregain</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x16 -->
@@ -410,6 +485,7 @@
         <key>pregain</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x16 -->
@@ -419,6 +495,7 @@
         <key>pregain</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x17 -->
@@ -464,6 +541,7 @@
         <key>parameter3</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x17 -->
@@ -473,6 +551,7 @@
         <key>parameter3</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x17 -->
@@ -482,6 +561,7 @@
         <key>parameter3</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x17 -->
@@ -491,6 +571,7 @@
         <key>parameter3</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x18 -->
@@ -536,6 +617,7 @@
         <key>parameter2</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x18 -->
@@ -545,6 +627,7 @@
         <key>parameter2</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x18 -->
@@ -554,6 +637,7 @@
         <key>parameter2</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x18 -->
@@ -563,6 +647,7 @@
         <key>parameter2</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x19 -->
@@ -608,6 +693,7 @@
         <key>parameter1</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x19 -->
@@ -617,6 +703,7 @@
         <key>parameter1</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x19 -->
@@ -626,6 +713,7 @@
         <key>parameter1</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x19 -->
@@ -635,6 +723,7 @@
         <key>parameter1</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1A -->
@@ -680,6 +769,7 @@
         <key>super1</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1A -->
@@ -689,6 +779,7 @@
         <key>super1</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1A -->
@@ -698,6 +789,7 @@
         <key>super1</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1A -->
@@ -707,6 +799,7 @@
         <key>super1</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1A -->
@@ -716,6 +809,7 @@
         <key>gain</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1B -->
@@ -794,7 +888,7 @@
         <group>[Channel1]</group>
         <midino>0x1C</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -803,7 +897,7 @@
         <group>[Channel2]</group>
         <midino>0x1C</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -812,7 +906,7 @@
         <group>[Channel3]</group>
         <midino>0x1C</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -821,7 +915,7 @@
         <group>[Channel4]</group>
         <midino>0x1C</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -833,6 +927,7 @@
         <key>volume</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1C -->
@@ -842,6 +937,7 @@
         <key>volume</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1C -->
@@ -851,6 +947,7 @@
         <key>volume</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1C -->
@@ -860,13 +957,14 @@
         <key>volume</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1D -->
         <group>[Channel1]</group>
         <midino>0x1D</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -875,7 +973,7 @@
         <group>[Channel2]</group>
         <midino>0x1D</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -884,7 +982,7 @@
         <group>[Channel3]</group>
         <midino>0x1D</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -893,7 +991,7 @@
         <group>[Channel4]</group>
         <midino>0x1D</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -902,7 +1000,7 @@
         <group>[Channel1]</group>
         <midino>0x1E</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -911,7 +1009,7 @@
         <group>[Channel2]</group>
         <midino>0x1E</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -920,7 +1018,7 @@
         <group>[Channel3]</group>
         <midino>0x1E</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -929,7 +1027,7 @@
         <group>[Channel4]</group>
         <midino>0x1E</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -941,13 +1039,14 @@
         <key>pregain</key>
         <options>
           <normal/>
+          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1F -->
         <group>[Channel1]</group>
         <midino>0x1F</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -956,7 +1055,7 @@
         <group>[Channel2]</group>
         <midino>0x1F</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -965,7 +1064,7 @@
         <group>[Channel3]</group>
         <midino>0x1F</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -974,7 +1073,7 @@
         <group>[Channel4]</group>
         <midino>0x1F</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -983,7 +1082,7 @@
         <group>[Channel1]</group>
         <midino>0x20</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -992,7 +1091,7 @@
         <group>[Channel2]</group>
         <midino>0x20</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1001,7 +1100,7 @@
         <group>[Channel3]</group>
         <midino>0x20</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1010,7 +1109,7 @@
         <group>[Channel4]</group>
         <midino>0x20</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1019,7 +1118,7 @@
         <group>[Channel1]</group>
         <midino>0x21</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1028,7 +1127,7 @@
         <group>[Channel2]</group>
         <midino>0x21</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1037,7 +1136,7 @@
         <group>[Channel3]</group>
         <midino>0x21</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1046,7 +1145,7 @@
         <group>[Channel4]</group>
         <midino>0x21</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1055,7 +1154,7 @@
         <group>[Channel1]</group>
         <midino>0x22</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1064,7 +1163,7 @@
         <group>[Channel2]</group>
         <midino>0x22</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1073,7 +1172,7 @@
         <group>[Channel3]</group>
         <midino>0x22</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1082,7 +1181,7 @@
         <group>[Channel4]</group>
         <midino>0x22</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1091,7 +1190,7 @@
         <group>[Channel1]</group>
         <midino>0x23</midino>
         <status>0x94</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1100,7 +1199,7 @@
         <group>[Channel2]</group>
         <midino>0x23</midino>
         <status>0x95</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1109,7 +1208,7 @@
         <group>[Channel3]</group>
         <midino>0x23</midino>
         <status>0x96</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1118,7 +1217,7 @@
         <group>[Channel4]</group>
         <midino>0x23</midino>
         <status>0x97</status>
-        <key>DenonMCX8000.fubar</key>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
