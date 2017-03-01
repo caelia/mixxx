@@ -34,6 +34,51 @@ DenonMCX8000.jogwheelSensivity = 1.0;
 // Set to 1 to disable jogwheel sensitivity increase when holding shift.
 DenonMCX8000.jogwheelShiftMultiplier = 20;
 
+// Colors for performance pad LEDs - see color table below for
+// additional color names.
+DenonMCX8000.hotCueInactiveColor = 'grey';
+DenonMCX8000.hotCueActiveColors = [
+    'red', 'orange', 'yellow', 'yellowGreen',
+    'paleGreen', 'skyBlue', 'magenta', 'fuchsia'
+];
+DenonMCX8000.loopInactiveColor = 'dimRed';
+DenonMCX8000.loopActiveColor = 'red';
+DenonMCX8000.samplerInactiveColor = 'dimViolet';
+DenonMCX8000.samplerActiveColor = 'blue';
+
+
+///////////////////////////////////////////////////////////////
+//                         CONSTANTS                         //
+///////////////////////////////////////////////////////////////
+
+// Colors for performance pad LEDs
+DenonMCX8000.colors = {
+    'none':         0x00,
+    'dimViolet':    0x02,
+    'blue':         0x03,
+    'dimGrass':     0x05,
+    'dimMint':      0x06,
+    'lightBlue':    0x07,
+    'yellowGreen':  0x09,
+    'paleGreen':    0x0A,
+    'mintGreen':    0x0B,
+    'jade':         0x0F, // very similar to mintGreen and iceGreen
+    'dimRed':       0x11,
+    'dimFuchsia':   0x12,
+    'dimGold':      0x15,
+    'grey':         0x16,
+    'skyBlue':      0x17,
+    'red':          0x21,
+    'pink':         0x22,
+    'fuchsia':      0x23,
+    'orange':       0x25,
+    'salmon':       0x26,
+    'magenta':      0x27,
+    'yellow':       0x29,
+    'lightGold':    0x2A,
+    'white':        0x40,
+};
+
 const DECK1 = 0;
 const DECK2 = 1;
 const DECK3 = 2;
@@ -321,21 +366,30 @@ DenonMCX8000.shiftPerfPad = function(channel, control, value, status, group) {
 DenonMCX8000.cuePad = function(channel, control, value, status, group) {
     if (value === 0x00) {
         var hotcue_idx = control - 19;
-        engine.setValue(group, 'hotcue_' + hotcue_idx + '_activate', 0);
+        // engine.setValue(group, 'hotcue_' + hotcue_idx + '_activate', 0);
+        var cmd = 'hotcue_' + hotcue_idx + '_activate';
+        print("group: " + group);
+        engine.setValue(group, cmd, 1);
     }
 };
 
 DenonMCX8000.cueLoopPad = function(channel, control, value, status, group) {
     if (value === 0x00) {
         var hotcue_idx = control - 19;
-        engine.setValue(group, 'hotcue_' + hotcue_idx + '_set', 0);
+        // engine.setValue(group, 'hotcue_' + hotcue_idx + '_set', 0);
+        var cmd = 'hotcue_' + hotcue_idx + '_set';
+        print("group: " + group);
+        engine.setValue(group, cmd, 1);
     }
 };
 
 DenonMCX8000.shiftCuePad = function(channel, control, value, status, group) {
     if (value === 0x00) {
         var hotcue_idx = control - 19;
-        engine.setValue(group, 'hotcue_' + hotcue_idx + '_clear', 0);
+        // engine.setValue(group, 'hotcue_' + hotcue_idx + '_clear', 0);
+        var cmd = 'hotcue_' + hotcue_idx + '_clear';
+        print("group: " + group);
+        engine.setValue(group, cmd, 1);
     }
 };
 
