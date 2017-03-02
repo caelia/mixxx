@@ -131,7 +131,14 @@ DenonMCX8000.activateDeck = function(channel, control, value, status, group) {
 
 // DenonMCX8000.decks = [];
 
-DenonMCX8000.blinkPadsRGB = function() {
+// DenonMCX8000.blinkPadsRGB = function() {
+DenonMCX8000.initPads = function() {
+    var setPadMode = function() {
+        for (var i = 3; i > -1; i--) {
+            DenonMCX8000.setPadMode(0, 0x00, 0x00, 0, '[Channel' + (i + 1) + ']');
+            midi.sendShortMsg(0x94 + i, 0x00, 0x00);
+        }
+    };
     var turnOff = function() {
         for (var i = 20; i < 28; i++) {
             midi.sendShortMsg(0x94, i, 0x00);
@@ -139,6 +146,7 @@ DenonMCX8000.blinkPadsRGB = function() {
             midi.sendShortMsg(0x96, i, 0x00);
             midi.sendShortMsg(0x97, i, 0x00);
         }
+        engine.beginTimer(500, setPadMode, true);
     };
     var showBlue = function() {
         for (var i = 20; i < 28; i++) {
@@ -165,10 +173,33 @@ DenonMCX8000.blinkPadsRGB = function() {
         midi.sendShortMsg(0x97, i, 0x21);
     }
     engine.beginTimer(1000, showGreen, true);
-}
+};
+
+DenonMCX8000.hotCueInactiveColorCode = 0x00;
+DenonMCX8000.hotCueActiveColorCodes = [];
+DenonMCX8000.loopInactiveColorCode = 0x00;
+DenonMCX8000.loopActiveColorCode = 0x00;
+DenonMCX8000.samplerInactiveColorCode = 0x00;
+DenonMCX8000.samplerActiveColorCode = 0x00;
+
+DenonMCX8000.initColors = function() {
+    DenonMCX8000.hotCueInactiveColorCode
+        = DenonMCX8000.colors[DenonMCX8000.hotCueInactiveColor];
+    for (var i = 0; i < 8; i++) {
+        DenonMCX8000.hotCueActiveColorCodes[i]
+            = DenonMCX8000.colors[DenonMCX8000.hotCueActiveColors[i]];
+    }
+    DenonMCX8000.loopInactiveColorCode
+        = DenonMCX8000.colors[DenonMCX8000.loopInactiveColor];
+    DenonMCX8000.loopActiveColorCode
+        = DenonMCX8000.colors[DenonMCX8000.loopActiveColor];
+    DenonMCX8000.samplerInactiveColorCode
+        = DenonMCX8000.colors[DenonMCX8000.samplerInactiveColor];
+    DenonMCX8000.samplerActiveColorCode
+        = DenonMCX8000.colors[DenonMCX8000.samplerActiveColor];
+};
 
 DenonMCX8000.init = function(id, debugging) {
-    DenonMCX8000.blinkPadsRGB();
     DenonMCX8000.shift = false;
     var decks = [
         new Deck(DECK1),
@@ -176,8 +207,7 @@ DenonMCX8000.init = function(id, debugging) {
         new Deck(DECK3),
         new Deck(DECK4)
     ];
-    var i;
-    for (i = 0; i < 4; i++) {
+    for (var i = 0; i < 4; i++) {
         decks[i].padMode = PM_CUE;
     }
     DenonMCX8000.activateDeck(DECK1);
@@ -190,6 +220,8 @@ DenonMCX8000.init = function(id, debugging) {
         'vinylSpeed': 33 + 1 / 3,
         'safeScratchTimeout': 20
     };
+    DenonMCX8000.initColors();
+    DenonMCX8000.initPads();
 };
 
 DenonMCX8000.shutdown = function() {};
@@ -285,7 +317,7 @@ DenonMCX8000.jogTick = function(channel, control, value, status, group) {
     } else {
         DenonMCX8000.pitchBendFromJog(channel, DenonMCX8000.getJogWheelDelta(value));
     }
-}
+};
 
 /*
 DenonMCX8000.toggleScratch = function(channel, control, value, status, group) {
@@ -364,33 +396,17 @@ DenonMCX8000.shiftPerfPad = function(channel, control, value, status, group) {
 };
 
 DenonMCX8000.cuePad = function(channel, control, value, status, group) {
-    if (value === 0x00) {
-        var hotcue_idx = control - 19;
-        // engine.setValue(group, 'hotcue_' + hotcue_idx + '_activate', 0);
-        var cmd = 'hotcue_' + hotcue_idx + '_activate';
-        print("group: " + group);
-        engine.setValue(group, cmd, 1);
-    }
+    // Is it better to check the value of 'value' here - to eliminate excessive
+    // calls to engine? Or just leave it up to the engine?
+    engine.setValue(group, 'hotcue_' + (control - 19) + '_activate', value);
 };
 
 DenonMCX8000.cueLoopPad = function(channel, control, value, status, group) {
-    if (value === 0x00) {
-        var hotcue_idx = control - 19;
-        // engine.setValue(group, 'hotcue_' + hotcue_idx + '_set', 0);
-        var cmd = 'hotcue_' + hotcue_idx + '_set';
-        print("group: " + group);
-        engine.setValue(group, cmd, 1);
-    }
+    engine.setValue(group, 'hotcue_' + (control - 19) + '_set', value);
 };
 
 DenonMCX8000.shiftCuePad = function(channel, control, value, status, group) {
-    if (value === 0x00) {
-        var hotcue_idx = control - 19;
-        // engine.setValue(group, 'hotcue_' + hotcue_idx + '_clear', 0);
-        var cmd = 'hotcue_' + hotcue_idx + '_clear';
-        print("group: " + group);
-        engine.setValue(group, cmd, 1);
-    }
+    engine.setValue(group, 'hotcue_' + (control - 19) + '_clear', value);
 };
 
 DenonMCX8000.rollPad = function(channel, control, value, status, group) {
@@ -485,17 +501,27 @@ DenonMCX8000.setPadMode = function(channel, control, value, status, group) {
     }
 };
 
-
 DenonMCX8000.setPadLEDsCue = function(group) {
     var status = 0x90 + DenonMCX8000.padChannel[group];
-    midi.sendShortMsg(status, 0x14, 0x21);
-    midi.sendShortMsg(status, 0x15, 0x35);
-    midi.sendShortMsg(status, 0x16, 0x39);
-    midi.sendShortMsg(status, 0x17, 0x19);
-    midi.sendShortMsg(status, 0x18, 0x20);
-    midi.sendShortMsg(status, 0x19, 0x04);
-    midi.sendShortMsg(status, 0x1A, 0x13);
-    midi.sendShortMsg(status, 0x1B, 0x23);
+    // track_loaded not available until v2.1
+    // if (engine.getValue(group, 'track_loaded')) {
+        for (var i = 0; i < 8; i++) {
+            if (engine.getValue(group, 'hotcue_' + (i + 1) + '_enabled')) {
+                midi.sendShortMsg(status, 0x14 + i, 
+                                  DenonMCX8000.hotCueActiveColorCodes[i]);
+            } else {
+                midi.sendShortMsg(status, 0x14 + i,
+                                  DenonMCX8000.hotCueInactiveColorCode);
+            }
+        }
+    /*
+    } else {
+        for (var i = 0; i < 8; i++) {
+            midi.sendShortMsg(status, 0x14 + i,
+                              DenonMCX8000.hotCueInactiveColor);
+        }
+    }
+    */
 };
 
 DenonMCX8000.setPadLEDsRoll = function(group) {
