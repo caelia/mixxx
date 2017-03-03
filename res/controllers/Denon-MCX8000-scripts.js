@@ -27,7 +27,7 @@ var DenonMCX8000 = {
 //                       USER OPTIONS                        //
 ///////////////////////////////////////////////////////////////
 
-// Sets the jogwheels sensivity. 1 is default, 2 is twice as sensitive, 0.5 is half as sensitive.
+// Sets the jogwheel's sensivity. 1 is default, 2 is twice as sensitive, 0.5 is half as sensitive.
 DenonMCX8000.jogwheelSensivity = 1.0;
 
 // Sets how much more sensitive the jogwheels get when holding shift.
@@ -547,3 +547,28 @@ DenonMCX8000.setPadLEDsSampler = function(group) {
         midi.sendShortMsg(status, 0x14 + i, 0x21);
     }
 };
+
+
+///////////////////////////////////////////////////////////////
+//                   MIXER & EQ THINGS                       //
+///////////////////////////////////////////////////////////////
+
+DenonMCX8000.setCrossfaderCurve = function(channel, control, value, status, group) {
+    script.crossfaderCurve(value);
+}
+
+DenonMCX8000.setMixOrientation = function(channel, control, value, status, group) {
+    var orientation;
+    switch (value) {
+        case 0:
+            orientation = 1;
+            break;
+        case 1:
+            orientation = 0;
+            break;
+        case 2:
+            orientation = 2;
+            break;
+    }
+    engine.setValue(group, 'orientation', orientation);
+}
