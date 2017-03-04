@@ -10,61 +10,412 @@
     <scriptfiles>
       <file functionprefix="DenonMCX8000" filename="Denon-MCX8000-scripts.js" />
     </scriptfiles>
+    <!-- ========================================================== -->
+    <!--
+        Controls are organized by section as follows:
+           1) Mixer & EQ
+           2) Effects
+      	   3) Transport control, including jogwheels
+           4) Performance pads & loop controls
+           5) Library functions
+           6) Miscellaneous
+         Within each section, control elements are ordered by <midino/>. 
+    -->
+    <!-- ========================================================== -->
     <controls>
-      <control><!-- 0x00 -->
-        <group>[Channel1]</group>
-        <midino>0x00</midino>
-        <status>0x90</status>
-        <key>play</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x00 -->
-        <group>[Channel2]</group>
-        <midino>0x00</midino>
-        <status>0x91</status>
-        <key>play</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x00 -->
-        <group>[Channel3]</group>
-        <midino>0x00</midino>
-        <status>0x92</status>
-        <key>play</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x00 -->
-        <group>[Channel4]</group>
-        <midino>0x00</midino>
-        <status>0x93</status>
-        <key>play</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x00 -->
-        <group>[Playlist]</group>
-        <midino>0x00</midino>
+      <!-- ======================================================== -->
+      <!-- ======= (1) Mixer & EQ controls ======================== -->
+      <control><!-- 0x08 -->
+        <group>[Master]</group>
+        <midino>0x08</midino>
         <status>0xBF</status>
-        <key>DenonMCX8000.moveVertical</key>
+        <key>crossfader</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control>
+        <group>[Master]</group>
+        <midino>0x09</midino>
+        <status>0xBF</status>
+        <key>DenonMCX8000.setCrossfaderCurve</key>
         <options>
           <script-binding/>
         </options>
       </control>
-      <control><!-- 0x01 -->
-        <group>[Playlist]</group>
-        <midino>0x01</midino>
+      <control><!-- 0x16 -->
+        <group>[Channel1]</group>
+        <midino>0x16</midino>
+        <status>0xB0</status>
+        <key>pregain</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x16 -->
+        <group>[Channel2]</group>
+        <midino>0x16</midino>
+        <status>0xB1</status>
+        <key>pregain</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x16 -->
+        <group>[Channel3]</group>
+        <midino>0x16</midino>
+        <status>0xB2</status>
+        <key>pregain</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x16 -->
+        <group>[Channel4]</group>
+        <midino>0x16</midino>
+        <status>0xB3</status>
+        <key>pregain</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x17 -->
+        <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+        <midino>0x17</midino>
+        <status>0xB0</status>
+        <key>parameter3</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x17 -->
+        <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+        <midino>0x17</midino>
+        <status>0xB1</status>
+        <key>parameter3</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x17 -->
+        <group>[EqualizerRack1_[Channel3]_Effect1]</group>
+        <midino>0x17</midino>
+        <status>0xB2</status>
+        <key>parameter3</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x17 -->
+        <group>[EqualizerRack1_[Channel4]_Effect1]</group>
+        <midino>0x17</midino>
+        <status>0xB3</status>
+        <key>parameter3</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x18 -->
+        <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+        <midino>0x18</midino>
+        <status>0xB0</status>
+        <key>parameter2</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x18 -->
+        <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+        <midino>0x18</midino>
+        <status>0xB1</status>
+        <key>parameter2</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x18 -->
+        <group>[EqualizerRack1_[Channel3]_Effect1]</group>
+        <midino>0x18</midino>
+        <status>0xB2</status>
+        <key>parameter2</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x18 -->
+        <group>[EqualizerRack1_[Channel4]_Effect1]</group>
+        <midino>0x18</midino>
+        <status>0xB3</status>
+        <key>parameter2</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x19 -->
+        <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+        <midino>0x19</midino>
+        <status>0xB0</status>
+        <key>parameter1</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x19 -->
+        <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+        <midino>0x19</midino>
+        <status>0xB1</status>
+        <key>parameter1</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x19 -->
+        <group>[EqualizerRack1_[Channel3]_Effect1]</group>
+        <midino>0x19</midino>
+        <status>0xB2</status>
+        <key>parameter1</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x19 -->
+        <group>[EqualizerRack1_[Channel4]_Effect1]</group>
+        <midino>0x19</midino>
+        <status>0xB3</status>
+        <key>parameter1</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x1A -->
+        <group>[QuickEffectRack1_[Channel1]]</group>
+        <midino>0x1A</midino>
+        <status>0xB0</status>
+        <key>super1</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x1A -->
+        <group>[QuickEffectRack1_[Channel2]]</group>
+        <midino>0x1A</midino>
+        <status>0xB1</status>
+        <key>super1</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x1A -->
+        <group>[QuickEffectRack1_[Channel3]]</group>
+        <midino>0x1A</midino>
+        <status>0xB2</status>
+        <key>super1</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x1A -->
+        <group>[QuickEffectRack1_[Channel4]]</group>
+        <midino>0x1A</midino>
+        <status>0xB3</status>
+        <key>super1</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x1A -->
+        <group>[Master]</group>
+        <midino>0x1A</midino>
         <status>0xBF</status>
-        <key>DenonMCX8000.scrollTracks</key>
+        <key>gain</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x1B -->
+        <group>[Channel1]</group>
+        <midino>0x1B</midino>
+        <status>0x90</status>
+        <key>pfl</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x1B -->
+        <group>[Channel2]</group>
+        <midino>0x1B</midino>
+        <status>0x91</status>
+        <key>pfl</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x1B -->
+        <group>[Channel3]</group>
+        <midino>0x1B</midino>
+        <status>0x92</status>
+        <key>pfl</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x1B -->
+        <group>[Channel4]</group>
+        <midino>0x1B</midino>
+        <status>0x93</status>
+        <key>pfl</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x1C -->
+        <group>[Channel1]</group>
+        <midino>0x1C</midino>
+        <status>0xB0</status>
+        <key>volume</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x1C -->
+        <group>[Channel2]</group>
+        <midino>0x1C</midino>
+        <status>0xB1</status>
+        <key>volume</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x1C -->
+        <group>[Channel3]</group>
+        <midino>0x1C</midino>
+        <status>0xB2</status>
+        <key>volume</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x1C -->
+        <group>[Channel4]</group>
+        <midino>0x1C</midino>
+        <status>0xB3</status>
+        <key>volume</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x1E -->
+        <group>[Channel1]</group>
+        <midino>0x1E</midino>
+        <status>0xB0</status>
+        <key>pregain</key>
+        <options>
+          <normal/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x1E</midino>
+        <status>0x90</status>
+        <key>DenonMCX8000.setMixOrientation</key>
         <options>
           <script-binding/>
         </options>
       </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x1E</midino>
+        <status>0x91</status>
+        <key>DenonMCX8000.setMixOrientation</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x1E</midino>
+        <status>0x92</status>
+        <key>DenonMCX8000.setMixOrientation</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x1E</midino>
+        <status>0x93</status>
+        <key>DenonMCX8000.setMixOrientation</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <!-- ======================================================== -->
+    	<!-- ======= (2) Effects ==================================== -->
+
+      <!-- ======================================================== -->
+      <!-- ======= (3) Transport control ========================== -->
+      <control><!-- 0x00 -->
+        <group>[Channel1]</group>
+        <midino>0x00</midino>
+        <status>0x90</status>
+        <key>play</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x00 -->
+        <group>[Channel2]</group>
+        <midino>0x00</midino>
+        <status>0x91</status>
+        <key>play</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x00 -->
+        <group>[Channel3]</group>
+        <midino>0x00</midino>
+        <status>0x92</status>
+        <key>play</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x00 -->
+        <group>[Channel4]</group>
+        <midino>0x00</midino>
+        <status>0x93</status>
+        <key>play</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
       <control><!-- 0x01 -->
         <group>[Channel1]</group>
         <midino>0x01</midino>
@@ -137,43 +488,6 @@
           <normal/>
         </options>
       </control>
-      <control><!-- 0x02 -->
-        <group>[Channel1]</group>
-        <midino>0x02</midino>
-        <status>0x9F</status>
-        <key>LoadSelectedTrack</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x03 -->
-        <group>[Channel2]</group>
-        <midino>0x03</midino>
-        <status>0x9F</status>
-        <key>LoadSelectedTrack</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x04 -->
-        <group>[Channel3]</group>
-        <midino>0x04</midino>
-        <status>0x9F</status>
-        <key>LoadSelectedTrack</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x05 -->
-        <group>[Channel4]</group>
-        <midino>0x05</midino>
-        <status>0x9F</status>
-        <key>LoadSelectedTrack</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <!-- Jog wheel things -->
       <control>
         <group>[Channel1]</group>
         <midino>0x06</midino>
@@ -280,24 +594,6 @@
         <key>DenonMCX8000.vinylButton</key>
         <options>
           <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Playlist]</group>
-        <midino>0x07</midino>
-        <status>0x9F</status>
-        <key>DenonMCX8000.activateTrackList</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x08 -->
-        <group>[Master]</group>
-        <midino>0x08</midino>
-        <status>0xBF</status>
-        <key>crossfader</key>
-        <options>
-          <normal/>
         </options>
       </control>
       <!--
@@ -382,15 +678,6 @@
           <soft-takeover/>
         </options>
       </control>
-      <control>
-        <group>[Master]</group>
-        <midino>0x09</midino>
-        <status>0xBF</status>
-        <key>DenonMCX8000.setCrossfaderCurve</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
       <control><!-- 0x0D -->
         <group>[Channel1]</group>
         <midino>0x0D</midino>
@@ -427,996 +714,751 @@
           <normal/>
         </options>
       </control>
-      <control><!-- 0x0E -->
-        <group>[Playlist]</group>
-        <midino>0x0E</midino>
-        <status>0x9F</status>
-        <key>DenonMCX8000.activateSidebar</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x10 -->
-        <group>[PreviewDeck1]</group>
-        <midino>0x10</midino>
-        <status>0x9F</status>
-        <key>stop</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x11 -->
-        <group>[Playlist]</group>
-        <midino>0x11</midino>
-        <status>0x9F</status>
-        <key>DenonMCX8000.activateSidebar</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x14 -->
+      <control>
         <group>[Channel1]</group>
-        <midino>0x14</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x14 -->
-        <group>[Channel2]</group>
-        <midino>0x14</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x14 -->
-        <group>[Channel3]</group>
-        <midino>0x14</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x14 -->
-        <group>[Channel4]</group>
-        <midino>0x14</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x15 -->
-        <group>[Channel1]</group>
-        <midino>0x15</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x15 -->
-        <group>[Channel2]</group>
-        <midino>0x15</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x15 -->
-        <group>[Channel3]</group>
-        <midino>0x15</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x15 -->
-        <group>[Channel4]</group>
-        <midino>0x15</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x16 -->
-        <group>[Channel1]</group>
-        <midino>0x16</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x16 -->
-        <group>[Channel2]</group>
-        <midino>0x16</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x16 -->
-        <group>[Channel3]</group>
-        <midino>0x16</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x16 -->
-        <group>[Channel4]</group>
-        <midino>0x16</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x16 -->
-        <group>[Channel1]</group>
-        <midino>0x16</midino>
+        <midino>0x2B</midino>
         <status>0xB0</status>
-        <key>pregain</key>
+        <key>playposition</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <fourteen-bit-msb/>
         </options>
       </control>
-      <control><!-- 0x16 -->
+      <control>
         <group>[Channel2]</group>
-        <midino>0x16</midino>
+        <midino>0x2B</midino>
         <status>0xB1</status>
-        <key>pregain</key>
+        <key>playposition</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <fourteen-bit-msb/>
         </options>
       </control>
-      <control><!-- 0x16 -->
+      <control>
         <group>[Channel3]</group>
-        <midino>0x16</midino>
+        <midino>0x2B</midino>
         <status>0xB2</status>
-        <key>pregain</key>
+        <key>playposition</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <fourteen-bit-msb/>
         </options>
       </control>
-      <control><!-- 0x16 -->
+      <control>
         <group>[Channel4]</group>
-        <midino>0x16</midino>
-        <status>0xB3</status>
-        <key>pregain</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x17 -->
-        <group>[Channel1]</group>
-        <midino>0x17</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x17 -->
-        <group>[Channel2]</group>
-        <midino>0x17</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x17 -->
-        <group>[Channel3]</group>
-        <midino>0x17</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x17 -->
-        <group>[Channel4]</group>
-        <midino>0x17</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x17 -->
-        <group>[EqualizerRack1_[Channel1]_Effect1]</group>
-        <midino>0x17</midino>
+        <midino>0x2B</midino>
         <status>0xB0</status>
-        <key>parameter3</key>
+        <key>playposition</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <fourteen-bit-msb/>
         </options>
       </control>
-      <control><!-- 0x17 -->
-        <group>[EqualizerRack1_[Channel2]_Effect1]</group>
-        <midino>0x17</midino>
-        <status>0xB1</status>
-        <key>parameter3</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x17 -->
-        <group>[EqualizerRack1_[Channel3]_Effect1]</group>
-        <midino>0x17</midino>
-        <status>0xB2</status>
-        <key>parameter3</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x17 -->
-        <group>[EqualizerRack1_[Channel4]_Effect1]</group>
-        <midino>0x17</midino>
-        <status>0xB3</status>
-        <key>parameter3</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x18 -->
+      <control><!-- 0x50 -->
         <group>[Channel1]</group>
-        <midino>0x18</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x18 -->
-        <group>[Channel2]</group>
-        <midino>0x18</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x18 -->
-        <group>[Channel3]</group>
-        <midino>0x18</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x18 -->
-        <group>[Channel4]</group>
-        <midino>0x18</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x18 -->
-        <group>[EqualizerRack1_[Channel1]_Effect1]</group>
-        <midino>0x18</midino>
-        <status>0xB0</status>
-        <key>parameter2</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x18 -->
-        <group>[EqualizerRack1_[Channel2]_Effect1]</group>
-        <midino>0x18</midino>
-        <status>0xB1</status>
-        <key>parameter2</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x18 -->
-        <group>[EqualizerRack1_[Channel3]_Effect1]</group>
-        <midino>0x18</midino>
-        <status>0xB2</status>
-        <key>parameter2</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x18 -->
-        <group>[EqualizerRack1_[Channel4]_Effect1]</group>
-        <midino>0x18</midino>
-        <status>0xB3</status>
-        <key>parameter2</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x19 -->
-        <group>[Channel1]</group>
-        <midino>0x19</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x19 -->
-        <group>[Channel2]</group>
-        <midino>0x19</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x19 -->
-        <group>[Channel3]</group>
-        <midino>0x19</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x19 -->
-        <group>[Channel4]</group>
-        <midino>0x19</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x19 -->
-        <group>[EqualizerRack1_[Channel1]_Effect1]</group>
-        <midino>0x19</midino>
-        <status>0xB0</status>
-        <key>parameter1</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x19 -->
-        <group>[EqualizerRack1_[Channel2]_Effect1]</group>
-        <midino>0x19</midino>
-        <status>0xB1</status>
-        <key>parameter1</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x19 -->
-        <group>[EqualizerRack1_[Channel3]_Effect1]</group>
-        <midino>0x19</midino>
-        <status>0xB2</status>
-        <key>parameter1</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x19 -->
-        <group>[EqualizerRack1_[Channel4]_Effect1]</group>
-        <midino>0x19</midino>
-        <status>0xB3</status>
-        <key>parameter1</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x1A -->
-        <group>[Channel1]</group>
-        <midino>0x1A</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1A -->
-        <group>[Channel2]</group>
-        <midino>0x1A</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1A -->
-        <group>[Channel3]</group>
-        <midino>0x1A</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1A -->
-        <group>[Channel4]</group>
-        <midino>0x1A</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1A -->
-        <group>[QuickEffectRack1_[Channel1]]</group>
-        <midino>0x1A</midino>
-        <status>0xB0</status>
-        <key>super1</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x1A -->
-        <group>[QuickEffectRack1_[Channel2]]</group>
-        <midino>0x1A</midino>
-        <status>0xB1</status>
-        <key>super1</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x1A -->
-        <group>[QuickEffectRack1_[Channel3]]</group>
-        <midino>0x1A</midino>
-        <status>0xB2</status>
-        <key>super1</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x1A -->
-        <group>[QuickEffectRack1_[Channel4]]</group>
-        <midino>0x1A</midino>
-        <status>0xB3</status>
-        <key>super1</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x1A -->
-        <group>[Master]</group>
-        <midino>0x1A</midino>
-        <status>0xBF</status>
-        <key>gain</key>
-        <options>
-          <normal/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x1B -->
-        <group>[Channel1]</group>
-        <midino>0x1B</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1B -->
-        <group>[Channel2]</group>
-        <midino>0x1B</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1B -->
-        <group>[Channel3]</group>
-        <midino>0x1B</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1B -->
-        <group>[Channel4]</group>
-        <midino>0x1B</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.perfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1B -->
-        <group>[Channel1]</group>
-        <midino>0x1B</midino>
+        <midino>0x50</midino>
         <status>0x90</status>
-        <key>pfl</key>
+        <key>playposition</key>
         <options>
           <normal/>
         </options>
       </control>
-      <control><!-- 0x1B -->
-        <group>[Channel2]</group>
-        <midino>0x1B</midino>
-        <status>0x91</status>
-        <key>pfl</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x1B -->
-        <group>[Channel3]</group>
-        <midino>0x1B</midino>
-        <status>0x92</status>
-        <key>pfl</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x1B -->
-        <group>[Channel4]</group>
-        <midino>0x1B</midino>
-        <status>0x93</status>
-        <key>pfl</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x1B -->
-        <group>[PreviewDeck1]</group>
-        <midino>0x1B</midino>
-        <status>0x9F</status>
-        <key>LoadSelectedTrackAndPlay</key>
-        <options>
-          <normal/>
-        </options>
-      </control>
-      <control><!-- 0x1C -->
+      <!--
+      <control><!== 0x77 ==>
         <group>[Channel1]</group>
-        <midino>0x1C</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1C -->
-        <group>[Channel2]</group>
-        <midino>0x1C</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1C -->
-        <group>[Channel3]</group>
-        <midino>0x1C</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1C -->
-        <group>[Channel4]</group>
-        <midino>0x1C</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1C -->
-        <group>[Channel1]</group>
-        <midino>0x1C</midino>
+        <midino>0x77</midino>
         <status>0xB0</status>
-        <key>volume</key>
+        <key>DenonMCX8000.tempoSliderLSB</key>
         <options>
-          <normal/>
-          <soft-takeover/>
+          <script-binding/>
         </options>
       </control>
-      <control><!-- 0x1C -->
+      <control><!== 0x77 ==>
         <group>[Channel2]</group>
-        <midino>0x1C</midino>
+        <midino>0x77</midino>
         <status>0xB1</status>
-        <key>volume</key>
+        <key>DenonMCX8000.tempoSliderLSB</key>
         <options>
-          <normal/>
-          <soft-takeover/>
+          <script-binding/>
         </options>
       </control>
-      <control><!-- 0x1C -->
+      <control><!== 0x77 ==>
         <group>[Channel3]</group>
-        <midino>0x1C</midino>
+        <midino>0x77</midino>
         <status>0xB2</status>
-        <key>volume</key>
+        <key>DenonMCX8000.tempoSliderLSB</key>
         <options>
-          <normal/>
-          <soft-takeover/>
+          <script-binding/>
         </options>
       </control>
-      <control><!-- 0x1C -->
+      <control><!== 0x77 ==>
         <group>[Channel4]</group>
-        <midino>0x1C</midino>
+        <midino>0x77</midino>
         <status>0xB3</status>
-        <key>volume</key>
+        <key>DenonMCX8000.tempoSliderLSB</key>
         <options>
-          <normal/>
-          <soft-takeover/>
+          <script-binding/>
         </options>
       </control>
-      <control><!-- 0x1D -->
+      -->
+      <control><!-- 0x77 -->
         <group>[Channel1]</group>
-        <midino>0x1D</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1D -->
-        <group>[Channel2]</group>
-        <midino>0x1D</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1D -->
-        <group>[Channel3]</group>
-        <midino>0x1D</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1D -->
-        <group>[Channel4]</group>
-        <midino>0x1D</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1E -->
-        <group>[Channel1]</group>
-        <midino>0x1E</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1E -->
-        <group>[Channel2]</group>
-        <midino>0x1E</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1E -->
-        <group>[Channel3]</group>
-        <midino>0x1E</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1E -->
-        <group>[Channel4]</group>
-        <midino>0x1E</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1E -->
-        <group>[Channel1]</group>
-        <midino>0x1E</midino>
+        <midino>0x77</midino>
         <status>0xB0</status>
-        <key>pregain</key>
+        <key>rate</key>
         <options>
           <normal/>
+          <fourteen-bit-lsb/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x77 -->
+        <group>[Channel2]</group>
+        <midino>0x77</midino>
+        <status>0xB1</status>
+        <key>rate</key>
+        <options>
+          <normal/>
+          <fourteen-bit-lsb/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x77 -->
+        <group>[Channel3]</group>
+        <midino>0x77</midino>
+        <status>0xB2</status>
+        <key>rate</key>
+        <options>
+          <normal/>
+          <fourteen-bit-lsb/>
+          <soft-takeover/>
+        </options>
+      </control>
+      <control><!-- 0x77 -->
+        <group>[Channel4]</group>
+        <midino>0x77</midino>
+        <status>0xB3</status>
+        <key>rate</key>
+        <options>
+          <normal/>
+          <fourteen-bit-lsb/>
           <soft-takeover/>
         </options>
       </control>
       <control>
         <group>[Channel1]</group>
-        <midino>0x1E</midino>
-        <status>0x90</status>
-        <key>DenonMCX8000.setMixOrientation</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x1E</midino>
-        <status>0x91</status>
-        <key>DenonMCX8000.setMixOrientation</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x1E</midino>
-        <status>0x92</status>
-        <key>DenonMCX8000.setMixOrientation</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x1E</midino>
-        <status>0x93</status>
-        <key>DenonMCX8000.setMixOrientation</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1F -->
-        <group>[Channel1]</group>
-        <midino>0x1F</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1F -->
-        <group>[Channel2]</group>
-        <midino>0x1F</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1F -->
-        <group>[Channel3]</group>
-        <midino>0x1F</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x1F -->
-        <group>[Channel4]</group>
-        <midino>0x1F</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x20 -->
-        <group>[Channel1]</group>
-        <midino>0x20</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x20 -->
-        <group>[Channel2]</group>
-        <midino>0x20</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x20 -->
-        <group>[Channel3]</group>
-        <midino>0x20</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x20 -->
-        <group>[Channel4]</group>
-        <midino>0x20</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x21 -->
-        <group>[Channel1]</group>
-        <midino>0x21</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x21 -->
-        <group>[Channel2]</group>
-        <midino>0x21</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x21 -->
-        <group>[Channel3]</group>
-        <midino>0x21</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x21 -->
-        <group>[Channel4]</group>
-        <midino>0x21</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x22 -->
-        <group>[Channel1]</group>
-        <midino>0x22</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x22 -->
-        <group>[Channel2]</group>
-        <midino>0x22</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x22 -->
-        <group>[Channel3]</group>
-        <midino>0x22</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x22 -->
-        <group>[Channel4]</group>
-        <midino>0x22</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x23 -->
-        <group>[Channel1]</group>
-        <midino>0x23</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x23 -->
-        <group>[Channel2]</group>
-        <midino>0x23</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x23 -->
-        <group>[Channel3]</group>
-        <midino>0x23</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x23 -->
-        <group>[Channel4]</group>
-        <midino>0x23</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.shiftPerfPad</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x2B</midino>
+        <midino>0x78</midino>
         <status>0xB0</status>
         <key>playposition</key>
         <options>
           <normal/>
-          <fourteen-bit-msb/>
+          <fourteen-bit-lsb/>
         </options>
       </control>
       <control>
         <group>[Channel2]</group>
-        <midino>0x2B</midino>
+        <midino>0x78</midino>
         <status>0xB1</status>
         <key>playposition</key>
         <options>
           <normal/>
-          <fourteen-bit-msb/>
+          <fourteen-bit-lsb/>
         </options>
       </control>
       <control>
         <group>[Channel3]</group>
-        <midino>0x2B</midino>
+        <midino>0x78</midino>
         <status>0xB2</status>
         <key>playposition</key>
         <options>
           <normal/>
-          <fourteen-bit-msb/>
+          <fourteen-bit-lsb/>
         </options>
       </control>
       <control>
         <group>[Channel4]</group>
-        <midino>0x2B</midino>
+        <midino>0x78</midino>
         <status>0xB0</status>
         <key>playposition</key>
         <options>
           <normal/>
-          <fourteen-bit-msb/>
+          <fourteen-bit-lsb/>
         </options>
       </control>
-      <control>
-        <!-- not sure controls is the right group, but the shift keys are not deck-specific -->
-        <group>[Controls]</group>
-        <midino>0x32</midino>
-        <status>0x9F</status>
-        <key>DenonMCX8000.shiftButton</key>
+      <!-- ======================================================== -->
+      <!-- ======= (4) Performance pads & loop controls =========== -->
+      <control><!-- 0x14 -->
+        <group>[Channel1]</group>
+        <midino>0x14</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x14 -->
+        <group>[Channel2]</group>
+        <midino>0x14</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x14 -->
+        <group>[Channel3]</group>
+        <midino>0x14</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x14 -->
+        <group>[Channel4]</group>
+        <midino>0x14</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x15 -->
+        <group>[Channel1]</group>
+        <midino>0x15</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x15 -->
+        <group>[Channel2]</group>
+        <midino>0x15</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x15 -->
+        <group>[Channel3]</group>
+        <midino>0x15</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x15 -->
+        <group>[Channel4]</group>
+        <midino>0x15</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x16 -->
+        <group>[Channel1]</group>
+        <midino>0x16</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x16 -->
+        <group>[Channel2]</group>
+        <midino>0x16</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x16 -->
+        <group>[Channel3]</group>
+        <midino>0x16</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x16 -->
+        <group>[Channel4]</group>
+        <midino>0x16</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x17 -->
+        <group>[Channel1]</group>
+        <midino>0x17</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x17 -->
+        <group>[Channel2]</group>
+        <midino>0x17</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x17 -->
+        <group>[Channel3]</group>
+        <midino>0x17</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x17 -->
+        <group>[Channel4]</group>
+        <midino>0x17</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x18 -->
+        <group>[Channel1]</group>
+        <midino>0x18</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x18 -->
+        <group>[Channel2]</group>
+        <midino>0x18</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x18 -->
+        <group>[Channel3]</group>
+        <midino>0x18</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x18 -->
+        <group>[Channel4]</group>
+        <midino>0x18</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x19 -->
+        <group>[Channel1]</group>
+        <midino>0x19</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x19 -->
+        <group>[Channel2]</group>
+        <midino>0x19</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x19 -->
+        <group>[Channel3]</group>
+        <midino>0x19</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x19 -->
+        <group>[Channel4]</group>
+        <midino>0x19</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1A -->
+        <group>[Channel1]</group>
+        <midino>0x1A</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1A -->
+        <group>[Channel2]</group>
+        <midino>0x1A</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1A -->
+        <group>[Channel3]</group>
+        <midino>0x1A</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1A -->
+        <group>[Channel4]</group>
+        <midino>0x1A</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1B -->
+        <group>[Channel1]</group>
+        <midino>0x1B</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1B -->
+        <group>[Channel2]</group>
+        <midino>0x1B</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1B -->
+        <group>[Channel3]</group>
+        <midino>0x1B</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1B -->
+        <group>[Channel4]</group>
+        <midino>0x1B</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.perfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1C -->
+        <group>[Channel1]</group>
+        <midino>0x1C</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1C -->
+        <group>[Channel2]</group>
+        <midino>0x1C</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1C -->
+        <group>[Channel3]</group>
+        <midino>0x1C</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1C -->
+        <group>[Channel4]</group>
+        <midino>0x1C</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1D -->
+        <group>[Channel1]</group>
+        <midino>0x1D</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1D -->
+        <group>[Channel2]</group>
+        <midino>0x1D</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1D -->
+        <group>[Channel3]</group>
+        <midino>0x1D</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1D -->
+        <group>[Channel4]</group>
+        <midino>0x1D</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1E -->
+        <group>[Channel1]</group>
+        <midino>0x1E</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1E -->
+        <group>[Channel2]</group>
+        <midino>0x1E</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1E -->
+        <group>[Channel3]</group>
+        <midino>0x1E</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1E -->
+        <group>[Channel4]</group>
+        <midino>0x1E</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1F -->
+        <group>[Channel1]</group>
+        <midino>0x1F</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1F -->
+        <group>[Channel2]</group>
+        <midino>0x1F</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1F -->
+        <group>[Channel3]</group>
+        <midino>0x1F</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1F -->
+        <group>[Channel4]</group>
+        <midino>0x1F</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x20 -->
+        <group>[Channel1]</group>
+        <midino>0x20</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x20 -->
+        <group>[Channel2]</group>
+        <midino>0x20</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x20 -->
+        <group>[Channel3]</group>
+        <midino>0x20</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x20 -->
+        <group>[Channel4]</group>
+        <midino>0x20</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x21 -->
+        <group>[Channel1]</group>
+        <midino>0x21</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x21 -->
+        <group>[Channel2]</group>
+        <midino>0x21</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x21 -->
+        <group>[Channel3]</group>
+        <midino>0x21</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x21 -->
+        <group>[Channel4]</group>
+        <midino>0x21</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x22 -->
+        <group>[Channel1]</group>
+        <midino>0x22</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x22 -->
+        <group>[Channel2]</group>
+        <midino>0x22</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x22 -->
+        <group>[Channel3]</group>
+        <midino>0x22</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x22 -->
+        <group>[Channel4]</group>
+        <midino>0x22</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x23 -->
+        <group>[Channel1]</group>
+        <midino>0x23</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x23 -->
+        <group>[Channel2]</group>
+        <midino>0x23</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x23 -->
+        <group>[Channel3]</group>
+        <midino>0x23</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x23 -->
+        <group>[Channel4]</group>
+        <midino>0x23</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.shiftPerfPad</key>
         <options>
           <script-binding/>
         </options>
@@ -1638,14 +1680,465 @@
           <normal/>
         </options>
       </control>
-      <!-- X-F LINK button - just for testing whatever -->
       <control>
-        <group>[Various]</group>
-        <midino>0x42</midino>
-        <status>0x9F</status>
-        <key>DenonMCX8000.testFunc</key>
+        <group>[Channel1]</group>
+        <midino>0x00</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.setPadMode</key>
         <options>
           <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x03</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x02</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x07</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x0D</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x09</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x0A</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x0B</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x0C</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x0F</midino>
+        <status>0x94</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x00</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x03</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x02</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x07</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x0D</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x09</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x0A</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x0B</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x0C</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x0F</midino>
+        <status>0x95</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x00</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x03</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x02</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x07</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x0D</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x09</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x0A</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x0B</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x0C</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x0F</midino>
+        <status>0x96</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x00</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x03</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x02</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x07</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x0D</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x09</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x0A</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x0B</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x0C</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x0F</midino>
+        <status>0x97</status>
+        <key>DenonMCX8000.setPadMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <!-- ======================================================== -->
+      <!-- ======= (5) Library functions ========================== -->
+      <control><!-- 0x00 -->
+        <group>[Playlist]</group>
+        <midino>0x00</midino>
+        <status>0xBF</status>
+        <key>DenonMCX8000.moveVertical</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x01 -->
+        <group>[Playlist]</group>
+        <midino>0x01</midino>
+        <status>0xBF</status>
+        <key>DenonMCX8000.scrollTracks</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x02 -->
+        <group>[Channel1]</group>
+        <midino>0x02</midino>
+        <status>0x9F</status>
+        <key>LoadSelectedTrack</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x03 -->
+        <group>[Channel2]</group>
+        <midino>0x03</midino>
+        <status>0x9F</status>
+        <key>LoadSelectedTrack</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x04 -->
+        <group>[Channel3]</group>
+        <midino>0x04</midino>
+        <status>0x9F</status>
+        <key>LoadSelectedTrack</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x05 -->
+        <group>[Channel4]</group>
+        <midino>0x05</midino>
+        <status>0x9F</status>
+        <key>LoadSelectedTrack</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control>
+        <group>[Playlist]</group>
+        <midino>0x07</midino>
+        <status>0x9F</status>
+        <key>DenonMCX8000.activateTrackList</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x0E -->
+        <group>[Playlist]</group>
+        <midino>0x0E</midino>
+        <status>0x9F</status>
+        <key>DenonMCX8000.activateSidebar</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x10 -->
+        <group>[PreviewDeck1]</group>
+        <midino>0x10</midino>
+        <status>0x9F</status>
+        <key>stop</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x11 -->
+        <group>[Playlist]</group>
+        <midino>0x11</midino>
+        <status>0x9F</status>
+        <key>DenonMCX8000.activateSidebar</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x1B -->
+        <group>[PreviewDeck1]</group>
+        <midino>0x1B</midino>
+        <status>0x9F</status>
+        <key>LoadSelectedTrackAndPlay</key>
+        <options>
+          <normal/>
         </options>
       </control>
       <control><!-- 0x44 -->
@@ -1664,15 +2157,6 @@
         <key>DenonMCX8000.scrollTracks</key>
         <options>
           <script-binding/>
-        </options>
-      </control>
-      <control><!-- 0x50 -->
-        <group>[Channel1]</group>
-        <midino>0x50</midino>
-        <status>0x90</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
         </options>
       </control>
       <control>
@@ -1711,485 +2195,25 @@
           <normal/>
         </options>
       </control>
-      <!--
-      <control><!== 0x77 ==>
-        <group>[Channel1]</group>
-        <midino>0x77</midino>
-        <status>0xB0</status>
-        <key>DenonMCX8000.tempoSliderLSB</key>
+      <!-- ======================================================== -->
+      <!-- ======= (6) Miscellaneous ============================== -->
+      <control>
+        <!-- not sure controls is the right group, but
+             the shift keys are not deck-specific -->
+        <group>[Controls]</group>
+        <midino>0x32</midino>
+        <status>0x9F</status>
+        <key>DenonMCX8000.shiftButton</key>
         <options>
           <script-binding/>
         </options>
       </control>
-      <control><!== 0x77 ==>
-        <group>[Channel2]</group>
-        <midino>0x77</midino>
-        <status>0xB1</status>
-        <key>DenonMCX8000.tempoSliderLSB</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!== 0x77 ==>
-        <group>[Channel3]</group>
-        <midino>0x77</midino>
-        <status>0xB2</status>
-        <key>DenonMCX8000.tempoSliderLSB</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control><!== 0x77 ==>
-        <group>[Channel4]</group>
-        <midino>0x77</midino>
-        <status>0xB3</status>
-        <key>DenonMCX8000.tempoSliderLSB</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      -->
-      <control><!-- 0x77 -->
-        <group>[Channel1]</group>
-        <midino>0x77</midino>
-        <status>0xB0</status>
-        <key>rate</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x77 -->
-        <group>[Channel2]</group>
-        <midino>0x77</midino>
-        <status>0xB1</status>
-        <key>rate</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x77 -->
-        <group>[Channel3]</group>
-        <midino>0x77</midino>
-        <status>0xB2</status>
-        <key>rate</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x77 -->
-        <group>[Channel4]</group>
-        <midino>0x77</midino>
-        <status>0xB3</status>
-        <key>rate</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-          <soft-takeover/>
-        </options>
-      </control>
+      <!-- X-F LINK button - just for testing whatever -->
       <control>
-        <group>[Channel1]</group>
-        <midino>0x78</midino>
-        <status>0xB0</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x78</midino>
-        <status>0xB1</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x78</midino>
-        <status>0xB2</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x78</midino>
-        <status>0xB0</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-        </options>
-      </control>
-      <!-- ============================================== -->
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x00</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x03</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x02</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x07</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x0D</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x09</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x0A</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x0B</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x0C</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x0F</midino>
-        <status>0x94</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x00</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x03</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x02</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x07</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x0D</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x09</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x0A</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x0B</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x0C</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x0F</midino>
-        <status>0x95</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x00</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x03</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x02</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x07</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x0D</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x09</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x0A</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x0B</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x0C</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x0F</midino>
-        <status>0x96</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x00</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x03</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x02</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x07</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x0D</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x09</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x0A</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x0B</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x0C</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.setPadMode</key>
-        <options>
-          <script-binding/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x0F</midino>
-        <status>0x97</status>
-        <key>DenonMCX8000.setPadMode</key>
+        <group>[Various]</group>
+        <midino>0x42</midino>
+        <status>0x9F</status>
+        <key>DenonMCX8000.testFunc</key>
         <options>
           <script-binding/>
         </options>
