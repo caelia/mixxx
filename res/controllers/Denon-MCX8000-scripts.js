@@ -231,6 +231,7 @@ DenonMCX8000.init = function(id, debugging) {
     if (engine.getValue('[Master]', 'num_samplers') < 8) {
         engine.setValue('[Master]', 'num_samplers', 8);
     }
+    DenonMCX8000.inSidebar = false;
     DenonMCX8000.initColors();
     DenonMCX8000.initPads();
 };
@@ -681,3 +682,35 @@ DenonMCX8000.setMixOrientation = function(channel, control, value, status, group
     }
     engine.setValue(group, 'orientation', orientation);
 }
+
+
+///////////////////////////////////////////////////////////////
+//                   LIBRARY FUNCTIONS                       //
+///////////////////////////////////////////////////////////////
+
+DenonMCX8000.moveVertical = function(channel, control, value, status, group) {
+    var distance = (value === 0x7F) ? -1 : 1;
+    if (DenonMCX8000.inSidebar) {
+        engine.setValue('[Playlist]', 'SelectPlaylist', distance);
+    } else {
+        engine.setValue('[Playlist]', 'SelectTrackKnob', distance);
+    }
+};
+
+DenonMCX8000.scrollTracks = function(channel, control, value, status, group) {
+    var distance;
+    if (value === 0x7F) {
+        distance = -10;
+    } else {
+        distance = 10;
+    }
+    engine.setValue('[Playlist]', 'SelectTrackKnob', distance);
+};
+
+DenonMCX8000.activateSidebar = function(channel, control, value, status, group) {
+    DenonMCX8000.inSidebar = true;
+};
+
+DenonMCX8000.activateTrackList = function(channel, control, value, status, group) {
+    DenonMCX8000.inSidebar = false;
+};

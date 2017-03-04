@@ -47,9 +47,18 @@
         <group>[Playlist]</group>
         <midino>0x00</midino>
         <status>0xBF</status>
-        <key>SelectTrackKnob</key>
+        <key>DenonMCX8000.moveVertical</key>
         <options>
-          <selectknob/>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x01 -->
+        <group>[Playlist]</group>
+        <midino>0x01</midino>
+        <status>0xBF</status>
+        <key>DenonMCX8000.scrollTracks</key>
+        <options>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x01 -->
@@ -269,6 +278,15 @@
           <script-binding/>
         </options>
       </control>
+      <control>
+        <group>[Playlist]</group>
+        <midino>0x07</midino>
+        <status>0x9F</status>
+        <key>DenonMCX8000.activateTrackList</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
       <control><!-- 0x08 -->
         <group>[Master]</group>
         <midino>0x08</midino>
@@ -403,6 +421,33 @@
         <key>keylock</key>
         <options>
           <normal/>
+        </options>
+      </control>
+      <control><!-- 0x0E -->
+        <group>[Playlist]</group>
+        <midino>0x0E</midino>
+        <status>0x9F</status>
+        <key>DenonMCX8000.activateSidebar</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x10 -->
+        <group>[PreviewDeck1]</group>
+        <midino>0x10</midino>
+        <status>0x9F</status>
+        <key>stop</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x11 -->
+        <group>[Playlist]</group>
+        <midino>0x11</midino>
+        <status>0x9F</status>
+        <key>DenonMCX8000.activateSidebar</key>
+        <options>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x14 -->
@@ -935,6 +980,15 @@
         <midino>0x1B</midino>
         <status>0x93</status>
         <key>pfl</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control><!-- 0x1B -->
+        <group>[PreviewDeck1]</group>
+        <midino>0x1B</midino>
+        <status>0x9F</status>
+        <key>LoadSelectedTrackAndPlay</key>
         <options>
           <normal/>
         </options>
@@ -1594,9 +1648,18 @@
         <group>[Playlist]</group>
         <midino>0x44</midino>
         <status>0xBF</status>
-        <key>SelectTrackKnob</key>
+        <key>DenonMCX8000.moveVertical</key>
         <options>
-          <selectknob/>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x45 -->
+        <group>[Playlist]</group>
+        <midino>0x45</midino>
+        <status>0xBF</status>
+        <key>DenonMCX8000.scrollTracks</key>
+        <options>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x50 -->
@@ -1604,6 +1667,42 @@
         <midino>0x50</midino>
         <status>0x90</status>
         <key>playposition</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control>
+        <group>[Playlist]</group>
+        <midino>0x5A</midino>
+        <status>0x9F</status>
+        <key>ToggleSelectedSidebarItem</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control>
+        <group>[Playlist]</group>
+        <midino>0x5B</midino>
+        <status>0x9F</status>
+        <key>ToggleSelectedSidebarItem</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control>
+        <group>[Playlist]</group>
+        <midino>0x5C</midino>
+        <status>0x9F</status>
+        <key>ToggleSelectedSidebarItem</key>
+        <options>
+          <normal/>
+        </options>
+      </control>
+      <control>
+        <group>[Playlist]</group>
+        <midino>0x5D</midino>
+        <status>0x9F</status>
+        <key>ToggleSelectedSidebarItem</key>
         <options>
           <normal/>
         </options>
