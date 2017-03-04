@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <MixxxControllerPreset mixxxVersion="" schemaVersion="1">
   <info>
+    <name>Denon MCX8000</name>
+    <author>Caelia R Chapin</author>
+    <forums></forums>
+    <wiki></wiki>
   </info>
   <controller id="MCX8000">
     <scriptfiles>
