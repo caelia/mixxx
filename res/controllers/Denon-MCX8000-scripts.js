@@ -13,12 +13,7 @@
 /* Author: Caelia Chapin <crc@caelia.net>                             */
 ////////////////////////////////////////////////////////////////////////
 
-var nop = function(a, b, c, d, e) {};
-
 var DenonMCX8000 = {
-    decks: [],
-    leftDeck: null,
-    rightDeck: null,
     scratchMode: [false, false, false, false],
     scratching: [false, false, false, false],
 };
@@ -81,57 +76,6 @@ DenonMCX8000.colors = {
     'white':        0x40,
 };
 
-const DECK1 = 0;
-const DECK2 = 1;
-const DECK3 = 2;
-const DECK4 = 3;
-
-const LEFT = 0;
-const RIGHT = 1;
-
-// Pad modes
-const PM_CUE = 0;
-const PM_CUE_LOOP = 1;
-const PM_SHIFT_CUE = 2;
-const PM_ROLL = 3;
-const PM_SAVED_LOOP = 4;
-const PM_SLICER = 5;
-const PM_SLICER_LOOP = 6;
-const PM_SAMPLER = 7;
-const PM_VELOCITY_SAMPLER = 8;
-const PM_SHIFT_SAMPLER = 9;
-
-
-var Deck = function(id) {
-    this.id = id;
-    this.padMode = null;
-    this.perfPad = nop;
-    this.shiftPerfPad = nop;
-    this.scratchMode = false;
-};
-
-DenonMCX8000.leftDeck = { 'id': null };
-DenonMCX8000.rightDeck = { 'id': null };
-
-DenonMCX8000.activateDeck = function(channel, control, value, status, group) {
-    if (DenonMCX8000.leftDeck && DenonMCX8000.leftDeck.id === channel) {
-        nop();
-    } else if (DenonMCX8000.rightDeck && DenonMCX8000.rightDeck.id === channel) {
-        nop();
-    } else if (channel == DECK1) {
-        DenonMCX8000.leftDeck = DenonMCX8000.decks[DECK1];
-    } else if (channel == DECK3) {
-        DenonMCX8000.leftDeck = DenonMCX8000.decks[DECK3];
-    } else if (channel == DECK2) {
-        DenonMCX8000.rightDeck = DenonMCX8000.decks[DECK2];
-    } else if (channel == DECK4) {
-        DenonMCX8000.rightDeck = DenonMCX8000.decks[DECK4];
-    } else {
-        // Error
-    }
-};
-
-// DenonMCX8000.decks = [];
 
 // DenonMCX8000.blinkPadsRGB = function() {
 DenonMCX8000.initPads = function() {
@@ -209,18 +153,6 @@ DenonMCX8000.initColors = function() {
 
 DenonMCX8000.init = function(id, debugging) {
     DenonMCX8000.shift = false;
-    var decks = [
-        new Deck(DECK1),
-        new Deck(DECK2),
-        new Deck(DECK3),
-        new Deck(DECK4)
-    ];
-    for (var i = 0; i < 4; i++) {
-        decks[i].padMode = PM_CUE;
-    }
-    DenonMCX8000.activateDeck(DECK1);
-    DenonMCX8000.activateDeck(DECK2);
-    DenonMCX8000.decks = decks;
     DenonMCX8000.scratchSettings = {
         'alpha': 1.0 / 8,
         'beta': 1.0 / 8 / 32,
@@ -389,13 +321,6 @@ var testPad = function(a, b, c, d, e) {
 
 var testShiftPad = function(a, b, c, d, e) {
     print("SHIFT_PAD");
-};
-
-DenonMCX8000.padMode = {
-    '[Channel1]': PM_CUE,
-    '[Channel2]': PM_CUE,
-    '[Channel3]': PM_CUE,
-    '[Channel4]': PM_CUE,
 };
 
 DenonMCX8000.perfPadFunc = {
@@ -579,9 +504,6 @@ DenonMCX8000.setPadMode = function(channel, control, value, status, group) {
                 ledFunc = DenonMCX8000.setPadLEDsSampler;
                 break;
         }
-        /*
-        DenonMCX8000.decks[DECK1].padMode = PM_CUE;
-        */
         DenonMCX8000.perfPadFunc[group] = padFunc;
         DenonMCX8000.shiftPerfPadFunc[group] = shiftPadFunc;
         ledFunc(group);
