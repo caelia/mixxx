@@ -616,8 +616,48 @@ DenonMCX8000.setMixOrientation = function(channel, control, value, status, group
 
 
 ///////////////////////////////////////////////////////////////
-//                   MIXER & EQ THINGS                       //
+//                     EFFECT UNITS                          //
 ///////////////////////////////////////////////////////////////
+
+// FIXME: don't like this redundancy
+DenonMCX8000.Fx1 = {
+    'setupMode': false,
+    'setupModeButton': 0,
+    'blinkTimer': 0,
+    'effects': [],
+};
+
+DenonMCX8000.Fx2 = {
+    'setupMode': false,
+    'setupModeButton': 0,
+    'blinkTimer': 0,
+    'effects': [],
+};
+
+DenonMCX8000.blinkSetupButton = function(group, control) {
+    var status = (group === '[EffectRack1_EffectUnit1]') ? 0x98 : 0x99 ;
+    var fxUnit = status === 0x98 ? DenonMCX8000.Fx1 : DenonMCX8000.Fx2 ;
+    var blinkOff = function() {
+        midi.sendShortMsg(status, control, 0x01);  // dim, not off
+    };
+    var blinkOnOff = function() {
+        midi.sendShortMsg(status, control, 0x02);
+        engine.beginTimer(800, blinkOff, true);
+    };
+    fxUnit.blinkTimer = engine.setTimer(800, blinkOnOff);
+};
+
+DenonMCX8000.stopBlinkingSetupButton = function(group) {
+    var status = (group === '[EffectRack1_EffectUnit1]') ? 0x98 : 0x99 ;
+    var fxUnit = status === 0x98 ? DenonMCX8000.Fx1 : DenonMCX8000.Fx2 ;
+    if (fxUnit.blinkTimer) {
+        engine.stopTimer(fxUnit.blinkTimer);
+        fxUnit.blinkTimer = 0;
+    }
+    if (fxUnit.setupModeButton) {
+        midi.sendShortMsg(status, 0x0A + fxUnit.setupModeButton, 0x01);
+    }
+};
 
 DenonMCX8000.toggleEffect = function(channel, control, value, status, group) {
 };
