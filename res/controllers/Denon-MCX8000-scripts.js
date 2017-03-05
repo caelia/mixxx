@@ -616,6 +616,24 @@ DenonMCX8000.setMixOrientation = function(channel, control, value, status, group
 
 
 ///////////////////////////////////////////////////////////////
+//                   MIXER & EQ THINGS                       //
+///////////////////////////////////////////////////////////////
+
+DenonMCX8000.toggleEffect = function(channel, control, value, status, group) {
+};
+
+DenonMCX8000.enterEffectSetupMode = function(channel, control, value, status, group) {
+};
+
+DenonMCX8000.adjustEffect = function(channel, control, value, status, group) {
+};
+
+DenonMCX8000.viewEffects = function(channel, control, value, status, group) {
+};
+
+DenonMCX8000.tapButton = function(channel, control, value, status, group) {
+};
+///////////////////////////////////////////////////////////////
 //                   LIBRARY FUNCTIONS                       //
 ///////////////////////////////////////////////////////////////
 
