@@ -175,6 +175,15 @@ DenonMCX8000.shutdown = function() {};
 //                     MISCELLANEOUS                         //
 ///////////////////////////////////////////////////////////////
 
+DenonMCX8000.togglePFL = function(channel, control, value, status, group) {
+    if (!value) {
+        var old_pfl = engine.getValue(group, 'pfl');
+        var new_pfl = old_pfl ? 0 : 1 ;
+        engine.setValue(group, 'pfl', new_pfl);
+        midi.sendShortMsg(0x90 + channel, 0x1B, new_pfl);
+    }
+};
+
 DenonMCX8000.shiftButton = function(channel, control, value, status, group) {
     DenonMCX8000.shift = (value === 0x7f);
 };
@@ -187,8 +196,8 @@ DenonMCX8000.trackLoaded = function(group) {
 
 DenonMCX8000.testFunc = function(channel, control, value, status, group) {
     for (var i = 1; i < 5; i++) {
-        var ts = engine.getValue('[Channel' + i + ']', 'track_samples');
-        print('[Channel' + i + '] - track samples: ' + ts);
+        var pfl = engine.getValue('[Channel' + i + ']', 'pfl');
+        print('[Channel' + i + '] - pfl: ' + pfl);
     }
 };
 

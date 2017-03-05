@@ -50,7 +50,7 @@
         <key>pregain</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x16 -->
@@ -60,7 +60,7 @@
         <key>pregain</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x16 -->
@@ -70,7 +70,7 @@
         <key>pregain</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x16 -->
@@ -80,7 +80,7 @@
         <key>pregain</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x17 -->
@@ -90,7 +90,7 @@
         <key>parameter3</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x17 -->
@@ -100,7 +100,7 @@
         <key>parameter3</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x17 -->
@@ -110,7 +110,7 @@
         <key>parameter3</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x17 -->
@@ -120,7 +120,7 @@
         <key>parameter3</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x18 -->
@@ -130,7 +130,7 @@
         <key>parameter2</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x18 -->
@@ -140,7 +140,7 @@
         <key>parameter2</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x18 -->
@@ -150,7 +150,7 @@
         <key>parameter2</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x18 -->
@@ -160,7 +160,7 @@
         <key>parameter2</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x19 -->
@@ -170,7 +170,7 @@
         <key>parameter1</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x19 -->
@@ -180,7 +180,7 @@
         <key>parameter1</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x19 -->
@@ -190,7 +190,7 @@
         <key>parameter1</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x19 -->
@@ -200,7 +200,7 @@
         <key>parameter1</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x1A -->
@@ -210,7 +210,7 @@
         <key>super1</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x1A -->
@@ -220,7 +220,7 @@
         <key>super1</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x1A -->
@@ -230,7 +230,7 @@
         <key>super1</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
       <control><!-- 0x1A -->
@@ -240,9 +240,10 @@
         <key>super1</key>
         <options>
           <normal/>
-          <soft-takeover/>
+          <!-- <soft-takeover/> -->
         </options>
       </control>
+      <!-- I don't think gain is the right mapping for "sampler volume" -->
       <control><!-- 0x1A -->
         <group>[Master]</group>
         <midino>0x1A</midino>
@@ -257,36 +258,36 @@
         <group>[Channel1]</group>
         <midino>0x1B</midino>
         <status>0x90</status>
-        <key>pfl</key>
+        <key>DenonMCX8000.togglePFL</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x1B -->
         <group>[Channel2]</group>
         <midino>0x1B</midino>
         <status>0x91</status>
-        <key>pfl</key>
+        <key>DenonMCX8000.togglePFL</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x1B -->
         <group>[Channel3]</group>
         <midino>0x1B</midino>
         <status>0x92</status>
-        <key>pfl</key>
+        <key>DenonMCX8000.togglePFL</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x1B -->
         <group>[Channel4]</group>
         <midino>0x1B</midino>
         <status>0x93</status>
-        <key>pfl</key>
+        <key>DenonMCX8000.togglePFL</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x1C -->
