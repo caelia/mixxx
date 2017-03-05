@@ -1,0 +1,17 @@
+* Implement waveform zoom in/out (requires tracking active deck).
+
+* Cause jogwheel LEDs to rotate appropriately.
+
+* Fix lack of roll loops.
+
+* Restore JS bindings for pitch faders.
+
+* Touch strip safety.
+
+* Completely manage state of performance pad LEDs.
+
+* Implement beat grid adjustment buttons.
+
+* Implement pitch bend buttons.
+
+* Implement effect rack controls.
