@@ -29,7 +29,7 @@
         <group>[EffectRack1_EffectUnit1]</group>
         <midino>0x05</midino>
         <status>0x98</status>
-        <key>DenonMCX8000.applyEffects</key>
+        <key>DenonMCX8000.applyFx</key>
         <options>
           <script-binding/>
         </options>
@@ -38,7 +38,7 @@
         <group>[EffectRack1_EffectUnit2]</group>
         <midino>0x05</midino>
         <status>0x99</status>
-        <key>DenonMCX8000.applyEffects</key>
+        <key>DenonMCX8000.applyFx</key>
         <options>
           <script-binding/>
         </options>
@@ -47,7 +47,7 @@
         <group>[EffectRack1_EffectUnit1]</group>
         <midino>0x06</midino>
         <status>0x98</status>
-        <key>DenonMCX8000.applyEffects</key>
+        <key>DenonMCX8000.applyFx</key>
         <options>
           <script-binding/>
         </options>
@@ -56,7 +56,7 @@
         <group>[EffectRack1_EffectUnit2]</group>
         <midino>0x06</midino>
         <status>0x99</status>
-        <key>DenonMCX8000.applyEffects</key>
+        <key>DenonMCX8000.applyFx</key>
         <options>
           <script-binding/>
         </options>
@@ -65,7 +65,7 @@
         <group>[EffectRack1_EffectUnit1]</group>
         <midino>0x07</midino>
         <status>0x98</status>
-        <key>DenonMCX8000.applyEffects</key>
+        <key>DenonMCX8000.applyFx</key>
         <options>
           <script-binding/>
         </options>
@@ -74,7 +74,7 @@
         <group>[EffectRack1_EffectUnit2]</group>
         <midino>0x07</midino>
         <status>0x99</status>
-        <key>DenonMCX8000.applyEffects</key>
+        <key>DenonMCX8000.applyFx</key>
         <options>
           <script-binding/>
         </options>
@@ -83,7 +83,7 @@
         <group>[EffectRack1_EffectUnit1]</group>
         <midino>0x08</midino>
         <status>0x98</status>
-        <key>DenonMCX8000.applyEffects</key>
+        <key>DenonMCX8000.applyFx</key>
         <options>
           <script-binding/>
         </options>
@@ -92,7 +92,7 @@
         <group>[EffectRack1_EffectUnit2]</group>
         <midino>0x08</midino>
         <status>0x99</status>
-        <key>DenonMCX8000.applyEffects</key>
+        <key>DenonMCX8000.applyFx</key>
         <options>
           <script-binding/>
         </options>
@@ -562,7 +562,7 @@
         <group>[EffectRack1_EffectUnit1]</group>
         <midino>0x03</midino>
         <status>0xB8</status>
-        <key>DenonMCX8000.viewEffects</key>
+        <key>DenonMCX8000.beatsKnob</key>
         <options>
           <script-binding/>
         </options>
@@ -571,7 +571,7 @@
         <group>[EffectRack1_EffectUnit2]</group>
         <midino>0x03</midino>
         <status>0xB9</status>
-        <key>DenonMCX8000.viewEffects</key>
+        <key>DenonMCX8000.beatsKnob</key>
         <options>
           <script-binding/>
         </options>
@@ -939,8 +939,7 @@
           <script-binding/>
         </options>
       </control>
-      <!--
-      <control><!== 0x09 ==>
+      <control><!-- 0x09 -->
         <group>[Channel1]</group>
         <midino>0x09</midino>
         <status>0xB0</status>
@@ -949,7 +948,7 @@
           <script-binding/>
         </options>
       </control>
-      <control><!== 0x09 ==>
+      <control><!-- 0x09 -->
         <group>[Channel2]</group>
         <midino>0x09</midino>
         <status>0xB1</status>
@@ -958,7 +957,7 @@
           <script-binding/>
         </options>
       </control>
-      <control><!== 0x09 ==>
+      <control><!-- 0x09 -->
         <group>[Channel3]</group>
         <midino>0x09</midino>
         <status>0xB2</status>
@@ -967,147 +966,124 @@
           <script-binding/>
         </options>
       </control>
-      <control><!== 0x09 ==>
+      <control><!-- 0x09 -->
         <group>[Channel4]</group>
         <midino>0x09</midino>
         <status>0xB3</status>
         <key>DenonMCX8000.tempoSliderMSB</key>
         <options>
           <script-binding/>
-        </options>
-      </control>
-      -->
-      <control><!-- 0x09 -->
-        <group>[Channel1]</group>
-        <midino>0x09</midino>
-        <status>0xB0</status>
-        <key>rate</key>
-        <options>
-          <normal/>
-          <fourteen-bit-msb/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x09 -->
-        <group>[Channel2]</group>
-        <midino>0x09</midino>
-        <status>0xB1</status>
-        <key>rate</key>
-        <options>
-          <normal/>
-          <fourteen-bit-msb/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x09 -->
-        <group>[Channel3]</group>
-        <midino>0x09</midino>
-        <status>0xB2</status>
-        <key>rate</key>
-        <options>
-          <normal/>
-          <fourteen-bit-msb/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control><!-- 0x09 -->
-        <group>[Channel4]</group>
-        <midino>0x09</midino>
-        <status>0xB3</status>
-        <key>rate</key>
-        <options>
-          <normal/>
-          <fourteen-bit-msb/>
-          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x0D -->
         <group>[Channel1]</group>
         <midino>0x0D</midino>
         <status>0x90</status>
-        <key>keylock</key>
+        <key>DenonMCX8000.toggleKeylock</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x0D -->
         <group>[Channel2]</group>
         <midino>0x0D</midino>
         <status>0x91</status>
-        <key>keylock</key>
+        <key>DenonMCX8000.toggleKeylock</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x0D -->
         <group>[Channel3]</group>
         <midino>0x0D</midino>
         <status>0x92</status>
-        <key>keylock</key>
+        <key>DenonMCX8000.toggleKeylock</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x0D -->
         <group>[Channel4]</group>
         <midino>0x0D</midino>
         <status>0x93</status>
-        <key>keylock</key>
+        <key>DenonMCX8000.toggleKeylock</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel1]</group>
-        <midino>0x2B</midino>
-        <status>0xB0</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-msb/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x2B</midino>
-        <status>0xB1</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-msb/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x2B</midino>
-        <status>0xB2</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-msb/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x2B</midino>
-        <status>0xB0</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-msb/>
-        </options>
-      </control>
-      <control><!-- 0x50 -->
-        <group>[Channel1]</group>
-        <midino>0x50</midino>
+        <midino>0x0F</midino>
         <status>0x90</status>
-        <key>playposition</key>
+        <key>DenonMCX8000.toggleSlipMode</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
-      <!--
-      <control><!== 0x77 ==>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x0F</midino>
+        <status>0x91</status>
+        <key>DenonMCX8000.toggleSlipMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x0F</midino>
+        <status>0x92</status>
+        <key>DenonMCX8000.toggleSlipMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x0F</midino>
+        <status>0x93</status>
+        <key>DenonMCX8000.toggleSlipMode</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel1]</group>
+        <midino>0x2B</midino>
+        <status>0xB0</status>
+        <key>DenonMCX8000.needleDropMSB</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel2]</group>
+        <midino>0x2B</midino>
+        <status>0xB1</status>
+        <key>DenonMCX8000.needleDropMSB</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel3]</group>
+        <midino>0x2B</midino>
+        <status>0xB2</status>
+        <key>DenonMCX8000.needleDropMSB</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control>
+        <group>[Channel4]</group>
+        <midino>0x2B</midino>
+        <status>0xB3</status>
+        <key>DenonMCX8000.needleDropMSB</key>
+        <options>
+          <script-binding/>
+        </options>
+      </control>
+      <control><!-- 0x77 -->
         <group>[Channel1]</group>
         <midino>0x77</midino>
         <status>0xB0</status>
@@ -1116,7 +1092,7 @@
           <script-binding/>
         </options>
       </control>
-      <control><!== 0x77 ==>
+      <control><!-- 0x77 -->
         <group>[Channel2]</group>
         <midino>0x77</midino>
         <status>0xB1</status>
@@ -1125,7 +1101,7 @@
           <script-binding/>
         </options>
       </control>
-      <control><!== 0x77 ==>
+      <control><!-- 0x77 -->
         <group>[Channel3]</group>
         <midino>0x77</midino>
         <status>0xB2</status>
@@ -1134,7 +1110,7 @@
           <script-binding/>
         </options>
       </control>
-      <control><!== 0x77 ==>
+      <control><!-- 0x77 -->
         <group>[Channel4]</group>
         <midino>0x77</midino>
         <status>0xB3</status>
@@ -1143,89 +1119,40 @@
           <script-binding/>
         </options>
       </control>
-      -->
-      <control><!-- 0x77 -->
+      <control>
         <group>[Channel1]</group>
-        <midino>0x77</midino>
+        <midino>0x78</midino>
         <status>0xB0</status>
-        <key>rate</key>
+        <key>DenonMCX8000.needleDropLSB</key>
         <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-          <soft-takeover/>
+          <script-binding/>
         </options>
       </control>
-      <control><!-- 0x77 -->
+      <control>
         <group>[Channel2]</group>
-        <midino>0x77</midino>
+        <midino>0x78</midino>
         <status>0xB1</status>
-        <key>rate</key>
+        <key>DenonMCX8000.needleDropLSB</key>
         <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-          <soft-takeover/>
+          <script-binding/>
         </options>
       </control>
-      <control><!-- 0x77 -->
+      <control>
         <group>[Channel3]</group>
-        <midino>0x77</midino>
+        <midino>0x78</midino>
         <status>0xB2</status>
-        <key>rate</key>
+        <key>DenonMCX8000.needleDropLSB</key>
         <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-          <soft-takeover/>
+          <script-binding/>
         </options>
       </control>
-      <control><!-- 0x77 -->
+      <control>
         <group>[Channel4]</group>
-        <midino>0x77</midino>
+        <midino>0x78</midino>
         <status>0xB3</status>
-        <key>rate</key>
+        <key>DenonMCX8000.needleDropLSB</key>
         <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-          <soft-takeover/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel1]</group>
-        <midino>0x78</midino>
-        <status>0xB0</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel2]</group>
-        <midino>0x78</midino>
-        <status>0xB1</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel3]</group>
-        <midino>0x78</midino>
-        <status>0xB2</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
-        </options>
-      </control>
-      <control>
-        <group>[Channel4]</group>
-        <midino>0x78</midino>
-        <status>0xB0</status>
-        <key>playposition</key>
-        <options>
-          <normal/>
-          <fourteen-bit-lsb/>
+          <script-binding/>
         </options>
       </control>
       <!-- ======================================================== -->
@@ -2581,5 +2508,73 @@
       </control>
     </controls>
     <outputs/>
+    <!--
+    <outputs>
+      <output>
+        <group>[EffectRack1_EffectUnit1]</group>
+        <status>0x98</status>
+        <midino>0x05</midino>
+        <key>group_[Channel1]_enable</key>
+        <on>0x02</on>
+        <off>0x01</off>
+      </output>
+      <output>
+        <group>[EffectRack1_EffectUnit2]</group>
+        <status>0x99</status>
+        <midino>0x05</midino>
+        <key>group_[Channel1]_enable</key>
+        <on>0x02</on>
+        <off>0x01</off>
+      </output>
+      <output>
+        <group>[EffectRack1_EffectUnit1]</group>
+        <status>0x98</status>
+        <midino>0x06</midino>
+        <key>group_[Channel2]_enable</key>
+        <on>0x02</on>
+        <off>0x01</off>
+      </output>
+      <output>
+        <group>[EffectRack1_EffectUnit2]</group>
+        <status>0x99</status>
+        <midino>0x06</midino>
+        <key>group_[Channel2]_enable</key>
+        <on>0x02</on>
+        <off>0x01</off>
+      </output>
+      <output>
+        <group>[EffectRack1_EffectUnit1]</group>
+        <status>0x98</status>
+        <midino>0x07</midino>
+        <key>group_[Channel3]_enable</key>
+        <on>0x02</on>
+        <off>0x01</off>
+      </output>
+      <output>
+        <group>[EffectRack1_EffectUnit2]</group>
+        <status>0x99</status>
+        <midino>0x07</midino>
+        <key>group_[Channel3]_enable</key>
+        <on>0x02</on>
+        <off>0x01</off>
+      </output>
+      <output>
+        <group>[EffectRack1_EffectUnit1]</group>
+        <status>0x98</status>
+        <midino>0x08</midino>
+        <key>group_[Channel4]_enable</key>
+        <on>0x02</on>
+        <off>0x01</off>
+      </output>
+      <output>
+        <group>[EffectRack1_EffectUnit2]</group>
+        <status>0x99</status>
+        <midino>0x08</midino>
+        <key>group_[Channel4]_enable</key>
+        <on>0x02</on>
+        <off>0x01</off>
+      </output>
+    </outputs>
+    -->
   </controller>
 </MixxxControllerPreset>
