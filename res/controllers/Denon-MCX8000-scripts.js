@@ -180,6 +180,11 @@ DenonMCX8000.init = function(id, debugging) {
     DenonMCX8000.inSidebar = false;
     DenonMCX8000.initColors();
     DenonMCX8000.initPads();
+    for (var i = 1; i < 5; i++) {
+        engine.connectControl('[Channel' + i + ']',
+                              'VuMeter',
+                              'DenonMCX8000.channelVUMeter');
+    }
 };
 
 DenonMCX8000.shutdown = function() {};
@@ -212,6 +217,26 @@ DenonMCX8000.setChannelFxLED = function(channel, control, group) {
         midi.sendShortMsg(0x90 + channel, control, 0x01);
     }
 };
+
+DenonMCX8000.channelVUMeter = function(value, group, control) {
+    var midival = Math.round(value * 127);
+    var status;
+    switch (group) {
+        case '[Channel1]':
+            status = 0xB0;
+            break;
+        case '[Channel2]':
+            status = 0xB1;
+            break;
+        case '[Channel3]':
+            status = 0xB2;
+            break;
+        case '[Channel4]':
+            status = 0xB3;
+            break;
+    }
+    midi.sendShortMsg(status, 0x1F, midival);
+}
 
 
 ///////////////////////////////////////////////////////////////
