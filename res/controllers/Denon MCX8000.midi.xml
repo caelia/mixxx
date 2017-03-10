@@ -369,7 +369,6 @@
         <key>volume</key>
         <options>
           <normal/>
-          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1C -->
@@ -379,7 +378,6 @@
         <key>volume</key>
         <options>
           <normal/>
-          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1C -->
@@ -389,7 +387,6 @@
         <key>volume</key>
         <options>
           <normal/>
-          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1C -->
@@ -399,7 +396,6 @@
         <key>volume</key>
         <options>
           <normal/>
-          <soft-takeover/>
         </options>
       </control>
       <control><!-- 0x1E -->
