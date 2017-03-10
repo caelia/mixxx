@@ -158,6 +158,23 @@ DenonMCX8000.initColors = function() {
 DenonMCX8000.scratchMode = [false, false, false, false];
 DenonMCX8000.scratching = [false, false, false, false];
 
+DenonMCX8000.jogwheelLEDTicks = {
+    '[Channel1]': 0,
+    '[Channel2]': 0,
+    '[Channel3]': 0,
+    '[Channel4]': 0
+};
+
+DenonMCX8000.setJogwheelLEDTicks = function(value, group, control) {
+    var set = function() {
+        var duration = engine.getValue(group, 'duration');
+        var revolutions = (duration / 60) * (33 + 1/3);
+        print("revolutions: " + revolutions);
+        DenonMCX8000.jogwheelLEDTicks[group] = revolutions * 96; // 96 or 95??
+    };
+    engine.beginTimer(20, set, true);
+};
+
 DenonMCX8000.init = function(id, debugging) {
     DenonMCX8000.shift = false;
     DenonMCX8000.scratchSettings = {
@@ -180,10 +197,17 @@ DenonMCX8000.init = function(id, debugging) {
     DenonMCX8000.inSidebar = false;
     DenonMCX8000.initColors();
     DenonMCX8000.initPads();
+    // connect controls
     for (var i = 1; i < 5; i++) {
         engine.connectControl('[Channel' + i + ']',
                               'VuMeter',
                               'DenonMCX8000.channelVUMeter');
+        engine.connectControl('[Channel' + i + ']',
+                              'LoadSelectedTrack',
+                              'DenonMCX8000.setJogwheelLEDTicks');
+        engine.connectControl('[Channel' + i + ']',
+                              'playposition',
+                              'DenonMCX8000.jogwheelLEDs');
     }
 };
 
@@ -236,7 +260,14 @@ DenonMCX8000.channelVUMeter = function(value, group, control) {
             break;
     }
     midi.sendShortMsg(status, 0x1F, midival);
-}
+};
+
+DenonMCX8000.jogwheelLEDs = function(value, group, control) {
+    var status = 0x90 + DenonMCX8000.deckMIDIChannel[group];
+    var ticks = DenonMCX8000.jogwheelLEDTicks[group];
+    var midival = Math.round(value / 1.14 * ticks) % 95;
+    midi.sendShortMsg(status, 0x06, midival); 
+};
 
 
 ///////////////////////////////////////////////////////////////
@@ -263,6 +294,13 @@ DenonMCX8000.tapButton = function(channel, control, value, status, group) {
 DenonMCX8000.trackLoaded = function(group) {
     var ts = engine.getValue(group, 'track_samples');
     return (ts > 0);
+};
+
+DenonMCX8000.deckMIDIChannel = {
+    '[Channel1]': 0,
+    '[Channel2]': 1,
+    '[Channel3]': 2,
+    '[Channel4]': 3
 };
 
 var TestUnit = function(id) {
