@@ -169,7 +169,6 @@ DenonMCX8000.setJogwheelLEDTicks = function(value, group, control) {
     var set = function() {
         var duration = engine.getValue(group, 'duration');
         var revolutions = (duration / 60) * (33 + 1/3);
-        print("revolutions: " + revolutions);
         DenonMCX8000.jogwheelLEDTicks[group] = revolutions * 96; // 96 or 95??
     };
     engine.beginTimer(20, set, true);
@@ -265,7 +264,7 @@ DenonMCX8000.channelVUMeter = function(value, group, control) {
 DenonMCX8000.jogwheelLEDs = function(value, group, control) {
     var status = 0x90 + DenonMCX8000.deckMIDIChannel[group];
     var ticks = DenonMCX8000.jogwheelLEDTicks[group];
-    var midival = Math.round(value / 1.14 * ticks) % 95;
+    var midival = Math.round(value * ticks) % 96;
     midi.sendShortMsg(status, 0x06, midival); 
 };
 
@@ -471,7 +470,7 @@ DenonMCX8000.needleDropLSB = function(channel, control, value, status, group) {
         var fullValue = (DenonMCX8000.highResMSB[group].needleDrop << 7) + value;
         engine.setValue(group,
                         'playposition',
-                        (fullValue / 16383) * 1.14
+                        fullValue / 16383
         );
     }
 };
