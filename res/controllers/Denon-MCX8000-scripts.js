@@ -33,6 +33,10 @@ DenonMCX8000.jogwheelSensivity = 1.0;
 // Set to 1 to disable jogwheel sensitivity increase when holding shift.
 DenonMCX8000.jogwheelShiftMultiplier = 20;
 
+// Use this variable to adjust the stop time for brake and spinback.
+// A higher value means faster deceleration.
+DenonMCX8000.stoptimeMultiplier = 1;
+
 // Colors for performance pad LEDs - see color table below for
 // additional color names.
 DenonMCX8000.hotCueInactiveColor = 'grey';
@@ -171,7 +175,18 @@ DenonMCX8000.setJogwheelLEDTicks = function(value, group, control) {
         var revolutions = (duration / 60) * (33 + 1/3);
         DenonMCX8000.jogwheelLEDTicks[group] = revolutions * 96; // 96 or 95??
     };
-    engine.beginTimer(20, set, true);
+    engine.beginTimer(100, set, true);
+};
+
+DenonMCX8000.stopRate = {
+    '[Channel1]': 1,
+    '[Channel2]': 1,
+    '[Channel3]': 1,
+    '[Channel4]': 1
+};
+
+DenonMCX8000.setStopTime = function(channel, control, value, status, group) {
+    DenonMCX8000.stopRate[group] = (128 - value) * DenonMCX8000.stoptimeMultiplier;
 };
 
 DenonMCX8000.init = function(id, debugging) {
@@ -318,17 +333,10 @@ var TestUnit = function(id) {
     };
 };
 
-DenonMCX8000.testUnit1 = new TestUnit(1);
-DenonMCX8000.testUnit2 = new TestUnit(2);
-
 DenonMCX8000.testFunc = function(channel, control, value, status, group) {
-    if (value) {
-        DenonMCX8000.testUnit1.startSillyProcess();
-        DenonMCX8000.testUnit2.startSillyProcess();
-    } else {
-        DenonMCX8000.testUnit1.stopSillyProcess();
-        DenonMCX8000.testUnit2.stopSillyProcess();
-    }
+    // DenonMCX8000.brake(channel, control, value, status, group);
+    // script.brake(channel, control, value, status, '[Channel2]');
+    script.brake(channel, control, value * DenonMCX8000.stopRate['[Channel2]'], status, '[Channel2]');
 };
 
 // DANGER!! Cutted & pasted from DDJ-SB2 script.
@@ -475,6 +483,21 @@ DenonMCX8000.needleDropLSB = function(channel, control, value, status, group) {
     }
 };
 
+DenonMCX8000.brake = function(channel, control, value, status, group) {
+    if (value) {
+        engine.brake(channel + 1, true, DenonMCX8000.stopRate[group]);
+    } else {
+        engine.brake(channel + 1, false);
+    }
+};
+
+DenonMCX8000.spinback = function(channel, control, value, status, group) {
+    if (value) {
+        engine.spinback(channel + 1, true, DenonMCX8000.stopRate[group]);
+    } else {
+        engine.spinback(channel + 1, false);
+    }
+};
 
 
 ///////////////////////////////////////////////////////////////
