@@ -1344,144 +1344,144 @@
         <group>[Channel1]</group>
         <midino>0x46</midino>
         <status>0x94</status>
-        <key>beats_adjust_slower</key>
+        <key>DenonMCX8000.beatgridSlower</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel2]</group>
         <midino>0x46</midino>
         <status>0x95</status>
-        <key>beats_adjust_slower</key>
+        <key>DenonMCX8000.beatgridSlower</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel3]</group>
         <midino>0x46</midino>
         <status>0x96</status>
-        <key>beats_adjust_slower</key>
+        <key>DenonMCX8000.beatgridSlower</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel4]</group>
         <midino>0x46</midino>
         <status>0x97</status>
-        <key>beats_adjust_slower</key>
+        <key>DenonMCX8000.beatgridSlower</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel1]</group>
         <midino>0x47</midino>
         <status>0x94</status>
-        <key>beats_translate_curpos</key>
+        <key>DenonMCX8000.beatgridToCurpos</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel2]</group>
         <midino>0x47</midino>
         <status>0x95</status>
-        <key>beats_translate_curpos</key>
+        <key>DenonMCX8000.beatgridToCurpos</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel3]</group>
         <midino>0x47</midino>
         <status>0x96</status>
-        <key>beats_translate_curpos</key>
+        <key>DenonMCX8000.beatgridToCurpos</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel4]</group>
         <midino>0x47</midino>
         <status>0x97</status>
-        <key>beats_translate_curpos</key>
+        <key>DenonMCX8000.beatgridToCurpos</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel1]</group>
         <midino>0x48</midino>
         <status>0x94</status>
-        <key>beats_adjust_faster</key>
+        <key>DenonMCX8000.beatgridFaster</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel2]</group>
         <midino>0x48</midino>
         <status>0x95</status>
-        <key>beats_adjust_faster</key>
+        <key>DenonMCX8000.beatgridFaster</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel3]</group>
         <midino>0x48</midino>
         <status>0x96</status>
-        <key>beats_adjust_faster</key>
+        <key>DenonMCX8000.beatgridFaster</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel4]</group>
         <midino>0x48</midino>
         <status>0x97</status>
-        <key>beats_adjust_faster</key>
+        <key>DenonMCX8000.beatgridFaster</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel1]</group>
         <midino>0x49</midino>
         <status>0x94</status>
-        <key>beats_translate_match_alignment</key>
+        <key>DenonMCX8000.beatgridMatchAlignment</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel2]</group>
         <midino>0x49</midino>
         <status>0x95</status>
-        <key>beats_translate_match_alignment</key>
+        <key>DenonMCX8000.beatgridMatchAlignment</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel3]</group>
         <midino>0x49</midino>
         <status>0x96</status>
-        <key>beats_translate_match_alignment</key>
+        <key>DenonMCX8000.beatgridMatchAlignment</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel4]</group>
         <midino>0x49</midino>
         <status>0x97</status>
-        <key>beats_translate_match_alignment</key>
+        <key>DenonMCX8000.beatgridMatchAlignment</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x77 -->
@@ -2139,72 +2139,72 @@
         <group>[Channel1]</group>
         <midino>0x32</midino>
         <status>0x94</status>
-        <key>reloop_exit</key>
+        <key>DenonMCX8000.reloop</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel2]</group>
         <midino>0x32</midino>
         <status>0x95</status>
-        <key>reloop_exit</key>
+        <key>DenonMCX8000.reloop</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel3]</group>
         <midino>0x32</midino>
         <status>0x96</status>
-        <key>reloop_exit</key>
+        <key>DenonMCX8000.reloop</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel4]</group>
         <midino>0x32</midino>
         <status>0x97</status>
-        <key>reloop_exit</key>
+        <key>DenonMCX8000.reloop</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel1]</group>
         <midino>0x33</midino>
         <status>0x94</status>
-        <key>reloop_exit</key>
+        <key>DenonMCX8000.reloop</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel2]</group>
         <midino>0x33</midino>
         <status>0x95</status>
-        <key>reloop_exit</key>
+        <key>DenonMCX8000.reloop</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel3]</group>
         <midino>0x33</midino>
         <status>0x96</status>
-        <key>reloop_exit</key>
+        <key>DenonMCX8000.reloop</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Channel4]</group>
         <midino>0x33</midino>
         <status>0x97</status>
-        <key>reloop_exit</key>
+        <key>DenonMCX8000.reloop</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>

@@ -36,6 +36,9 @@ DenonMCX8000.fastScrollInterval = 10;
 // User must press shift in order to active while a track is playing
 DenonMCX8000.safeNeedleDrop = true;
 
+// Prevents changing the beatgrid while a track is playing
+DenonMCX8000.safeBeatgridControls = true;
+
 // Sets the jogwheel's sensivity. 1 is default, 2 is twice as sensitive, 0.5 is half as sensitive.
 DenonMCX8000.jogwheelSensivity = 1.0;
 
@@ -63,9 +66,14 @@ DenonMCX8000.hotCueActiveColors = [
 DenonMCX8000.loopInactiveColor = 'dimRed';
 DenonMCX8000.loopActiveColor = 'red';
 DenonMCX8000.beatJumpInactiveColor = 'yellow';
-DenonMCX8000.beatJumpActiveColor = 'yellow';
+DenonMCX8000.beatJumpFwdColor = 'mintGreen';
+DenonMCX8000.beatJumpBackColor = 'salmon';
 DenonMCX8000.samplerInactiveColor = 'dimViolet';
 DenonMCX8000.samplerActiveColor = 'blue';
+
+// Length of time in ms before library pane LEDs go out when idle.
+// Default is 30000 (30s)
+DenonMCX8000.libraryLEDIdleTimeout = 30000;
 
 
 ///////////////////////////////////////////////////////////////
@@ -100,6 +108,12 @@ DenonMCX8000.colors = {
     'white':        0x40,
 };
 
+DenonMCX8000.padModes = {
+    '[Channel1]': 0x00,
+    '[Channel2]': 0x00,
+    '[Channel3]': 0x00,
+    '[Channel4]': 0x00
+};
 
 // DenonMCX8000.blinkPadsRGB = function() {
 DenonMCX8000.initPads = function() {
@@ -150,7 +164,8 @@ DenonMCX8000.hotCueActiveColorCodes = [];
 DenonMCX8000.loopInactiveColorCode = 0x00;
 DenonMCX8000.loopActiveColorCode = 0x00;
 DenonMCX8000.beatJumpInactiveColorCode = 0x00;
-DenonMCX8000.beatJumpActiveColorCode = 0x00;
+DenonMCX8000.beatJumpFwdColorCode = 0x00;
+DenonMCX8000.beatJumpBackColorCode = 0x00;
 DenonMCX8000.samplerInactiveColorCode = 0x00;
 DenonMCX8000.samplerActiveColorCode = 0x00;
 
@@ -167,8 +182,10 @@ DenonMCX8000.initColors = function() {
         = DenonMCX8000.colors[DenonMCX8000.loopActiveColor];
     DenonMCX8000.beatJumpInactiveColorCode
         = DenonMCX8000.colors[DenonMCX8000.beatJumpInactiveColor];
-    DenonMCX8000.beatJumpActiveColorCode
-        = DenonMCX8000.colors[DenonMCX8000.beatJumpActiveColor];
+    DenonMCX8000.beatJumpFwdColorCode
+        = DenonMCX8000.colors[DenonMCX8000.beatJumpFwdColor];
+    DenonMCX8000.beatJumpBackColorCode
+        = DenonMCX8000.colors[DenonMCX8000.beatJumpBackColor];
     DenonMCX8000.samplerInactiveColorCode
         = DenonMCX8000.colors[DenonMCX8000.samplerInactiveColor];
     DenonMCX8000.samplerActiveColorCode
@@ -186,12 +203,16 @@ DenonMCX8000.jogwheelLEDTicks = {
 };
 
 DenonMCX8000.setJogwheelLEDTicks = function(value, group, control) {
-    var set = function() {
-        var duration = engine.getValue(group, 'duration');
-        var revolutions = (duration / 60) * (33 + 1/3);
-        DenonMCX8000.jogwheelLEDTicks[group] = revolutions * 96; // 96 or 95??
-    };
-    engine.beginTimer(DenonMCX8000.loadHookDelay, set, true);
+    var duration = engine.getValue(group, 'duration');
+    var revolutions = (duration / 60) * (33 + 1/3);
+    DenonMCX8000.jogwheelLEDTicks[group] = revolutions * 96;
+};
+
+DenonMCX8000.runLoadHooks = function(value, group, control) {
+    engine.beginTimer(DenonMCX8000.loadHookDelay, function() {
+        DenonMCX8000.setJogwheelLEDTicks(value, group, control);
+        DenonMCX8000.setPadMode(0x00, 0x00, 0x00, 0x00, group);
+    }, true);
 };
 
 DenonMCX8000.stopRate = {
@@ -206,6 +227,8 @@ DenonMCX8000.setStopTime = function(channel, control, value, status, group) {
 };
 
 DenonMCX8000.params = [0, 0, 0, 0];
+
+DenonMCX8000.libraryLEDIdleTimer = 0;
 
 DenonMCX8000.init = function(id, debugging) {
     DenonMCX8000.shift = false;
@@ -236,7 +259,7 @@ DenonMCX8000.init = function(id, debugging) {
                               'DenonMCX8000.channelVUMeter');
         engine.connectControl('[Channel' + i + ']',
                               'LoadSelectedTrack',
-                              'DenonMCX8000.setJogwheelLEDTicks');
+                              'DenonMCX8000.runLoadHooks');
         engine.connectControl('[Channel' + i + ']',
                               'playposition',
                               'DenonMCX8000.jogwheelLEDs');
@@ -301,6 +324,47 @@ DenonMCX8000.jogwheelLEDs = function(value, group, control) {
     midi.sendShortMsg(status, 0x06, midival); 
 };
 
+DenonMCX8000.libraryLEDs = [
+    [0x5A, 0x5B, 0x5C, 0x5D, 0x11, 0x0E, 0x43, 0x44],
+    [0x02, 0x03, 0x1F, 0x07, 0x1B, 0x10]
+];
+
+DenonMCX8000.showLibLeftLEDs = function() {
+    var leftLEDs = DenonMCX8000.libraryLEDs[0];
+    var rightLEDs = DenonMCX8000.libraryLEDs[1];
+    for (var i = 0; i < rightLEDs.length; i++) {
+        midi.sendShortMsg(0x9F, rightLEDs[i], 0x01); 
+    }
+    for (var i = 0; i < leftLEDs.length; i++) {
+        midi.sendShortMsg(0x9F, leftLEDs[i], 0x02); 
+    }
+}
+
+DenonMCX8000.showLibRightLEDs = function() {
+    var leftLEDs = DenonMCX8000.libraryLEDs[0];
+    var rightLEDs = DenonMCX8000.libraryLEDs[1];
+    for (var i = 0; i < leftLEDs.length; i++) {
+        midi.sendShortMsg(0x9F, leftLEDs[i], 0x01); 
+    }
+    for (var i = 0; i < rightLEDs.length; i++) {
+        midi.sendShortMsg(0x9F, rightLEDs[i], 0x02); 
+    }
+}
+
+DenonMCX8000.hideLibraryLEDs = function() {
+    var leds = DenonMCX8000.libraryLEDs;
+    for (var i = 0; i < leds.length; i++) {
+        for (var j = 0; j < leds[i].length; j++) {
+            midi.sendShortMsg(0x9F, leds[i][j], 0x01);
+        }
+    }
+}
+
+DenonMCX8000.cancelLibraryLEDs = function() {
+    DenonMCX8000.hideLibraryLEDs();
+    DenonMCX8000.libraryLEDIdleTimer = 0;
+}
+
 
 ///////////////////////////////////////////////////////////////
 //                     MISCELLANEOUS                         //
@@ -321,6 +385,34 @@ DenonMCX8000.shiftButton = function(channel, control, value, status, group) {
 
 DenonMCX8000.tapButton = function(channel, control, value, status, group) {
 };
+
+DenonMCX8000.beatgridSlower = function(channel, control, value, status, group) {
+    if (!(value || (DenonMCX8000.safeBeatgridControls &&
+                    engine.getValue(group, 'play')))) {
+        engine.setValue(group, 'beats_adjust_slower', 1);
+    }
+}
+
+DenonMCX8000.beatgridFaster = function(channel, control, value, status, group) {
+    if (!(value || (DenonMCX8000.safeBeatgridControls &&
+                    engine.getValue(group, 'play')))) {
+        engine.setValue(group, 'beats_adjust_faster', 1);
+    }
+}
+
+DenonMCX8000.beatgridToCurpos = function(channel, control, value, status, group) {
+    if (!(value || (DenonMCX8000.safeBeatgridControls &&
+                    engine.getValue(group, 'play')))) {
+        engine.setValue(group, 'beats_translate_curpos', 1);
+    }
+}
+
+DenonMCX8000.beatgridMatchAlignment = function(channel, control, value, status, group) {
+    if (!(value || (DenonMCX8000.safeBeatgridControls &&
+                    engine.getValue(group, 'play')))) {
+        engine.setValue(group, 'beats_translate_match_alignment', 1);
+    }
+}
 
 DenonMCX8000.setParam = function(channel, control, value, status, group) {
     if (!value) {
@@ -438,8 +530,12 @@ DenonMCX8000.testFunc = function(channel, control, value, status, group) {
     // DenonMCX8000.brake(channel, control, value, status, group);
     // script.brake(channel, control, value, status, '[Channel2]');
     // script.brake(channel, control, value * DenonMCX8000.stopRate['[Channel2]'], status, '[Channel2]');
-    var recstat = engine.getValue('[Recording]', 'status');
-    print("recording status: " + recstat);
+    var f = function() {
+        DenonMCX8000.showLibRightLEDs();
+        engine.beginTimer(1000, DenonMCX8000.hideLibraryLEDs, true);
+    }
+    DenonMCX8000.showLibLeftLEDs();
+    engine.beginTimer(1000, f, true);
 };
 
 // DANGER!! Cutted & pasted from DDJ-SB2 script.
@@ -658,63 +754,68 @@ DenonMCX8000.cuePad = function(channel, control, value, status, group) {
     // Is it better to check the value of 'value' here - to eliminate excessive
     // calls to engine? Or just leave it up to the engine?
     engine.setValue(group, 'hotcue_' + (control - 19) + '_activate', value);
+    if (!value) {
+        DenonMCX8000.setHotcueLED(group, control - 20);
+    }
 };
 
 DenonMCX8000.cueLoopPad = function(channel, control, value, status, group) {
     engine.setValue(group, 'hotcue_' + (control - 19) + '_set', value);
+    if (!value) {
+        DenonMCX8000.setHotcueLED(group, control - 20);
+    }
 };
 
 DenonMCX8000.shiftCuePad = function(channel, control, value, status, group) {
     engine.setValue(group, 'hotcue_' + (control - 19) + '_clear', value);
+    if (!value) {
+        DenonMCX8000.setHotcueLED(group, control - 20);
+    }
 };
 
-DenonMCX8000.activeLoop = {
-    '[Channel1]': 0,
-    '[Channel2]': 0,
-    '[Channel3]': 0,
-    '[Channel4]': 0
+DenonMCX8000.currentLoop = {
+    '[Channel1]': { 'beats': 0, 'idx': -1, 'enabled': false },
+    '[Channel2]': { 'beats': 0, 'idx': -1, 'enabled': false },
+    '[Channel3]': { 'beats': 0, 'idx': -1, 'enabled': false },
+    '[Channel4]': { 'beats': 0, 'idx': -1, 'enabled': false }
 };
 
-DenonMCX8000.rollPad = function(channel, control, value, status, group) {
+DenonMCX8000.loopPad = function(control, value, group, prefix) {
     if (value) {
-        var beats = (1 << ((control - 0x14) % 8)) / 2;
-        if (DenonMCX8000.activeLoop[group] === beats) {
+        var idx = control - 0x14;
+        var beats = (1 << (idx % 8)) / 2;
+        if (DenonMCX8000.currentLoop[group]['beats'] === beats) {
             engine.setValue(group, 'beatloop_' + beats + '_toggle', 1);
             // engine.setValue(group, 'reloop_exit', 0);
             DenonMCX8000.setPadLEDsRoll(group);
-            DenonMCX8000.activeLoop[group] = 0;
-        } else if (DenonMCX8000.activeLoop[group]) {
-            engine.setValue(group, 'beatloop_' + beats + '_activate', value);
+            DenonMCX8000.currentLoop[group] = {
+                'beats': 0, 'idx': -1, 'enabled': false
+            };
+            /*
+        } else if (DenonMCX8000.currentLoop[group]['beats']) {
+            engine.setValue(group, prefix + beats + '_activate', value);
             DenonMCX8000.setPadLEDsRoll(group);
             DenonMCX8000.setActiveLoopLED(group, control);
-            DenonMCX8000.activeLoop[group] = beats;
+            DenonMCX8000.currentLoop[group] = {
+                'beats': beats, 'idx': idx, 'enabled': true
+            };
+            */
         } else {
-            engine.setValue(group, 'beatloop_' + beats + '_activate', value);
+            engine.setValue(group, prefix + beats + '_activate', value);
             DenonMCX8000.setActiveLoopLED(group, control);
-            DenonMCX8000.activeLoop[group] = beats;
+            DenonMCX8000.currentLoop[group] = {
+                'beats': beats, 'idx': idx, 'enabled': true
+            };
         }
     }
 };
 
-// FIXME: code is mostly redundant w/ rollPad function
+DenonMCX8000.rollPad = function(channel, control, value, status, group) {
+    DenonMCX8000.loopPad(control, value, group, 'beatloop_');
+};
+
 DenonMCX8000.savedLoopPad = function(channel, control, value, status, group) {
-    if (value) {
-        var beats = (1 << ((control - 0x14) % 8)) / 2;
-        if (DenonMCX8000.activeLoop[group] === beats) {
-            engine.setValue(group, 'beatloop_' + beats + '_toggle', 1);
-            DenonMCX8000.setPadLEDsRoll(group);
-            DenonMCX8000.activeLoop[group] = 0;
-        } else if (DenonMCX8000.activeLoop[group]) {
-            engine.setValue(group, 'beatlooproll_' + beats + '_activate', value);
-            DenonMCX8000.setPadLEDsRoll(group);
-            DenonMCX8000.setActiveLoopLED(group, control);
-            DenonMCX8000.activeLoop[group] = beats;
-        } else {
-            engine.setValue(group, 'beatlooproll_' + beats + '_activate', value);
-            DenonMCX8000.setActiveLoopLED(group, control);
-            DenonMCX8000.activeLoop[group] = beats;
-        }
-    }
+    DenonMCX8000.loopPad(control, value, group, 'beatlooproll_');
 };
 
 DenonMCX8000.slicerPad = function(channel, control, value, status, group) {
@@ -768,70 +869,96 @@ DenonMCX8000.shiftSamplerPad = function(channel, control, value, status, group) 
     DenonMCX8000.samplerPad(channel, control, value, status, group);
 };
 
+DenonMCX8000.padSwitchFuncs = function(control) {
+    switch (control) {
+        case 0x00:
+            return {
+                'pad': DenonMCX8000.cuePad,
+                'shiftPad': DenonMCX8000.cuePad,
+                'leds': DenonMCX8000.setPadLEDsCue,
+            };
+            break;
+        case 0x03:
+            return {
+                'pad': DenonMCX8000.cueLoopPad,
+                'shiftPad': DenonMCX8000.cueLoopPad,
+                'leds': DenonMCX8000.setPadLEDsCue,
+            };
+            break;
+        case 0x02:
+            return {
+                'pad': DenonMCX8000.shiftCuePad,
+                'shiftPad': DenonMCX8000.shiftCuePad,
+                'leds': DenonMCX8000.setPadLEDsCue,
+            };
+            break;
+        case 0x07:
+            return {
+                'pad': DenonMCX8000.rollPad,
+                'shiftPad': DenonMCX8000.rollPad,
+                'leds': DenonMCX8000.setPadLEDsRoll,
+            };
+            break;
+        case 0x0D:
+            return {
+                'pad': DenonMCX8000.savedLoopPad,
+                'shiftPad': DenonMCX8000.savedLoopPad,
+                'leds': DenonMCX8000.setPadLEDsRoll,
+            };
+            break;
+        case 0x09:
+            return {
+                'pad': DenonMCX8000.slicerPad,
+                'shiftPad': DenonMCX8000.slicerPad,
+                'leds': DenonMCX8000.setPadLEDsSlicer,
+            };
+            break;
+        case 0x0A:
+            return {
+                'pad': DenonMCX8000.slicerLoopPad,
+                'shiftPad': DenonMCX8000.slicerLoopPad,
+                'leds': DenonMCX8000.setPadLEDsSlicer,
+            };
+            break;
+        case 0x0B:
+            return {
+                'pad': DenonMCX8000.samplerPad,
+                'shiftPad': DenonMCX8000.samplerPad,
+                'leds': DenonMCX8000.setPadLEDsSampler,
+            };
+            break;
+        case 0x0C:
+            return {
+                'pad': DenonMCX8000.velocitySamplerPad,
+                'shiftPad': DenonMCX8000.velocitySamplerPad,
+                'leds': DenonMCX8000.setPadLEDsSampler,
+            };
+            break;
+        case 0x0F:
+            return {
+                'pad': DenonMCX8000.shiftSamplerPad,
+                'shiftPad': DenonMCX8000.shiftSamplerPad,
+                'leds': DenonMCX8000.setPadLEDsSampler,
+            };
+            break;
+    }
+};
+
 DenonMCX8000.setPadMode = function(channel, control, value, status, group) {
-    if (value === 0x00) {
-        var padFunc, shiftPadFunc, ledFunc;
-        switch (control) {
-            case 0x00:
-                padFunc = DenonMCX8000.cuePad;
-                shiftPadFunc = DenonMCX8000.cuePad;
-                ledFunc = DenonMCX8000.setPadLEDsCue;
-                break;
-            case 0x03:
-                padFunc = DenonMCX8000.cueLoopPad;
-                shiftPadFunc = DenonMCX8000.cueLoopPad;
-                ledFunc = DenonMCX8000.setPadLEDsCue;
-                break;
-            case 0x02:
-                padFunc = DenonMCX8000.shiftCuePad;
-                shiftPadFunc = DenonMCX8000.shiftCuePad;
-                ledFunc = DenonMCX8000.setPadLEDsCue;
-                break;
-            case 0x07:
-                padFunc = DenonMCX8000.rollPad;
-                shiftPadFunc = DenonMCX8000.rollPad;
-                ledFunc = DenonMCX8000.setPadLEDsRoll;
-                break;
-            case 0x0D:
-                padFunc = DenonMCX8000.savedLoopPad;
-                shiftPadFunc = DenonMCX8000.savedLoopPad;
-                ledFunc = DenonMCX8000.setPadLEDsRoll;
-                break;
-            case 0x09:
-                padFunc = DenonMCX8000.slicerPad;
-                shiftPadFunc = DenonMCX8000.slicerPad;
-                ledFunc = DenonMCX8000.setPadLEDsSlicer;
-                break;
-            case 0x0A:
-                padFunc = DenonMCX8000.slicerLoopPad;
-                shiftPadFunc = DenonMCX8000.slicerLoopPad;
-                ledFunc = DenonMCX8000.setPadLEDsSlicer;
-                break;
-            case 0x0B:
-                for (var i = 1; i < 9; i++) {
-                    var vol = DenonMCX8000.samplerVolume[i];
-                    if (vol !== -1) {
-                        engine.setValue('[Sampler' + i + ']', 'pregain', vol);
-                    }
+    if (!value) {
+        var funcs = DenonMCX8000.padSwitchFuncs(control);
+        DenonMCX8000.perfPadFunc[group] = funcs['pad'];
+        DenonMCX8000.shiftPerfPadFunc[group] = funcs['shiftPad'];
+        funcs['leds'](group);
+        if (control === 0x0B) {
+            for (var i = 1; i < 9; i++) {
+                var vol = DenonMCX8000.samplerVolume[i];
+                if (vol !== -1) {
+                    engine.setValue('[Sampler' + i + ']', 'pregain', vol);
                 }
-                padFunc = DenonMCX8000.samplerPad;
-                shiftPadFunc = DenonMCX8000.samplerPad;
-                ledFunc = DenonMCX8000.setPadLEDsSampler;
-                break;
-            case 0x0C:
-                padFunc = DenonMCX8000.velocitySamplerPad;
-                shiftPadFunc = DenonMCX8000.velocitySamplerPad;
-                ledFunc = DenonMCX8000.setPadLEDsSampler;
-                break;
-            case 0x0F:
-                padFunc = DenonMCX8000.shiftSamplerPad;
-                shiftPadFunc = DenonMCX8000.shiftSamplerPad;
-                ledFunc = DenonMCX8000.setPadLEDsSampler;
-                break;
+            }
         }
-        DenonMCX8000.perfPadFunc[group] = padFunc;
-        DenonMCX8000.shiftPerfPadFunc[group] = shiftPadFunc;
-        ledFunc(group);
+        DenonMCX8000.padModes[group] = control;
     }
 };
 
@@ -844,8 +971,12 @@ DenonMCX8000.setPadLEDsCue = function(group) {
             if (engine.getValue(group, 'hotcue_' + (i + 1) + '_enabled')) {
                 midi.sendShortMsg(status, 0x14 + i, 
                                   DenonMCX8000.hotCueActiveColorCodes[i]);
+                midi.sendShortMsg(status, 0x1C + i, 
+                                  DenonMCX8000.hotCueActiveColorCodes[i]);
             } else {
                 midi.sendShortMsg(status, 0x14 + i,
+                                  DenonMCX8000.hotCueInactiveColorCode);
+                midi.sendShortMsg(status, 0x1C + i,
                                   DenonMCX8000.hotCueInactiveColorCode);
             }
         }
@@ -853,7 +984,20 @@ DenonMCX8000.setPadLEDsCue = function(group) {
         for (var i = 0; i < 8; i++) {
             midi.sendShortMsg(status, 0x14 + i,
                               DenonMCX8000.hotCueInactiveColorCode);
+            midi.sendShortMsg(status, 0x1C + i,
+                              DenonMCX8000.hotCueInactiveColorCode);
         }
+    }
+};
+
+DenonMCX8000.setHotcueLED = function(group, cueIdx) {
+    var status = 0x90 + DenonMCX8000.padChannel[group];
+    if (engine.getValue(group, 'hotcue_' + (cueIdx + 1) + '_enabled')) {
+        midi.sendShortMsg(status, 0x14 + cueIdx, 
+                          DenonMCX8000.hotCueActiveColorCodes[cueIdx]);
+    } else {
+        midi.sendShortMsg(status, 0x14 + cueIdx,
+                          DenonMCX8000.hotCueInactiveColorCode);
     }
 };
 
@@ -874,9 +1018,13 @@ DenonMCX8000.setActiveLoopLED = function(group, control) {
 
 DenonMCX8000.setPadLEDsSlicer = function(group) {
     var status = 0x90 + DenonMCX8000.padChannel[group];
-    for (var i = 0; i < 8; i++) {
+    for (var i = 0; i < 4; i++) {
         midi.sendShortMsg(status, 0x14 + i,
-                          DenonMCX8000.beatJumpActiveColorCode);
+                          DenonMCX8000.beatJumpFwdColorCode);
+    }
+    for (var i = 4; i < 8; i++) {
+        midi.sendShortMsg(status, 0x14 + i,
+                          DenonMCX8000.beatJumpBackColorCode);
     }
 };
 
@@ -900,6 +1048,25 @@ DenonMCX8000.setPadLEDsSampler = function(group) {
         } else {
             midi.sendShortMsg(status, 0x13 + i,
                               DenonMCX8000.samplerInactiveColorCode);
+        }
+    }
+};
+
+
+///////////////////////////////////////////////////////////////
+//                    LOOP CONTROLS                          //
+///////////////////////////////////////////////////////////////
+
+DenonMCX8000.reloop = function(channel, control, value, status, group) {
+    if (value) {
+        engine.setValue(group, 'reloop_exit', value);
+        var enabled = !DenonMCX8000.currentLoop[group]['enabled'];
+        DenonMCX8000.currentLoop[group]['enabled'] = enabled;
+        if (enabled) {
+            var control = 0x14 + DenonMCX8000.currentLoop[group]['idx'];
+            DenonMCX8000.setActiveLoopLED(group, control); 
+        } else {
+            DenonMCX8000.setPadLEDsRoll(group);
         }
     }
 };
@@ -1079,27 +1246,75 @@ DenonMCX8000.applyFx = function(channel, control, value, status, group) {
 
 DenonMCX8000.moveVertical = function(channel, control, value, status, group) {
     var distance = (value === 0x7F) ? -1 : 1;
+    var timer = DenonMCX8000.libraryLEDIdleTimer;
+    if (timer) {
+        engine.stopTimer(timer);
+    }
     if (DenonMCX8000.inSidebar) {
+        if (!timer) {
+            DenonMCX8000.showLibLeftLEDs();
+        }
         engine.setValue('[Playlist]', 'SelectPlaylist', distance);
     } else {
+        if (!timer) {
+            DenonMCX8000.showLibRightLEDs();
+        }
         engine.setValue('[Playlist]', 'SelectTrackKnob', distance);
     }
+    DenonMCX8000.libraryLEDIdleTimer =
+        engine.beginTimer(DenonMCX8000.libraryLEDIdleTimeout,
+                          DenonMCX8000.cancelLibraryLEDs,
+                          true);
 };
 
 DenonMCX8000.scrollTracks = function(channel, control, value, status, group) {
-    var distance;
-    if (value === 0x7F) {
-        distance = -DenonMCX8000.fastScrollInterval;
-    } else {
-        distance = DenonMCX8000.fastScrollInterval;
+    if (!DenonMCX8000.inSidebar) {
+        var timer = DenonMCX8000.libraryLEDIdleTimer;
+        if (timer) {
+            engine.stopTimer(timer);
+        } else {
+            DenonMCX8000.showLibRightLEDs();
+        }
+        var distance;
+        if (value === 0x7F) {
+            distance = -DenonMCX8000.fastScrollInterval;
+        } else {
+            distance = DenonMCX8000.fastScrollInterval;
+        }
+        engine.setValue('[Playlist]', 'SelectTrackKnob', distance);
+        DenonMCX8000.libraryLEDIdleTimer =
+            engine.beginTimer(DenonMCX8000.libraryLEDIdleTimeout,
+                              DenonMCX8000.cancelLibraryLEDs,
+                              true);
     }
-    engine.setValue('[Playlist]', 'SelectTrackKnob', distance);
 };
 
 DenonMCX8000.activateSidebar = function(channel, control, value, status, group) {
-    DenonMCX8000.inSidebar = true;
+    if (!value) {
+        var timer = DenonMCX8000.libraryLEDIdleTimer;
+        if (timer) {
+            engine.stopTimer(timer);
+        }
+        DenonMCX8000.showLibLeftLEDs();
+        DenonMCX8000.inSidebar = true;
+        DenonMCX8000.libraryLEDIdleTimer =
+            engine.beginTimer(DenonMCX8000.libraryLEDIdleTimeout,
+                              DenonMCX8000.cancelLibraryLEDs,
+                              true);
+    }
 };
 
 DenonMCX8000.activateTrackList = function(channel, control, value, status, group) {
-    DenonMCX8000.inSidebar = false;
+    if (!value) {
+        var timer = DenonMCX8000.libraryLEDIdleTimer;
+        if (timer) {
+            engine.stopTimer(timer);
+        }
+        DenonMCX8000.showLibRightLEDs();
+        DenonMCX8000.inSidebar = false;
+        DenonMCX8000.libraryLEDIdleTimer =
+            engine.beginTimer(DenonMCX8000.libraryLEDIdleTimeout,
+                              DenonMCX8000.cancelLibraryLEDs,
+                              true);
+    }
 };
