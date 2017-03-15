@@ -22,6 +22,16 @@ var DenonMCX8000 = {};
 // Keylock on by default?
 DenonMCX8000.keylockOn = true;
 
+// This variable sets the delay (in ms) between loading a track and 
+// performing certain functions based on information about the
+// new track. If, for example, the jogwheel LEDs fail to rotate
+// or appear out of sync, you may try increasing this variable.
+DenonMCX8000.loadHookDelay = 200;
+
+// Number of tracks to move up or down in library pane when in 
+// fast scroll mode (Shift+Select Knob)
+DenonMCX8000.fastScrollInterval = 10;
+
 // Prevents accidental activation of the touchstrip
 // User must press shift in order to active while a track is playing
 DenonMCX8000.safeNeedleDrop = true;
@@ -175,7 +185,7 @@ DenonMCX8000.setJogwheelLEDTicks = function(value, group, control) {
         var revolutions = (duration / 60) * (33 + 1/3);
         DenonMCX8000.jogwheelLEDTicks[group] = revolutions * 96; // 96 or 95??
     };
-    engine.beginTimer(100, set, true);
+    engine.beginTimer(DenonMCX8000.loadHookDelay, set, true);
 };
 
 DenonMCX8000.stopRate = {
@@ -188,6 +198,8 @@ DenonMCX8000.stopRate = {
 DenonMCX8000.setStopTime = function(channel, control, value, status, group) {
     DenonMCX8000.stopRate[group] = (128 - value) * DenonMCX8000.stoptimeMultiplier;
 };
+
+DenonMCX8000.params = [0, 0, 0, 0];
 
 DenonMCX8000.init = function(id, debugging) {
     DenonMCX8000.shift = false;
@@ -304,6 +316,89 @@ DenonMCX8000.shiftButton = function(channel, control, value, status, group) {
 DenonMCX8000.tapButton = function(channel, control, value, status, group) {
 };
 
+DenonMCX8000.setParam = function(channel, control, value, status, group) {
+    if (!value) {
+        var paramNo, plus; 
+        if (control % 2) {
+            paramNo = (status % 2) + (control - 0x29);
+            plus = true;
+        } else {
+            paramNo = (status % 2) + (control - 0x28);
+            plus = false;
+        }
+        var param = DenonMCX8000.params[paramNo];
+        var otherStatus = status < 0x96 ? status + 2 : status - 2 ;
+        var otherControl = control % 2 ? control - 1 : control + 1 ;
+        if ((param > 0 && plus) || (param < 0 && !plus)) {
+            DenonMCX8000.params[paramNo] = 0;
+            midi.sendShortMsg(status, control, 0x01);
+            midi.sendShortMsg(otherStatus, control, 0x01);
+        } else {
+            if (plus) {
+                DenonMCX8000.params[paramNo] = 1;
+            } else {
+                DenonMCX8000.params[paramNo] = -1;
+            }
+            midi.sendShortMsg(status, otherControl, 0x01);
+            midi.sendShortMsg(otherStatus, otherControl, 0x01);
+            midi.sendShortMsg(status, control, 0x02);
+            midi.sendShortMsg(otherStatus, control, 0x02);
+        }
+    }
+};
+
+DenonMCX8000.getParam = function(paramNo) {
+    var param = DenonMCX8000.params[paramNo];
+    DenonMCX8000.params[paramNo] = 0;
+    var status = paramNo % 2 ? 0x95 : 0x94 ;
+    var controlNo = 0;
+    if (paramNo < 2 && param < 0) {
+        controlNo = 0x28;
+    } else if (paramNo < 2 && param > 0) {
+        controlNo = 0x29;
+    } else if (param < 0) {
+        controlNo = 0x2A;
+    } else if (param > 0) {
+        controlNo = 0x2B;
+    }
+    if (controlNo) {
+        midi.sendShortMsg(status, controlNo, 0x01);
+        midi.sendShortMsg(status + 2, controlNo, 0x01);
+    }
+    return param;
+};
+
+DenonMCX8000.toggleRecording = function(channel, control, value, status, group) {
+    if (!value) {
+        engine.setValue('[Recording]', 'toggle_recording', 1);
+        engine.beginTimer(100, function() {
+            var midival = engine.getValue('[Recording]', 'status') ? 0x02 : 0x01 ;
+            midi.sendShortMsg(0x9F, 0x46, midival);
+        }, true);
+    }
+};
+
+DenonMCX8000.toggleAutoDJ = function(channel, control, value, status, group) {
+    if (!value) {
+        script.toggleControl('[AutoDJ]', 'enabled');
+        var midival = engine.getValue('[AutoDJ]', 'enabled') ? 0x02 : 0x01 ;
+        midi.sendShortMsg(0x9F, 0x45, midival);
+    }
+};
+
+DenonMCX8000.autoDJControls = function(channel, control, value, status, group) {
+    if (!value) {
+        var param = DenonMCX8000.getParam(1);
+        var op = 'fade_now';
+        if (param > 0) {
+            op = 'skip_next';
+        } else if (param < 0) {
+            op = 'shuffle_playlist';
+        }
+        engine.setValue('[AutoDJ]', op, 1);
+    }
+};
+
 // Only needed until v2.1
 DenonMCX8000.trackLoaded = function(group) {
     var ts = engine.getValue(group, 'track_samples');
@@ -336,7 +431,9 @@ var TestUnit = function(id) {
 DenonMCX8000.testFunc = function(channel, control, value, status, group) {
     // DenonMCX8000.brake(channel, control, value, status, group);
     // script.brake(channel, control, value, status, '[Channel2]');
-    script.brake(channel, control, value * DenonMCX8000.stopRate['[Channel2]'], status, '[Channel2]');
+    // script.brake(channel, control, value * DenonMCX8000.stopRate['[Channel2]'], status, '[Channel2]');
+    var recstat = engine.getValue('[Recording]', 'status');
+    print("recording status: " + recstat);
 };
 
 // DANGER!! Cutted & pasted from DDJ-SB2 script.
@@ -976,9 +1073,9 @@ DenonMCX8000.moveVertical = function(channel, control, value, status, group) {
 DenonMCX8000.scrollTracks = function(channel, control, value, status, group) {
     var distance;
     if (value === 0x7F) {
-        distance = -10;
+        distance = -DenonMCX8000.fastScrollInterval;
     } else {
-        distance = 10;
+        distance = DenonMCX8000.fastScrollInterval;
     }
     engine.setValue('[Playlist]', 'SelectTrackKnob', distance);
 };

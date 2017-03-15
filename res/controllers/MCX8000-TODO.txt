@@ -2,16 +2,12 @@
 
 * Fix lack of roll loops.
 
-* Restore JS bindings for pitch faders.
-
-* Touch strip safety.
-
 * Completely manage state of performance pad LEDs.
 
-* Implement beat grid adjustment buttons.
-
-* Implement pitch bend buttons.
-
-* Implement effect rack controls.
-
 * Cause effect unit lights to blink for setup mode?
+
+* Investigate why engine.brake & engine.spinback cause problems.
+
+* Implement soft takeover emulation.
+
+* Fix track selector knob to not jump to start of list after re-sorting.
