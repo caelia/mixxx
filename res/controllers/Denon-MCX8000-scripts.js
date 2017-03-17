@@ -1118,7 +1118,7 @@ DenonMCX8000.FxUnit = function(channel) {
 DenonMCX8000.fx1 = DenonMCX8000.FxUnit(8);
 DenonMCX8000.fx2 = DenonMCX8000.FxUnit(9);
 */
-DenonMCX8000.FxUnit = function(channel, group) {
+DenonMCX8000.FxUnit = function(channel) {
     var self = this;    // prevent shadowing
     var status = 0x90 + channel;
     self.setupMode = false;
@@ -1148,7 +1148,7 @@ DenonMCX8000.fx2 = new DenonMCX8000.FxUnit(9);
 DenonMCX8000.toggleEffect = function(channel, control, value, status, group) {
     if (!value) {
         var unitNo, fxUnit;
-        if (status === 0x98) {
+        if (channel === 0x08) {
             unitNo = 1;
             fxUnit = DenonMCX8000.fx1;
         } else {
@@ -1167,7 +1167,7 @@ DenonMCX8000.toggleEffect = function(channel, control, value, status, group) {
 
 DenonMCX8000.enterEffectSetupMode = function(channel, control, value, status, group) {
     if (!value) {
-        var fxUnit = status === 0x98 ? DenonMCX8000.fx1 : DenonMCX8000.fx2 ;
+        var fxUnit = channel === 0x08 ? DenonMCX8000.fx1 : DenonMCX8000.fx2 ;
         fxUnit.setupMode = true;
         fxUnit.setupItem = control;
         fxUnit.showSetupMode(control);
@@ -1179,7 +1179,7 @@ DenonMCX8000.enterEffectSetupMode = function(channel, control, value, status, gr
 
 DenonMCX8000.adjustEffect = function(channel, control, value, status, group) {
     var unitNo, fxUnit;
-    if (status === 0x98) {
+    if (channel === 0x08) {
         unitNo = 1;
         fxUnit = DenonMCX8000.fx1;
     } else {
@@ -1198,8 +1198,14 @@ DenonMCX8000.adjustEffect = function(channel, control, value, status, group) {
 };
 
 DenonMCX8000.beatsKnob = function(channel, control, value, status, group) {
-    var unitNo = status === 0x98 ? 1 : 2;
-    var fxUnit = unitNo === 1 ? DenonMCX8000.fx1 : DenonMCX8000.fx2 ;
+    var unitNo, fxUnit;
+    if (channel === 0x08) {
+        unitNo = 1;
+        fxUnit = DenonMCX8000.fx1;
+    } else {
+        unitNo = 2;
+        fxUnit = DenonMCX8000.fx2;
+    }
     var increment = (64 - value) / 63;
     var gid;
     if (fxUnit.setupMode) {
