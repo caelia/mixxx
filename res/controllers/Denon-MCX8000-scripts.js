@@ -46,12 +46,6 @@ DenonMCX8000.jogwheelSensivity = 1.0;
 // Set to 1 to disable jogwheel sensitivity increase when holding shift.
 DenonMCX8000.jogwheelShiftMultiplier = 20;
 
-// This variable represents how close you need to bring the physical
-// slider to the remembered position in order to change the value. If
-// you find that fast tempo changes result in the physical slider becoming
-// "disconnected" from the actual value, try increasing this.
-DenonMCX8000.tempoSliderSnapDistance = 192;
-
 // Use this variable to adjust the stop time for brake and spinback.
 // A higher value means faster deceleration.
 DenonMCX8000.stoptimeMultiplier = 1;
@@ -254,15 +248,17 @@ DenonMCX8000.init = function(id, debugging) {
     DenonMCX8000.initPads();
     // connect controls
     for (var i = 1; i < 5; i++) {
-        engine.connectControl('[Channel' + i + ']',
+        var group = '[Channel' + i + ']';
+        engine.connectControl(group,
                               'VuMeter',
                               'DenonMCX8000.channelVUMeter');
-        engine.connectControl('[Channel' + i + ']',
+        engine.connectControl(group,
                               'LoadSelectedTrack',
                               'DenonMCX8000.runLoadHooks');
-        engine.connectControl('[Channel' + i + ']',
+        engine.connectControl(group,
                               'playposition',
                               'DenonMCX8000.jogwheelLEDs');
+        engine.softTakeover(group, 'rate', true);
     }
 };
 
@@ -551,27 +547,16 @@ DenonMCX8000.highResMSB = {
     '[Channel4]': {}
 };
 
-DenonMCX8000.tempoSliderPos = {
-    '[Channel1]': 8192,
-    '[Channel2]': 8192,
-    '[Channel3]': 8192,
-    '[Channel4]': 8192
-};
-
 DenonMCX8000.tempoSliderMSB = function(channel, control, value, status, group) {
     DenonMCX8000.highResMSB[group].tempoSlider = value;
 };
 
 DenonMCX8000.tempoSliderLSB = function(channel, control, value, status, group) {
     var fullValue = (DenonMCX8000.highResMSB[group].tempoSlider << 7) + value;
-    if (Math.abs(fullValue - DenonMCX8000.tempoSliderPos[group])
-                           < DenonMCX8000.tempoSliderSnapDistance) {
-        engine.setValue(group,
-                        'rate',
-                        ((0x4000 - fullValue) - 0x2000) / 0x2000
-        );
-        DenonMCX8000.tempoSliderPos[group] = fullValue;
-    }
+    engine.setValue(group,
+                    'rate',
+                    ((0x4000 - fullValue) - 0x2000) / 0x2000
+    );
 };
 
 
