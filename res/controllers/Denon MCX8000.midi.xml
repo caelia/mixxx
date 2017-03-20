@@ -13,13 +13,13 @@
     <!-- ========================================================== -->
     <!--
         Controls are organized by section as follows:
-           1) Mixer & EQ
-           2) Effects
-      	   3) Transport control, including jogwheels
-           4) Performance pads & loop controls
-           5) Library functions
-           6) Miscellaneous
-         Within each section, control elements are ordered by <midino/>. 
+          1) Mixer & EQ
+          2) Effects
+      	  3) Transport control, including jogwheels
+          4) Performance pads & loop controls
+          5) Library functions
+          6) Miscellaneous
+        Within each section, control elements are ordered by <midino/>.
     -->
     <!-- ========================================================== -->
     <controls>
