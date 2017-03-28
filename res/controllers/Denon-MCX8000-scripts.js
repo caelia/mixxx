@@ -650,8 +650,15 @@ DenonMCX8000.pitchBendFromJog = function(channel, movement) {
 
 DenonMCX8000.toggleKeylock = function(channel, control, value, status, group) {
     if (!value) {
-        script.toggleControl(group, 'keylock');
-        DenonMCX8000.setKeylockLED(channel);
+        var param1 = DenonMCX8000.getParam(1);
+        if (param1 > 0) {
+            engine.setValue(group, 'pitch_up', 1);
+        } else if (param1 < 0) {
+            engine.setValue(group, 'pitch_down', 1);
+        } else {
+            script.toggleControl(group, 'keylock');
+            DenonMCX8000.setKeylockLED(channel);
+        }
     }
 };
 
