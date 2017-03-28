@@ -2780,7 +2780,7 @@
         <group>[Playlist]</group>
         <midino>0x0E</midino>
         <status>0x9F</status>
-        <key>DenonMCX8000.activateSidebar</key>
+        <key>DenonMCX8000.sidebarButton</key>
         <options>
           <script-binding/>
         </options>
@@ -2798,7 +2798,7 @@
         <group>[Playlist]</group>
         <midino>0x11</midino>
         <status>0x9F</status>
-        <key>DenonMCX8000.activateSidebar</key>
+        <key>DenonMCX8000.sidebarButton</key>
         <options>
           <script-binding/>
         </options>
@@ -2834,36 +2834,36 @@
         <group>[Playlist]</group>
         <midino>0x5A</midino>
         <status>0x9F</status>
-        <key>ToggleSelectedSidebarItem</key>
+        <key>DenonMCX8000.viewButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Playlist]</group>
         <midino>0x5B</midino>
         <status>0x9F</status>
-        <key>ToggleSelectedSidebarItem</key>
+        <key>DenonMCX8000.viewButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Playlist]</group>
         <midino>0x5C</midino>
         <status>0x9F</status>
-        <key>ToggleSelectedSidebarItem</key>
+        <key>DenonMCX8000.viewButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control>
         <group>[Playlist]</group>
         <midino>0x5D</midino>
         <status>0x9F</status>
-        <key>ToggleSelectedSidebarItem</key>
+        <key>DenonMCX8000.viewButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <!-- ======================================================== -->
