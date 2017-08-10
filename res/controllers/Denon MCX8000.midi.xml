@@ -723,72 +723,72 @@
         <group>[Channel1]</group>
         <midino>0x00</midino>
         <status>0x90</status>
-        <key>play</key>
+        <key>DenonMCX8000.playButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x00 -->
         <group>[Channel2]</group>
         <midino>0x00</midino>
         <status>0x91</status>
-        <key>play</key>
+        <key>DenonMCX8000.playButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x00 -->
         <group>[Channel3]</group>
         <midino>0x00</midino>
         <status>0x92</status>
-        <key>play</key>
+        <key>DenonMCX8000.playButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x00 -->
         <group>[Channel4]</group>
         <midino>0x00</midino>
         <status>0x93</status>
-        <key>play</key>
+        <key>DenonMCX8000.playButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x01 -->
         <group>[Channel1]</group>
         <midino>0x01</midino>
         <status>0x90</status>
-        <key>cue_default</key>
+        <key>DenonMCX8000.cueButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x01 -->
         <group>[Channel2]</group>
         <midino>0x01</midino>
         <status>0x91</status>
-        <key>cue_default</key>
+        <key>DenonMCX8000.cueButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x01 -->
         <group>[Channel3]</group>
         <midino>0x01</midino>
         <status>0x92</status>
-        <key>cue_default</key>
+        <key>DenonMCX8000.cueButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x01 -->
         <group>[Channel4]</group>
         <midino>0x01</midino>
         <status>0x93</status>
-        <key>cue_default</key>
+        <key>DenonMCX8000.cueButton</key>
         <options>
-          <normal/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x02 -->
@@ -3081,42 +3081,6 @@
       </control>
     </controls>
     <outputs/>
-    <!--
-    <outputs>
-      <output>
-        <group>[Channel1]</group>
-        <status>0x90</status>
-        <midino>0x02</midino>
-        <key>sync_enabled</key>
-        <on>0x02</on>
-        <off>0x01</off>
-      </output>
-      <output>
-        <group>[Channel2]</group>
-        <status>0x91</status>
-        <midino>0x02</midino>
-        <key>sync_enabled</key>
-        <on>0x02</on>
-        <off>0x01</off>
-      </output>
-      <output>
-        <group>[Channel3]</group>
-        <status>0x92</status>
-        <midino>0x02</midino>
-        <key>sync_enabled</key>
-        <on>0x02</on>
-        <off>0x01</off>
-      </output>
-      <output>
-        <group>[Channel4]</group>
-        <status>0x93</status>
-        <midino>0x02</midino>
-        <key>sync_enabled</key>
-        <on>0x02</on>
-        <off>0x01</off>
-      </output>
-    </outputs>
-    -->
     <!--
     <outputs>
       <output>

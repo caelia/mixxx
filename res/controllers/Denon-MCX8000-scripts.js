@@ -232,6 +232,13 @@ DenonMCX8000.params = [0, 0, 0, 0];
 
 DenonMCX8000.libraryLEDIdleTimer = 0;
 
+DenonMCX8000.channelOffset = {
+    '[Channel1]': 0,
+    '[Channel2]': 1,
+    '[Channel3]': 2,
+    '[Channel4]': 3
+};
+
 DenonMCX8000.init = function(id, debugging) {
     DenonMCX8000.shift = false;
     DenonMCX8000.scratchSettings = {
@@ -266,6 +273,9 @@ DenonMCX8000.init = function(id, debugging) {
         engine.connectControl(group,
                               'playposition',
                               'DenonMCX8000.jogwheelLEDs');
+        engine.connectControl(group,
+                              'play',
+                              'DenonMCX8000.setPlayLEDAuto');
         engine.softTakeover(group, 'rate', true);
     }
 };
@@ -276,6 +286,32 @@ DenonMCX8000.shutdown = function() {};
 ///////////////////////////////////////////////////////////////
 //                      LED SIGNALS                          //
 ///////////////////////////////////////////////////////////////
+
+DenonMCX8000.setPlayLED = function(channel) {
+    // var doSet = function() {
+        if (engine.getValue('[Channel' + (channel + 1) + ']', 'play')) {
+            midi.sendShortMsg(0x90 + channel, 0x00, 0x02);
+        } else {
+            midi.sendShortMsg(0x90 + channel, 0x00, 0x01);
+        }
+    // };
+    // engine.beginTimer(100, doSet, true);
+};
+
+DenonMCX8000.setPlayLEDAuto = function(value, group, control) {
+    DenonMCX8000.setPlayLED(DenonMCX8000.channelOffset[group]);
+};
+
+DenonMCX8000.setCueLED = function(channel) {
+    // var doSet = function() {
+        if (engine.getValue('[Channel' + (channel + 1) + ']', 'cue_default')) {
+            midi.sendShortMsg(0x90 + channel, 0x01, 0x02);
+        } else {
+            midi.sendShortMsg(0x90 + channel, 0x01, 0x01);
+        }
+    // };
+    // engine.beginTimer(100, doSet, true);
+};
 
 DenonMCX8000.setSyncLED = function(channel) {
     var doSet = function() {
@@ -688,12 +724,30 @@ DenonMCX8000.pitchBendFromJog = function(channel, movement) {
 //                    TRANSPORT CONTROL                      //
 ///////////////////////////////////////////////////////////////
 
+DenonMCX8000.playButton = function(channel, control, value, status, group) {
+    if (value) {
+        script.toggleControl(group, 'play');
+        DenonMCX8000.setPlayLED(channel);
+    }
+};
+
+DenonMCX8000.cueButton = function(channel, control, value, status, group) {
+    if (value) {
+        if (DenonMCX8000.shift) {
+            engine.setValue(group, 'start', 1);
+        } else {
+            engine.setValue(group, 'cue_default', 1);
+            DenonMCX8000.setCueLED(channel);
+        }
+    }
+};
+
 DenonMCX8000.toggleSync = function(channel, control, value, status, group) {
     if (!value) {
         script.toggleControl(group, 'sync_enabled');
         DenonMCX8000.setSyncLED(channel);
     }
-}
+};
 
 DenonMCX8000.toggleKeylock = function(channel, control, value, status, group) {
     if (!value) {
