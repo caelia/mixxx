@@ -228,7 +228,9 @@ DenonMCX8000.setStopTime = function(channel, control, value, status, group) {
     DenonMCX8000.stopRate[group] = (128 - value) * DenonMCX8000.stoptimeMultiplier;
 };
 
-DenonMCX8000.params = [0, 0, 0, 0];
+// DenonMCX8000.params = [0, 0, 0, 0];
+// Going w/ duplicate L/R - hence only 2 params available
+DenonMCX8000.params = [0, 0];
 
 DenonMCX8000.libraryLEDIdleTimer = 0;
 
@@ -480,6 +482,7 @@ DenonMCX8000.beatgridMatchAlignment = function(channel, control, value, status, 
 
 DenonMCX8000.setParam = function(channel, control, value, status, group) {
     if (!value) {
+        /*
         var paramNo, plus;
         if (control % 2) {
             paramNo = (status % 2) + (control - 0x29);
@@ -488,14 +491,22 @@ DenonMCX8000.setParam = function(channel, control, value, status, group) {
             paramNo = (status % 2) + (control - 0x28);
             plus = false;
         }
+        */
+        var paramNo = control > 0x29 ? 1 : 0 ;
+        var plus = control % 2 ? true : false ;
         var param = DenonMCX8000.params[paramNo];
-        var otherStatus = status < 0x96 ? status + 2 : status - 2 ;
+        // I think this next line is wrong
+        // var otherStatus = status < 0x96 ? status + 2 : status - 2 ;
+        var otherStatus = status === 0x94 ? status + 1 : status - 1 ;
         var otherControl = control % 2 ? control - 1 : control + 1 ;
         if ((param > 0 && plus) || (param < 0 && !plus)) {
+            // Canceling previous param setting
             DenonMCX8000.params[paramNo] = 0;
             midi.sendShortMsg(status, control, 0x01);
             midi.sendShortMsg(otherStatus, control, 0x01);
+            // midi.sendShortMsg(status, otherControl, 0x01);
         } else {
+            // Activating param setting
             if (plus) {
                 DenonMCX8000.params[paramNo] = 1;
             } else {
@@ -510,10 +521,12 @@ DenonMCX8000.setParam = function(channel, control, value, status, group) {
 };
 
 DenonMCX8000.getParam = function(paramNo) {
+    paramNo -= 1;
     var param = DenonMCX8000.params[paramNo];
     DenonMCX8000.params[paramNo] = 0;
-    var status = paramNo % 2 ? 0x95 : 0x94 ;
+    // var status = paramNo % 2 ? 0x95 : 0x94 ;
     var controlNo = 0;
+    /*
     if (paramNo < 2 && param < 0) {
         controlNo = 0x28;
     } else if (paramNo < 2 && param > 0) {
@@ -523,9 +536,21 @@ DenonMCX8000.getParam = function(paramNo) {
     } else if (param > 0) {
         controlNo = 0x2B;
     }
+    */
+    if (paramNo == 0 && param < 0) {
+        controlNo = 0x28;
+    } else if (paramNo == 0 && param > 0) {
+        controlNo = 0x29;
+    } else if (param < 0) {
+        controlNo = 0x2A;
+    } else if (param > 0) {
+        controlNo = 0x2B;
+    }
     if (controlNo) {
-        midi.sendShortMsg(status, controlNo, 0x01);
-        midi.sendShortMsg(status + 2, controlNo, 0x01);
+        // midi.sendShortMsg(status, controlNo, 0x01);
+        // midi.sendShortMsg(status + 2, controlNo, 0x01);
+        midi.sendShortMsg(0x94, controlNo, 0x01);
+        midi.sendShortMsg(0x95, controlNo, 0x01);
     }
     return param;
 };
@@ -591,23 +616,19 @@ var TestUnit = function(id) {
 };
 
 DenonMCX8000.testFunc = function(channel, control, value, status, group) {
-    // DenonMCX8000.brake(channel, control, value, status, group);
-    // script.brake(channel, control, value, status, '[Channel2]');
-    // script.brake(channel, control, value * DenonMCX8000.stopRate['[Channel2]'], status, '[Channel2]');
-    // var fx1Showing = engine.getValue('[EffectRack1]', 'show');
-    // var smpShowing = engine.getValue('[Sampler1]', 'show');
-    // var libShowing = engine.getValue('[Library]', 'show');
-    // print("fx: " + fx1Showing);
-    // print("sampler: " + smpShowing);
-    // print("lib: " + libShowing);
-    var ch1sync = engine.getValue('[Channel1]', 'sync_enabled');
-    var ch2sync = engine.getValue('[Channel2]', 'sync_enabled');
-    var ch3sync = engine.getValue('[Channel3]', 'sync_enabled');
-    var ch4sync = engine.getValue('[Channel4]', 'sync_enabled');
-    print("Channel 1 sync enabled: " + ch1sync);
-    print("Channel 2 sync enabled: " + ch2sync);
-    print("Channel 3 sync enabled: " + ch3sync);
-    print("Channel 4 sync enabled: " + ch4sync);
+    if (!value) {
+        // DenonMCX8000.brake(channel, control, value, status, group);
+        // script.brake(channel, control, value, status, '[Channel2]');
+        // script.brake(channel, control, value * DenonMCX8000.stopRate['[Channel2]'], status, '[Channel2]');
+        // var fx1Showing = engine.getValue('[EffectRack1]', 'show');
+        // var smpShowing = engine.getValue('[Sampler1]', 'show');
+        // var libShowing = engine.getValue('[Library]', 'show');
+        // print("fx: " + fx1Showing);
+        // print("sampler: " + smpShowing);
+        // print("lib: " + libShowing);
+        print("Param1: " + DenonMCX8000.params[0]);
+        print("Param2: " + DenonMCX8000.params[1]);
+    }
 };
 
 // DANGER!! Cutted & pasted from DDJ-SB2 script.
