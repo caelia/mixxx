@@ -277,6 +277,17 @@ DenonMCX8000.shutdown = function() {};
 //                      LED SIGNALS                          //
 ///////////////////////////////////////////////////////////////
 
+DenonMCX8000.setSyncLED = function(channel) {
+    var doSet = function() {
+        if (engine.getValue('[Channel' + (channel + 1) + ']', 'sync_enabled')) {
+            midi.sendShortMsg(0x90 + channel, 0x02, 0x02);
+        } else {
+            midi.sendShortMsg(0x90 + channel, 0x02, 0x01);
+        }
+    };
+    engine.beginTimer(100, doSet, true);
+};
+
 DenonMCX8000.setKeylockLED = function(channel) {
     if (engine.getValue('[Channel' + (channel + 1) + ']', 'keylock')) {
         midi.sendShortMsg(0x90 + channel, 0x0D, 0x02);
@@ -547,12 +558,20 @@ DenonMCX8000.testFunc = function(channel, control, value, status, group) {
     // DenonMCX8000.brake(channel, control, value, status, group);
     // script.brake(channel, control, value, status, '[Channel2]');
     // script.brake(channel, control, value * DenonMCX8000.stopRate['[Channel2]'], status, '[Channel2]');
-    var fx1Showing = engine.getValue('[EffectRack1]', 'show');
-    var smpShowing = engine.getValue('[Sampler1]', 'show');
-    var libShowing = engine.getValue('[Library]', 'show');
-    print("fx: " + fx1Showing);
-    print("sampler: " + smpShowing);
-    print("lib: " + libShowing);
+    // var fx1Showing = engine.getValue('[EffectRack1]', 'show');
+    // var smpShowing = engine.getValue('[Sampler1]', 'show');
+    // var libShowing = engine.getValue('[Library]', 'show');
+    // print("fx: " + fx1Showing);
+    // print("sampler: " + smpShowing);
+    // print("lib: " + libShowing);
+    var ch1sync = engine.getValue('[Channel1]', 'sync_enabled');
+    var ch2sync = engine.getValue('[Channel2]', 'sync_enabled');
+    var ch3sync = engine.getValue('[Channel3]', 'sync_enabled');
+    var ch4sync = engine.getValue('[Channel4]', 'sync_enabled');
+    print("Channel 1 sync enabled: " + ch1sync);
+    print("Channel 2 sync enabled: " + ch2sync);
+    print("Channel 3 sync enabled: " + ch3sync);
+    print("Channel 4 sync enabled: " + ch4sync);
 };
 
 // DANGER!! Cutted & pasted from DDJ-SB2 script.
@@ -666,8 +685,15 @@ DenonMCX8000.pitchBendFromJog = function(channel, movement) {
 
 
 ///////////////////////////////////////////////////////////////
-//             MISCELLANEOUS TRANSPORT CONTROL               //
+//                    TRANSPORT CONTROL                      //
 ///////////////////////////////////////////////////////////////
+
+DenonMCX8000.toggleSync = function(channel, control, value, status, group) {
+    if (!value) {
+        script.toggleControl(group, 'sync_enabled');
+        DenonMCX8000.setSyncLED(channel);
+    }
+}
 
 DenonMCX8000.toggleKeylock = function(channel, control, value, status, group) {
     if (!value) {
