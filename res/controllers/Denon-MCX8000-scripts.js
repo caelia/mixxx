@@ -50,6 +50,11 @@ DenonMCX8000.jogwheelShiftMultiplier = 20;
 // A higher value means faster deceleration.
 DenonMCX8000.stoptimeMultiplier = 1;
 
+// This variable modifies the amplitude range of the sampler
+// in velocity-sensitive mode, since the default volume may be
+// too loud.
+DenonMCX8000.vssMultiplier = 0.4;
+
 // Colors for performance pad LEDs - see color table below for
 // additional color names.
 DenonMCX8000.hotCueInactiveColor = 'grey';
@@ -979,7 +984,9 @@ DenonMCX8000.velocitySamplerPad = function(channel, control, value, status, grou
             var smpNo = control - 0x13;
             var sampler = '[Sampler' + smpNo + ']';
             DenonMCX8000.samplerVolume[smpNo] = engine.getValue(sampler, 'pregain');
-            engine.setValue(sampler, 'pregain', value / 32);
+            // DenonMCX8000.samplerVolume[smpNo] = engine.getValue(sampler, 'pregain') * DenonMCX8000.vssMultiplier;
+            // engine.setValue(sampler, 'pregain', value / 32);
+            engine.setValue(sampler, 'pregain', (value / 32) * DenonMCX8000.vssMultiplier);
             engine.setValue(sampler, 'start_play', value);
         }
     }
