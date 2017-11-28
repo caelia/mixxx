@@ -53,7 +53,7 @@ DenonMCX8000.stoptimeMultiplier = 1;
 // This variable modifies the amplitude range of the sampler
 // in velocity-sensitive mode, since the default volume may be
 // too loud.
-DenonMCX8000.vssMultiplier = 0.4;
+DenonMCX8000.vssMultiplier = 0.5;
 
 // Colors for performance pad LEDs - see color table below for
 // additional color names.
@@ -604,6 +604,13 @@ DenonMCX8000.deckMIDIChannel = {
     '[Channel4]': 3
 };
 
+DenonMCX8000.samplerVolume = function(channel, control, value, status, group) {
+    var vol = value / 127.0;
+    for (var i = 1; i < 9; i++) {
+        engine.setParameter('[Sampler' + i + ']', 'volume', vol);
+    }
+};
+
 var TestUnit = function(id) {
     var self = this;
     self.id = id;
@@ -958,7 +965,7 @@ DenonMCX8000.slicerLoopPad = function(channel, control, value, status, group) {
     }
 };
 
-DenonMCX8000.samplerVolume = [null, -1, -1, -1, -1, -1, -1, -1, -1];
+DenonMCX8000.samplerPregain = [null, -1, -1, -1, -1, -1, -1, -1, -1];
 
 DenonMCX8000.loadSampler = function(group, smpNo) {
     engine.setValue('[Sampler' + smpNo + ']', 'LoadSelectedTrack', 1);
@@ -983,9 +990,7 @@ DenonMCX8000.velocitySamplerPad = function(channel, control, value, status, grou
         } else {
             var smpNo = control - 0x13;
             var sampler = '[Sampler' + smpNo + ']';
-            DenonMCX8000.samplerVolume[smpNo] = engine.getValue(sampler, 'pregain');
-            // DenonMCX8000.samplerVolume[smpNo] = engine.getValue(sampler, 'pregain') * DenonMCX8000.vssMultiplier;
-            // engine.setValue(sampler, 'pregain', value / 32);
+            DenonMCX8000.samplerPregain[smpNo] = engine.getValue(sampler, 'pregain');
             engine.setValue(sampler, 'pregain', (value / 32) * DenonMCX8000.vssMultiplier);
             engine.setValue(sampler, 'start_play', value);
         }
@@ -1079,7 +1084,7 @@ DenonMCX8000.setPadMode = function(channel, control, value, status, group) {
         funcs['leds'](group);
         if (control === 0x0B) {
             for (var i = 1; i < 9; i++) {
-                var vol = DenonMCX8000.samplerVolume[i];
+                var vol = DenonMCX8000.samplerPregain[i];
                 if (vol !== -1) {
                     engine.setValue('[Sampler' + i + ']', 'pregain', vol);
                 }
@@ -1366,6 +1371,11 @@ DenonMCX8000.beatsKnob = function(channel, control, value, status, group) {
         var item = fxUnit.setupItem;
         var effectNo = item < 3 ? item + 1 : item - 10;
         gid = '[EffectRack1_EffectUnit' + unitNo + '_Effect' + effectNo + ']';
+        /* if (increment > 0) {
+            engine.setValue(gid, 'next_effect', 1);
+        } else if (increment < 0) {
+            engine.setValue(gid, 'prev_effect', 1);
+        } */
         engine.setValue(gid, 'effect_selector', increment);
     } else {
         gid = '[EffectRack1_EffectUnit' + unitNo + ']';

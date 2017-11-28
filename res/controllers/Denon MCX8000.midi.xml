@@ -320,10 +320,9 @@
         <group>[Master]</group>
         <midino>0x1A</midino>
         <status>0xBF</status>
-        <key>gain</key>
+        <key>DenonMCX8000.samplerVolume</key>
         <options>
-          <normal/>
-          <soft-takeover/>
+          <script-binding/>
         </options>
       </control>
       <control><!-- 0x1B -->
